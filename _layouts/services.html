@@ -1,35 +1,42 @@
 ---
 layout: default
 ---
-<!-- _layouts/cv.html -->
-        <div class="post">
+<!-- _layouts/services.html -->
 
-          <header class="post-header">
-            <h1 class="post-title">{{ page.title }} {% if page.cv_pdf %}<a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" target="_blank" rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>{% endif %}</h1>
-            <p class="post-description">{{ page.description }}</p>
-          </header>
-
-          <article>
-            <div class="cv">
-              {% for entry in site.data.services %}
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
-                  <div>
-                  {% if entry.type == "list" %}
-                    {% include cv/list.html %}
-                  {% elsif entry.type == "map" %}
-                    {% include cv/map.html %}
-                  {% elsif entry.type == "nested_list" %}
-                    {% include cv/nested_list.html %}
-                  {% elsif entry.type == "time_table" %}
-                   {% include cv/time_table.html %}
-                  {% else %}
-                    {{ entry.contents }}
-                  {% endif %}
-                  </div>
-                </div>
-              {% endfor %}
-              </div>
-          </article>
-
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Name - Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Services</h1>
+    </header>
+    <main>
+        <section>
+            <!-- <h2>My Services</h2> -->
+            <!-- <p>Here you can introduce your services. For example:</p> -->
+            <ul>
+                <li>Program Committee for ATC’22 Artifact Evaluation</li>
+                <li>Program Committee for OSDI’22 Artifact Evaluation</li>
+                <li>Program Committee for ATC’23 Artifact Evaluation</li>
+                <li>Program Committee for OSDI’23 Artifact Evaluation</li>
+            </ul>
+        </section>
+    </main>
+    <!-- <footer>
+        <p>Contact me at: <a href="mailto:your-email@example.com">boxiyu@link.cuhk.edu.cn</a></p>
+    </footer> -->
+</body>
+</html>

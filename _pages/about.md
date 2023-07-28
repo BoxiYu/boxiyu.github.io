@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle:  Shenzhen Contacts.
+subtitle:  Shenzhen
 
 profile:
   align: right

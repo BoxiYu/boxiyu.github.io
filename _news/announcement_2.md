@@ -5,6 +5,5 @@ inline: true
 related_posts: true
 ---
 
-Our paper "Automated Testing and Improvement of Named Entity Recognition Systems
-" was accepted by ESEC/FSE'2023.
+Our paper "Automated Testing and Improvement of Named Entity Recognition Systems" was accepted by ESEC/FSE'2023.
 

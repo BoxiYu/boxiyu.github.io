@@ -159,6 +159,7 @@
 
           <!-- Links/Buttons -->
           <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
             <a href="https://dl.acm.org/doi/abs/10.1145/3533767.3534389" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a>
             <a href="https://arxiv.org/pdf/2206.06550.pdf" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
             <a href="https://github.com/RobustNLP/TestIC" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
@@ -166,11 +167,14 @@
           </div>
           
           <div class="badges">
-            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right"></span>
-              <span class="__dimensions_badge_embed__" data-pmid="" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 3px;"></span>
+            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right" data-doi="10.1145/3533767.3534389"></span>
+              <span class="__dimensions_badge_embed__" data-doi="10.1145/3533767.3534389" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 3px;"></span>
           </div>
 
-          
+          <!-- Hidden abstract block -->
+          <div class="abstract hidden">
+            <p>Image captioning (IC) systems, which automatically generate a text description of the salient objects in an image (real or synthetic), have seen great progress over the past few years due to the development of deep neural networks. IC plays an indispensable role in human society, for example, labeling massive photos for scientific studies and assisting visually-impaired people in perceiving the world. However, even the top-notch IC systems, such as Microsoft Azure Cognitive Services and IBM Image Caption Generator, may return incorrect results, leading to the omission of important objects, deep misunderstanding, and threats to personal safety. To address this problem, we propose MetaIC, the first metamorphic testing approach to validate IC systems. Our core idea is that the object names should exhibit directional changes after object insertion. Specifically, MetaIC (1) extracts objects from existing images to construct an object corpus; (2) inserts an object into an image via novel object resizing and location tuning algorithms; and (3) reports image pairs whose captions do not exhibit differences in an expected way. In our evaluation, we use MetaIC to test one widely-adopted image captioning API and five state-of-the-art (SOTA) image captioning models. Using 1,000 seeds, MetaIC successfully reports 16,825 erroneous issues with high precision (84.9%-98.4%). There are three kinds of errors: misclassification, omission, and incorrect quantity. We visualize the errors reported by MetaIC, which shows that flexible overlapping setting facilitates IC testing by increasing and diversifying the reported errors. In addition, MetaIC can be further generalized to detect label errors in the training dataset, which has successfully detected 151 incorrect labels in MS COCO Caption, a standard dataset in image captioning.</p>
+          </div>
         </div>
       </div>
 </li></ol>
@@ -246,18 +250,21 @@
 
           <!-- Links/Buttons -->
           <div class="links">
-            <a href="http://arxiv.org/abs/2308.07937" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
             <a href="https://arxiv.org/pdf/2308.07937.pdf" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
             <a href="https://github.com/RobustNLP/TestIC" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
             <a href="/assets/pdf/TIN_slides.pdf" class="btn btn-sm z-depth-0" role="button">Slides</a>
           </div>
           
           <div class="badges">
-            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right"></span>
-              <span class="__dimensions_badge_embed__" data-pmid="" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 3px;"></span>
+            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right" data-doi="10.1145/3611643.3616295"></span>
+              <span class="__dimensions_badge_embed__" data-doi="10.1145/3611643.3616295" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 3px;"></span>
           </div>
 
-          
+          <!-- Hidden abstract block -->
+          <div class="abstract hidden">
+            <p>Named entity recognition (NER) systems have seen rapid progress in recent years due to the development of deep neural networks. These systems are widely used in various natural language processing applications, such as information extraction, question answering, and sentiment analysis. However, the complexity and intractability of deep neural networks can make NER systems unreliable in certain circumstances, resulting in incorrect predictions. For example, NER systems may misidentify female names as chemicals or fail to recognize the names of minority groups, leading to user dissatisfaction. To tackle this problem, we introduce TIN, a novel, widely applicable approach for automatically testing and repairing various NER systems. The key idea for automated testing is that the NER predictions of the same named entities under similar contexts should be identical. The core idea for automated repairing is that similar named entities should have the same NER prediction under the same context. We use TIN to test two SOTA NER models and two commercial NER APIs, i.e., Azure NER and AWS NER. We manually verify 784 of the suspicious issues reported by TIN and find that 702 are erroneous issues, leading to high precision (85.0%-93.4%) across four categories of NER errors: omission, over-labeling, incorrect category, and range error. For automated repairing, TIN achieves a high error reduction rate (26.8%-50.6%) over the four systems under test, which successfully repairs 1,056 out of the 1,877 reported NER errors.</p>
+          </div>
         </div>
       </div>
 </li>

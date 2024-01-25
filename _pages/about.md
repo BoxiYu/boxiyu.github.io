@@ -19,7 +19,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-My name is Boxi Yu (余博西 in Chinese). I am currently a PhD candidate at The Chinese University of Hong Kong, Shenzhen, and fortunate to be advised by Prof. [Pinjia He](https://pinjiahe.github.io/).
+My name is Boxi Yu. I am currently a PhD candidate at The Chinese University of Hong Kong, Shenzhen, and fortunate to be advised by Prof. [Pinjia He](https://pinjiahe.github.io/).
 
 I am interested in both AI Robustness (e.g., developing automated tools for testing and improving the AI software, and developing new testing architectures), and AIOps/MLOps (developing and managing the distributed systems and AI systems).  
 

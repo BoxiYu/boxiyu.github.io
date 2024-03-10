@@ -3,63 +3,67 @@
 
 @string{aps = {American Physical Society,}}
 
-@book{einstein1956investigations,
-  bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+
+@article{yu2023Retro,
+  abbr={arXiv:2310.06433},
+  title={ Retromorphic Testing: A New Approach to the Test Oracle Problem },
+  author={Yu, Boxi and Mang, Qiuyang and Guo, Qingshuo and He, Pinjia},
+  journal={ArXiv},
+  year={2023},
+  selected={true},
+  code={https://github.com/CUHK-Shenzhen-SE/RetromorphicTesting},
+  arxiv={2310.06433},
+  pdf={https://arxiv.org/pdf/2310.06433.pdf}
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
-  bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
+@article{yu2024LightAD,
+  abbr={ICSE},
+  title={Deep Learning or Classical Machine Learning? An Empirical Study on Log-Based Anomaly Detection},
+  author={Yu, Boxi and Yao, Jiayi and Fu, Qiuai and Zhong, Zhiqing and Xie, Haotian and Wu, Yaoliang and Ma, Yuchi and He, Pinjia},
+  journal={ICSE'24: International Conference on Software Engineering},
+  year={2024},
+  selected={true},
+  code={https://github.com/BoxiYu/LightAD},
+  pdf={LightAD.pdf}
 }
 
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
+
+@article{mang2024EQR,
+  abbr={ICSE},
+  title={Testing Graph Database Systems via Equivalent Query Rewriting},
+  author={Mang, Qiuyang and Fang, Aoyang and Yu, Boxi and Chen, Hanfei and He, Pinjia},
+  journal={ICSE'24: International Conference on Software Engineering},
+  year={2023},
+  selected={true}
+
 }
 
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
-}
-
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
-}
-
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif}
+@article{yu2023tin,
+  author = {Yu, Boxi and Hu, Yiyan and Mang, Qiuyang and Hu, Wenhan and He, Pinjia},
+  title = {Automated Testing and Improvement of Named Entity Recognition Systems},
+  year = {2023},
+  isbn = {9798400703270},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3611643.3616295},
+  doi = {10.1145/3611643.3616295},
+  abstract = {Named entity recognition (NER) systems have seen rapid progress in recent years due to the development of deep neural networks. These systems are widely used in various natural language processing applications, such as information extraction, question answering, and sentiment analysis. However, the complexity and intractability of deep neural networks can make NER systems unreliable in certain circumstances, resulting in incorrect predictions. For example, NER systems may misidentify female names as chemicals or fail to recognize the names of minority groups, leading to user dissatisfaction. To tackle this problem, we introduce TIN, a novel, widely applicable approach for automatically testing and repairing various NER systems. The key idea for automated testing is that the NER predictions of the same named entities under similar contexts should be identical. The core idea for automated repairing is that similar named entities should have the same NER prediction under the same context. We use TIN to test two SOTA NER models and two commercial NER APIs, i.e., Azure NER and AWS NER. We manually verify 784 of the suspicious issues reported by TIN and find that 702 are erroneous issues, leading to high precision (85.0\%-93.4\%) across four categories of NER errors: omission, over-labeling, incorrect category, and range error. For automated repairing, TIN achieves a high error reduction rate (26.8\%-50.6\%) over the four systems under test, which successfully repairs 1,056 out of the 1,877 reported NER errors.},
+  booktitle = {Proceedings of the 31st ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+  pages = {883–894},
+  numpages = {12},
+  keywords = {software repairing, named entity recognition, Metamorphic testing, AI software},
+  location = {<conf-loc>, <city>San Francisco</city>, <state>CA</state>, <country>USA</country>, </conf-loc>},
+  series = {ESEC/FSE 2023},
+  abbr={ESEC/FSE},
+  title={Automated Testing and Improvement of Named Entity Recognition Systems},
+  author={Yu, Boxi and Hu, Yiyan and Mang, Qiuyang and Hu, Wenhan and He, Pinjia},
+  journal={ESEC/FSE'23: Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+  pdf={https://arxiv.org/pdf/2308.07937.pdf},
+  code={https://github.com/RobustNLP/TestIC},
+  year={2023},
+  selected={true},
+  slides={TIN_slides.pdf}
 }
 
 
@@ -91,65 +95,7 @@
 
 
 
-@article{yu2023tin,
-  author = {Yu, Boxi and Hu, Yiyan and Mang, Qiuyang and Hu, Wenhan and He, Pinjia},
-  title = {Automated Testing and Improvement of Named Entity Recognition Systems},
-  year = {2023},
-  isbn = {9798400703270},
-  publisher = {Association for Computing Machinery},
-  address = {New York, NY, USA},
-  url = {https://doi.org/10.1145/3611643.3616295},
-  doi = {10.1145/3611643.3616295},
-  abstract = {Named entity recognition (NER) systems have seen rapid progress in recent years due to the development of deep neural networks. These systems are widely used in various natural language processing applications, such as information extraction, question answering, and sentiment analysis. However, the complexity and intractability of deep neural networks can make NER systems unreliable in certain circumstances, resulting in incorrect predictions. For example, NER systems may misidentify female names as chemicals or fail to recognize the names of minority groups, leading to user dissatisfaction. To tackle this problem, we introduce TIN, a novel, widely applicable approach for automatically testing and repairing various NER systems. The key idea for automated testing is that the NER predictions of the same named entities under similar contexts should be identical. The core idea for automated repairing is that similar named entities should have the same NER prediction under the same context. We use TIN to test two SOTA NER models and two commercial NER APIs, i.e., Azure NER and AWS NER. We manually verify 784 of the suspicious issues reported by TIN and find that 702 are erroneous issues, leading to high precision (85.0\%-93.4\%) across four categories of NER errors: omission, over-labeling, incorrect category, and range error. For automated repairing, TIN achieves a high error reduction rate (26.8\%-50.6\%) over the four systems under test, which successfully repairs 1,056 out of the 1,877 reported NER errors.},
-  booktitle = {Proceedings of the 31st ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
-  pages = {883–894},
-  numpages = {12},
-  keywords = {software repairing, named entity recognition, Metamorphic testing, AI software},
-  location = {<conf-loc>, <city>San Francisco</city>, <state>CA</state>, <country>USA</country>, </conf-loc>},
-  series = {ESEC/FSE 2023},
-  abbr={ESEC/FSE},
-  title={Automated Testing and Improvement of Named Entity Recognition Systems},
-  author={Yu, Boxi and Hu, Yiyan and Mang, Qiuyang and Hu, Wenhan and He, Pinjia},
-  journal={ESEC/FSE'23: Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
-  pdf={https://arxiv.org/pdf/2308.07937.pdf},
-  code={https://github.com/RobustNLP/TestIC},
-  year={2023},
-  selected={true},
-  slides={TIN_slides.pdf}
-}
 
-@article{yu2024LightAD,
-  abbr={ICSE},
-  title={Deep Learning or Classical Machine Learning? An Empirical Study on Log-Based Anomaly Detection},
-  author={Yu, Boxi and Yao, Jiayi and Fu, Qiuai and Zhong, Zhiqing and Xie, Haotian and Wu, Yaoliang and Ma, Yuchi and He, Pinjia},
-  journal={ICSE'24: International Conference on Software Engineering},
-  year={2024},
-  selected={true},
-  code={https://github.com/BoxiYu/LightAD},
-  pdf={LightAD.pdf}
-}
-
-@article{mang2024EQR,
-  abbr={ICSE},
-  title={Testing Graph Database Systems via Equivalent Query Rewriting},
-  author={Mang, Qiuyang and Fang, Aoyang and Yu, Boxi and Chen, Hanfei and He, Pinjia},
-  journal={ICSE'24: International Conference on Software Engineering},
-  year={2023},
-  selected={true}
-
-}
-
-@article{yu2023Retro,
-  abbr={arXiv:2310.06433},
-  title={ Retromorphic Testing: A New Approach to the Test Oracle Problem },
-  author={Yu, Boxi and Mang, Qiuyang and Guo, Qingshuo and He, Pinjia},
-  journal={ArXiv},
-  year={2023},
-  selected={true},
-  code={https://github.com/CUHK-Shenzhen-SE/RetromorphicTesting},
-  arxiv={2310.06433},
-  pdf={https://arxiv.org/pdf/2310.06433.pdf}
-}
 
 @inproceedings{yu2022automated,
 author = {Yu, Boxi and Zhong, Zhiqing and Qin, Xinran and Yao, Jiayi and Wang, Yuancheng and He, Pinjia},

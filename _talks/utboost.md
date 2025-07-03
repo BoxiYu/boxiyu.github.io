@@ -5,4 +5,4 @@ place: Online
 inline: true
 ---
 
-AI Insight Talk ｜ Code Bench 
+Invited talk to AI Insight Talk ｜ Code Bench.

@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle:  Shenzhen
+subtitle:  Ireland
 
 profile:
   align: right

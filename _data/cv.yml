@@ -13,14 +13,14 @@
   contents:
     - title: PhD
       institution: The Chinese University of Hong Kong,Shenzhen
-      year: 2021-NOW
+      year: 2021-2025
       
     - title: M.Eng.
       institution: South China University of Technology
       year: 2019-2021
     
     - title: B.Eng.
-      institution: South Chia University of Technology
+      institution: South China University of Technology
       year: 2015-2019
 
 # - title: Experience
@@ -84,7 +84,7 @@
     - title: Automated improvement of AI software
       items: 
       - Automated improvement of CV/NLP
-      - Autoamted improvement of Large Language Models
+      - Automated improvement of Large Language Models
     - title: Data management
       items:
         - Automatically finding labeling errors of large-scale datasets

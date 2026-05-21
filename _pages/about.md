@@ -17,4 +17,4 @@ social: true  # includes social icons at the bottom of the page
 
 I am a Senior Research Fellow at [Lero](https://lero.ie/), the Science Foundation Ireland Research Centre for Software, directed by [Prof. Lionel C. Briand](https://www.lbriand.info/). I obtained my Ph.D. from [The Chinese University of Hong Kong, Shenzhen](https://www.cuhk.edu.cn/en) in 2025, supervised by [Prof. Pinjia He](https://pinjiahe.github.io/).
 
-My research focuses on **Trustworthy AI**, **Code Agents**, and **Automated Testing**. I proposed **Retromorphic Testing**, a technique for automatically constructing test oracles for modern software. My work has been published at top-tier venues including ICSE, ISSTA, ESEC/FSE, and ACL.
+My research focuses on **Trustworthy AI**, **Code Agents**, and **Automated Testing**. I proposed **Retromorphic Testing**, a technique for automatically constructing test oracles for modern software. My work has been published at top-tier venues including ICML, ICSE, ISSTA, ESEC/FSE, and ACL.

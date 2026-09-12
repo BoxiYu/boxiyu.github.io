@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { news } from '../../lib/legacy';
+import { formatDate } from '../../lib/writing';
+---
+
+<Base title="News" description="Research announcements and updates from Boxi Yu."
+  ><div class="wrapper">
+    <header class="page-header">
+      <h1>News &amp; updates</h1><p>Announcements from the research archive.</p>
+    </header><div class="page-body">
+      <ul class="news-list">
+        {
+          news.map((item) => (
+            <li id={item.id}>
+              <>
+                <time datetime={item.date.toISOString()}>
+                  <a href={`/news/${item.id}/`}>{formatDate(item.date)}</a>
+                </time>
+                <div set:html={item.html} />
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div></Base
+>

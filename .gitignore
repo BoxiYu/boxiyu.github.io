@@ -8,4 +8,12 @@ _site
 .tweet-cache
 Gemfile.lock
 vendor
-
+node_modules/
+dist/
+.astro/
+public/assets/
+public/papers.bib
+public/social-card.png
+.env
+.env.*
+!.env.example

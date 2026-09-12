@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import { talks } from '../../lib/legacy';
+import { formatDate } from '../../lib/writing';
+---
+
+<Base title="Talks" description="Invited talks by Boxi Yu."
+  ><div class="wrapper">
+    <header class="page-header">
+      <a class="back-link" href="/about/">About</a><h1>Talks</h1><p>Research in conversation.</p>
+    </header><div class="page-body">
+      <ul class="news-list">
+        {
+          talks.map((talk) => (
+            <li>
+              <>
+                <time datetime={talk.date.toISOString()}>{formatDate(talk.date)}</time>
+                <div>
+                  <>
+                    <div set:html={talk.html} />
+                    <p class="muted">{talk.place}</p>
+                    <a href={`/talks/${talk.id}/`}>Talk details</a>
+                  </>
+                </div>
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div></Base
+>

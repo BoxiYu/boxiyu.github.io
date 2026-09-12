@@ -1,0 +1,50 @@
+---
+import { projects } from '../data/site';
+import { publications } from '../lib/publications';
+interface Props {
+  selected?: string[];
+}
+const { selected = ['swe-abs', 'utboost', 'retromorphic-testing', 'lightad'] } = Astro.props;
+---
+
+<div class="research-list">
+  {
+    projects
+      .filter((project) => selected.includes(project.id))
+      .map((project) => {
+        const paper = publications.find((paper) => paper.id === project.paper)!;
+        return (
+          <article class="research-item selected-paper" id={project.id}>
+            <div class="venue">
+              <b>
+                {project.venue} {project.year}
+              </b>
+              {project.name}
+              {project.venue === 'arXiv' && <span class="preprint-note">Preprint</span>}
+            </div>
+            <div>
+              <h4>
+                <a href={`/publications/#${project.paper}`}>{paper.title}</a>
+              </h4>
+              <p class="selected-authors">
+                {paper.authors.map((author, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    {author === 'Boxi Yu' ? <strong>{author}</strong> : author}
+                  </>
+                ))}
+              </p>
+              <p>{project.summary}</p>
+              <div class="resource-links">
+                {project.links.slice(0, 2).map((link) => (
+                  <a href={link.href}>{link.label}</a>
+                ))}
+                <a href={`/research/#${project.id}`}>Research summary</a>
+                <a href={`/publications/#${project.paper}`}>Citation</a>
+              </div>
+            </div>
+          </article>
+        );
+      })
+  }
+</div>

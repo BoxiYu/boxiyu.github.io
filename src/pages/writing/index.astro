@@ -1,0 +1,104 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getWriting } from '../../lib/writing';
+const entries = await getWriting();
+const topics = [...new Set(entries.flatMap((entry) => entry.data.topics))];
+---
+
+<Base
+  title="Writing"
+  description="Research explainers and engineering notes on AI evaluation, coding agents, and software testing."
+>
+  <div class="wrapper">
+    <header class="page-header">
+      <h1>Thinking out loud.<br />Working things out.</h1><p>
+        Research explainers and engineering notes on understanding AI, evaluating its outputs, and
+        building more reliable systems.
+      </p><div class="resource-links">
+        <a href="/feed.xml">Subscribe with RSS</a><a href="/education/">Learn through an example</a>
+      </div>
+    </header>
+    <div class="page-body">
+      {
+        entries.length ? (
+          <>
+            <form
+              class="filter-bar"
+              role="search"
+              aria-label="Filter writing"
+              data-writing-filters
+              hidden
+            >
+              <>
+                <label>
+                  Find an article
+                  <input type="search" placeholder="Search titles and descriptions" />
+                </label>
+                <label>
+                  Topic
+                  <select>
+                    <option value="">All topics</option>
+                    {topics.map((topic) => (
+                      <option value={topic}>{topic}</option>
+                    ))}
+                  </select>
+                </label>
+                <output aria-live="polite">{entries.length} articles</output>
+              </>
+            </form>
+            <>
+              <div class="article-list">
+                {entries.map((entry) => (
+                  <ArticleCard entry={entry} heading="h2" />
+                ))}
+              </div>
+              <p class="empty-result" data-empty hidden>
+                No matching articles. Try another search or topic.
+              </p>
+            </>
+          </>
+        ) : (
+          <div class="writing-empty">
+            <>
+              <div>
+                <>
+                  <h2 style="font-size: 1.8rem; margin-bottom: 14px;">
+                    The first notes are in preparation.
+                  </h2>
+                  <p>
+                    For now, start with a hands-on example of test quality, or explore the research
+                    behind it. New published articles will appear in the RSS feed.
+                  </p>
+                </>
+              </div>
+              <a href="/education/">Explore the example</a>
+            </>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Base>
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-writing-filters]');
+  if (form) {
+    form.hidden = false;
+    form.addEventListener('submit', (event) => event.preventDefault());
+    form.addEventListener('input', () => {
+      const query = form.querySelector('input')!.value.trim().toLowerCase();
+      const topic = form.querySelector('select')!.value;
+      let count = 0;
+      for (const item of document.querySelectorAll<HTMLElement>('[data-article]')) {
+        const visible =
+          item.dataset.search!.includes(query) &&
+          (!topic || item.dataset.topic!.split('|').includes(topic));
+        item.hidden = !visible;
+        count += Number(visible);
+      }
+      form.querySelector('output')!.textContent =
+        `${count} ${count === 1 ? 'article' : 'articles'}`;
+      document.querySelector<HTMLElement>('[data-empty]')!.hidden = count > 0;
+    });
+  }
+</script>

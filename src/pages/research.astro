@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import { projects, site } from '../data/site';
+const themes = [
+  {
+    id: 'coding-agents',
+    title: 'Evaluating coding agents',
+    description:
+      "A patch can pass a benchmark's tests and still be wrong. I investigate how test adequacy affects measured agent performance, and how to make the evaluation harder to satisfy with incorrect behavior.",
+    projects: ['swe-abs', 'utboost'],
+  },
+  {
+    id: 'test-oracles',
+    title: 'Constructing test oracles',
+    description:
+      'For many programs, specifying the right answer is harder than running the program. My work explores relations between executions and between programs as a way to detect failures without enumerating correct outputs.',
+    projects: ['retromorphic-testing'],
+  },
+  {
+    id: 'ai-systems',
+    title: 'Testing AI systems',
+    description:
+      'AI systems produce outputs that can be difficult to assess automatically. Controlled transformations and consistency relations provide practical ways to uncover mistakes in language and vision systems.',
+    projects: ['rome', 'tin'],
+  },
+  {
+    id: 'aiops',
+    title: 'Empirical evaluation for AIOps',
+    description:
+      'Reliable operational tools need evidence about accuracy, efficiency, and the impact of data preprocessing. I study these choices in log-based anomaly detection.',
+    projects: ['lightad'],
+  },
+];
+---
+
+<Base
+  title="Research"
+  description="Research by Boxi Yu: rigorous evaluation of coding agents, test oracle construction, metamorphic testing of AI, and log-based anomaly detection."
+>
+  <div class="wrapper">
+    <header class="page-header">
+      <h1>Research</h1><p>
+        I develop testing and evaluation methods that uncover failures in software and AI, and
+        examine what our tests actually establish.
+      </p><div class="resource-links">
+        <a href="/publications/">All publications</a><a href={site.scholar}>Google Scholar</a><a
+          href="/papers.bib">BibTeX</a
+        >
+      </div>
+    </header>
+    <nav class="research-jump" aria-label="Research topics">
+      {themes.map((theme) => <a href={`#${theme.id}`}>{theme.title}</a>)}
+    </nav>
+    {
+      themes.map((theme) => (
+        <section class="section research-theme" aria-labelledby={theme.id}>
+          <header class="theme-heading">
+            <>
+              <h2 id={theme.id}>{theme.title}</h2>
+              <p>{theme.description}</p>
+            </>
+          </header>
+          <div class="theme-papers">
+            {theme.projects.map((id) => {
+              const project = projects.find((project) => project.id === id)!;
+              return (
+                <article class="research-detail" id={project.id}>
+                  <p class="paper-context">
+                    {project.name} / {project.venue} {project.year}
+                    {project.venue === 'arXiv' ? ' (preprint)' : ''}
+                  </p>
+                  <h3>{project.question}</h3>
+                  <dl>
+                    <dt>Approach</dt>
+                    <dd>{project.method}</dd>
+                    <dt>Findings &amp; contribution</dt>
+                    <dd>{project.finding}</dd>
+                  </dl>
+                  {id === 'retromorphic-testing' && (
+                    <figure class="oracle-diagram">
+                      <ol>
+                        <li>Original input</li>
+                        <li>Forward program</li>
+                        <li>Output</li>
+                        <li>Backward program</li>
+                        <li>Transformed input</li>
+                      </ol>
+                      <figcaption>
+                        Check the expected relation between the original and transformed inputs. A
+                        conceptual view of the dual-program architecture.
+                      </figcaption>
+                    </figure>
+                  )}
+                  <div class="resource-links">
+                    {project.links.map((link) => (
+                      <a href={link.href}>{link.label}</a>
+                    ))}
+                    <a href={`/publications/#${project.paper}`}>Full citation</a>
+                  </div>
+                </article>
+              );
+            })}
+            {theme.id === 'coding-agents' && (
+              <aside class="related-research">
+                <h3>Benchmark design beyond individual test suites</h3>
+                <p>
+                  Our position paper,{' '}
+                  <a href="/publications/#cao2025">
+                    Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility
+                  </a>
+                  , surveys 672 code benchmarks and introduces HOW2BENCH, a guideline with 55
+                  checklist items. It connects individual evaluation failures to broader questions
+                  about benchmark construction and reproducibility.
+                </p>
+                <p class="source-note">
+                  Survey scope follows <a href="https://arxiv.org/abs/2501.10711v5">arXiv v5</a>;
+                  earlier versions used a smaller corpus and a different title.
+                </p>
+              </aside>
+            )}
+            {theme.id === 'ai-systems' && (
+              <aside class="related-research">
+                <h3>Earlier work: MetaIC</h3>
+                <p>
+                  <a href="/publications/#yu2022automated">MetaIC (ISSTA 2022)</a> tests image
+                  captioning by inserting objects into images and checking expected changes in the
+                  generated captions. It uses object extraction, resizing, and placement controls to
+                  produce test inputs.
+                </p>
+                <div class="resource-links">
+                  <a href="https://arxiv.org/abs/2206.06550">Paper</a>
+                  <a href="/assets/pdf/MetaIC_slides.pdf">Slides</a>
+                </div>
+              </aside>
+            )}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Base>

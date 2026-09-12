@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+export function getStaticPaths() {
+  return ['blog', 'blog/2022', 'blog/2023', '2022'].map((legacy) => ({ params: { legacy } }));
+}
+---
+
+<Base title="Writing has a new home" noindex
+  ><div class="wrapper">
+    <header class="page-header">
+      <h1>Writing has<br />a new home.</h1><p>
+        Research explainers and engineering notes now live in the Writing section.
+      </p><div class="resource-links">
+        <a href="/writing/">Visit Writing</a><a href="/research/">Explore research</a>
+      </div>
+    </header>
+  </div></Base
+>

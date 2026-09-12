@@ -1,0 +1,104 @@
+---
+import '@fontsource/source-sans-3/latin-400.css';
+import '@fontsource/source-sans-3/latin-500.css';
+import '@fontsource/source-sans-3/latin-600.css';
+import '@fontsource/source-serif-4/latin-400.css';
+import '@fontsource/source-serif-4/latin-400-italic.css';
+import '../styles/global.css';
+import { site } from '../data/site';
+import { previewDrafts } from '../lib/writing';
+interface Props {
+  title?: string;
+  description?: string;
+  language?: string;
+  noindex?: boolean;
+  article?: boolean;
+}
+const {
+  title,
+  description = site.description,
+  language = 'en',
+  noindex = false,
+  article = false,
+} = Astro.props;
+const path = Astro.url.pathname === '/404/' ? '/404.html' : Astro.url.pathname;
+const canonical = new URL(path, site.url);
+const navigation = [
+  ['Research', '/research/'],
+  ['Publications', '/publications/'],
+  ['Service', '/services/'],
+  ['About', '/about/'],
+];
+const fullTitle = title ? `${title} | Boxi Yu` : 'Boxi Yu | Software Testing & Trustworthy AI';
+---
+
+<!doctype html>
+<html lang={language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {(noindex || previewDrafts) && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Boxi Yu's writing" href="/feed.xml" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site.url}/social-card.png`} />
+    <meta
+      property="og:image:alt"
+      content="Boxi Yu. Software testing and trustworthy AI. Senior Research Fellow at Lero, Ireland."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {
+      previewDrafts && (
+        <div class="preview-banner">
+          Local editorial preview. Draft articles are excluded from the published site.
+        </div>
+      )
+    }
+    <header class="site-header wrapper">
+      <a class="wordmark" href="/" aria-label="Boxi Yu home">
+        <svg width="27" height="27" viewBox="0 0 28 28" fill="none" aria-hidden="true"
+          ><path d="M7 6h14v16H7zM7 14h14" stroke="currentColor" stroke-width="1.5"></path><circle
+            cx="7"
+            cy="6"
+            r="3"
+            fill="currentColor"></circle><circle cx="21" cy="14" r="3" fill="currentColor"
+          ></circle><circle cx="7" cy="22" r="3" fill="currentColor"></circle></svg
+        >
+        <span>Boxi Yu</span>
+      </a>
+      <nav aria-label="Main navigation">
+        {
+          navigation.map(([label, href]) => (
+            <a href={href} aria-current={path.startsWith(href) ? 'page' : undefined}>
+              {label}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="header-contact" href="/about/#contact">Email <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer wrapper">
+      <div>
+        <a class="footer-name" href="/">Boxi Yu</a><p>Software testing &amp; trustworthy AI.</p>
+      </div>
+      <nav aria-label="Social and resources">
+        <a href="/about/#contact">Email</a><a href={site.scholar}>Scholar</a><a href={site.github}
+          >GitHub</a
+        ><a href={site.orcid}>ORCID</a>
+      </nav>
+      <p class="copyright">&copy; {new Date().getFullYear()} Boxi Yu</p>
+    </footer>
+  </body>
+</html>

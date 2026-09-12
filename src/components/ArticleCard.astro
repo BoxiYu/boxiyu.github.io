@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/writing';
+interface Props {
+  entry: CollectionEntry<'writing'>;
+  heading?: 'h2' | 'h3';
+}
+const { entry, heading: Heading = 'h3' } = Astro.props;
+---
+
+<article
+  class="article-card"
+  data-article
+  data-topic={entry.data.topics.join('|')}
+  data-search={`${entry.data.title} ${entry.data.description} ${entry.data.topics.join(' ')}`.toLowerCase()}
+>
+  <div class="article-meta">
+    <span>{entry.data.topics[0]}</span>
+    {
+      entry.data.draft ? (
+        <span class="draft-tag">Editorial draft</span>
+      ) : (
+        <time datetime={entry.data.publishedAt.toISOString()}>
+          {formatDate(entry.data.publishedAt)}
+        </time>
+      )
+    }
+  </div>
+  <Heading><a href={`/writing/${entry.id}/`}>{entry.data.title}</a></Heading>
+  <p>{entry.data.description}</p>
+</article>

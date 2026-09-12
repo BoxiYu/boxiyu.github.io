@@ -86,7 +86,7 @@ redesign, not existing published work. Review them before release.
 - `src/data/site.ts`: profile metadata and three research highlights.
 - `src/data/services.json`: migrated academic service records.
 - `_news/*.md` and `_talks/*.md`: retained announcement and talk sources.
-- `src/pages/about.astro` and `src/pages/teaching.astro`: background and assistantships.
+- `src/pages/about.astro` and `src/pages/teaching.astro`: background, PhD supervision, and assistantships.
 - `src/pages/education.astro`: learning resource and series placement.
 
 Bibliography keys remain publication anchors. The unused legacy APS string

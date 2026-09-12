@@ -14,7 +14,7 @@ const themes = [
     title: 'Constructing test oracles',
     description:
       'For many programs, specifying the right answer is harder than running the program. My work explores relations between executions and between programs as a way to detect failures without enumerating correct outputs.',
-    projects: ['retromorphic-testing'],
+    projects: ['rt4chart', 'retromorphic-testing'],
   },
   {
     id: 'ai-systems',
@@ -102,6 +102,19 @@ const themes = [
             })}
             {theme.id === 'coding-agents' && (
               <aside class="related-research">
+                <h3>Specification alignment &amp; training data</h3>
+                <p>
+                  <a href="/publications/#xu2026bespec">BeSpec</a> builds explicit behavioral
+                  specifications and uses execution on probe inputs to refine the specification or
+                  reject candidate programs.{' '}
+                  <a href="/publications/#zheng2026adr">Combinatorial Synthesis</a> introduces
+                  atomic decomposition and recombination to generate verifiable code tasks for
+                  reinforcement learning. Both are 2026 preprints.
+                </p>
+              </aside>
+            )}
+            {theme.id === 'coding-agents' && (
+              <aside class="related-research">
                 <h3>Benchmark design beyond individual test suites</h3>
                 <p>
                   Our position paper,{' '}
@@ -120,6 +133,19 @@ const themes = [
             )}
             {theme.id === 'ai-systems' && (
               <aside class="related-research">
+                <h3>Conversational agents &amp; model safety</h3>
+                <p>
+                  <a href="/publications/#lin2026agenteval">AgentEval</a> mines conversational
+                  workflow graphs, replays paths to hidden stateful boundaries, and perturbs those
+                  boundaries to test agents without source-code access.{' '}
+                  <a href="/publications/#li2026trace">TRACE</a> learns a reusable safety patch
+                  across simulated harmful fine-tuning trajectories to recover alignment while
+                  preserving task utility. Both are 2026 preprints.
+                </p>
+              </aside>
+            )}
+            {theme.id === 'ai-systems' && (
+              <aside class="related-research">
                 <h3>Earlier work: MetaIC</h3>
                 <p>
                   <a href="/publications/#yu2022automated">MetaIC (ISSTA 2022)</a> tests image
@@ -133,9 +159,39 @@ const themes = [
                 </div>
               </aside>
             )}
+            {theme.id === 'aiops' && (
+              <aside class="related-research">
+                <h3>Causal diagnosis &amp; contaminated time series</h3>
+                <p>
+                  <a href="/publications/#fang2026openrca">OpenRCA 2.0</a> provides 500
+                  root-cause-analysis instances with step-wise causal annotations, exposing failures
+                  that outcome-only evaluation can miss.{' '}
+                  <a href="/publications/#zhang2025cleanet">CLEANet</a> combines
+                  contamination-resilient training with a lightweight model for multivariate
+                  time-series anomaly detection. These works are available as preprints.
+                </p>
+              </aside>
+            )}
           </div>
         </section>
       ))
     }
+    <section class="section" aria-labelledby="further-work">
+      <div class="section-heading">
+        <h2 id="further-work">Multimodal AI &amp; visual computing</h2><a href="/publications/"
+          >All publications</a
+        >
+      </div>
+      <div class="prose">
+        <p>
+          <a href="/publications/#cao2026omnifocus">OmniFocus</a> (2026 preprint) studies query-guided
+          audio-visual token compression, estimating importance independently for each modality while
+          preserving their alignment. Earlier work on <a href="/publications/#yu2021maskgan"
+            >mask-guided GANs</a
+          > (Neurocomputing 2021) uses text-body, outline, and shadow masks to guide scene text editing
+          while preserving style and background.
+        </p>
+      </div>
+    </section>
   </div>
 </Base>

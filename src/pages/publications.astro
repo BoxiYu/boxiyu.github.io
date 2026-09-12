@@ -24,7 +24,7 @@ const topics = [...new Set(publications.map((p) => p.topic))];
           >Find a publication<input
             type="search"
             name="query"
-            placeholder="Title, author, or venue"
+            placeholder="Title, author, venue, or keyword"
             autocomplete="off"
           /></label
         >
@@ -44,7 +44,7 @@ const topics = [...new Set(publications.map((p) => p.topic))];
               class="publication"
               id={p.id}
               data-topic={p.topic}
-              data-search={`${p.title} ${p.authors.join(' ')} ${p.venue} ${p.year}`.toLowerCase()}
+              data-search={`${p.title} ${p.authors.join(' ')} ${p.venue} ${p.year} ${p.abstract}`.toLowerCase()}
             >
               <div class="pub-year">{p.year}</div>
               <div>
@@ -59,7 +59,8 @@ const topics = [...new Set(publications.map((p) => p.topic))];
                     ))}
                   </p>
                   <p class="pub-venue">
-                    {p.venue} <span class="muted">/ {p.topic}</span>
+                    {p.venue === 'arXiv' ? 'arXiv preprint' : p.venue}{' '}
+                    <span class="muted">/ {p.topic}</span>
                   </p>
                 </>
                 {p.links.length > 0 && (

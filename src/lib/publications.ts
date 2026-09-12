@@ -13,6 +13,8 @@ const topics: Record<string, string> = {
   AutomatedTesting: 'Automated testing',
   TrustworthyAI: 'Trustworthy AI',
   AIOps: 'AIOps',
+  MultimodalAI: 'Multimodal AI',
+  ComputerVision: 'Computer vision',
 };
 const localResource = (value: string) =>
   /^https?:\/\//.test(value) ? value : `/assets/pdf/${value}`;

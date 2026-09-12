@@ -5,14 +5,18 @@ export const researchGroups = [
     question: 'What does a passing benchmark establish?',
     description: 'Strengthening tests and examining the reliability of benchmark results.',
     projects: ['swe-abs', 'utboost'],
-    related: [{ name: 'Benchmark design', href: '/publications/#cao2025' }],
+    related: [
+      { name: 'BeSpec', href: '/publications/#xu2026bespec' },
+      { name: 'Code RLVR synthesis', href: '/publications/#zheng2026adr' },
+      { name: 'Benchmark design', href: '/publications/#cao2025' },
+    ],
   },
   {
     id: 'test-oracles',
     title: 'Constructing test oracles',
     question: 'How can we test without a known answer?',
     description: 'Using relations between programs and executions to detect inconsistencies.',
-    projects: ['retromorphic-testing'],
+    projects: ['rt4chart', 'retromorphic-testing'],
     related: [],
   },
   {
@@ -21,7 +25,11 @@ export const researchGroups = [
     question: 'Which changes should an AI system respond to?',
     description: 'Controlled transformations reveal errors in vision and language systems.',
     projects: ['rome', 'tin'],
-    related: [{ name: 'MetaIC', href: '/publications/#yu2022automated' }],
+    related: [
+      { name: 'AgentEval', href: '/publications/#lin2026agenteval' },
+      { name: 'TRACE', href: '/publications/#li2026trace' },
+      { name: 'MetaIC', href: '/publications/#yu2022automated' },
+    ],
   },
 ];
 
@@ -29,7 +37,11 @@ export const empiricalResearch = {
   id: 'aiops',
   title: 'AIOps & empirical evaluation',
   question: 'When is a simpler model enough?',
-  description: 'Studying accuracy, preprocessing, and computational cost in log anomaly detection.',
+  description:
+    'Studying causal evaluation, data contamination, and efficiency in operational AI systems.',
   projects: ['lightad'],
-  related: [],
+  related: [
+    { name: 'OpenRCA 2.0', href: '/publications/#fang2026openrca' },
+    { name: 'CLEANet', href: '/publications/#zhang2025cleanet' },
+  ],
 };

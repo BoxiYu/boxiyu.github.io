@@ -60,6 +60,12 @@ test('retains publication keys, authors, chronology, citations, and PDF files', 
     '',
   );
   const entries = bibtex.toJSON(source).filter((entry) => entry.citationKey);
+  const arxivIds = entries.map((entry) => entry.entryTags.arxiv).filter(Boolean);
+  assert.equal(
+    new Set(arxivIds).size,
+    arxivIds.length,
+    'Different titles must not duplicate the same arXiv work',
+  );
   const $ = load(await readFile(join(dist, 'publications/index.html'), 'utf8'));
   assert.equal($('.publication').length, entries.length);
   for (const entry of entries) {

@@ -198,3 +198,129 @@ html={https://dl.acm.org/doi/abs/10.1145/3533767.3534389},
 pdf={https://arxiv.org/pdf/2206.06550.pdf},
 slides={MetaIC_slides.pdf}
 }
+
+@article{fang2026openrca,
+  abbr={arXiv},
+  title={OpenRCA 2.0: From Outcome Labels to Causal Process Supervision},
+  author={Fang, Aoyang and Yang, Yifan and Shang, Jin'ao and Lu, Qisheng and Xu, Junjielung and Wang, Rui and Zhang, Songhan and Zhang, Yuzhong and Yu, Boxi and He, Pinjia},
+  journal={arXiv preprint arXiv:2606.27154},
+  year={2026},
+  selected={false},
+  topic={AIOps},
+  arxiv={2606.27154},
+  url={https://arxiv.org/abs/2606.27154},
+  pdf={https://arxiv.org/pdf/2606.27154},
+  abstract={Root cause analysis (RCA) poses a holistic test of LLM agentic capabilities, such as long-context understanding, multi-step reasoning, and tool use. However, existing datasets suffer from a fundamental gap: they label only the root cause, not the propagation path connecting it to the observed symptom, which largely simplifies the task to naive pattern matching. To support rigorous evaluation, we introduce PAVE, a step-wise labeling protocol that leverages known interventions from fault injection to reconstruct causal propagation paths. The mechanism is forward verification: reasoning from cause to effect rather than inferring backward from symptoms. Applying PAVE yields OpenRCA 2.0 (500 instances), the first cross-system RCA benchmark with step-wise causal annotations for LLM agents. Across 11 frontier LLMs, recovering the exact root-cause set succeeds in only 20.7% of cases on average. To locate where this difficulty lies, we relax the criterion and find what we call the ungrounded diagnosis: agents identify at least one correct root-cause service in 76.0% of cases, but ground that service in a verified causal propagation path to the observed symptom in only 61.5%. Outcome-only evaluation hides this failure mode; step-wise causal ground truth is the missing piece for trustworthy LLM-based RCA agents.}
+}
+
+@article{zhang2025cleanet,
+  abbr={arXiv},
+  title={CLEANet: Robust and Efficient Anomaly Detection in Contaminated Multivariate Time Series},
+  author={Zhang, Songhan and Lai, Yuanhao and Zheng, Pengfei and Yu, Boxi and Tang, Xiaoying and Fu, Qiuai and He, Pinjia},
+  journal={arXiv preprint arXiv:2510.22619},
+  year={2025},
+  selected={false},
+  topic={AIOps},
+  arxiv={2510.22619},
+  url={https://arxiv.org/abs/2510.22619},
+  pdf={https://arxiv.org/pdf/2510.22619},
+  abstract={Multivariate time series (MTS) anomaly detection is essential for maintaining the reliability of industrial systems, yet real-world deployment is hindered by two critical challenges: training data contamination (noises and hidden anomalies) and inefficient model inference. Existing unsupervised methods assume clean training data, but contamination distorts learned patterns and degrades detection accuracy. Meanwhile, complex deep models often overfit to contamination and suffer from high latency, limiting practical use. To address these challenges, we propose CLEANet, a robust and efficient anomaly detection framework in contaminated multivariate time series. CLEANet introduces a Contamination-Resilient Training Framework (CRTF) that mitigates the impact of corrupted samples through an adaptive reconstruction weighting strategy combined with clustering-guided contrastive learning, thereby enhancing robustness. To further avoid overfitting on contaminated data and improve computational efficiency, we design a lightweight conjugate MLP that disentangles temporal and cross-feature dependencies. Across five public datasets, CLEANet achieves up to 73.04% higher F1 and 81.28% lower runtime compared with ten state-of-the-art baselines. Furthermore, integrating CRTF into three advanced models yields an average 5.35% F1 gain, confirming its strong generalizability.}
+}
+
+@article{lin2026agenteval,
+  abbr={arXiv},
+  title={Mining Workflow Graphs for Black-Box Boundary Testing of Conversational LLM Agents},
+  author={Lin, Liting and Yu, Boxi and Zhang, Yuzhong and Briand, Lionel and Niland, David-Paul and Muñoz, Emir},
+  journal={arXiv preprint arXiv:2607.06873},
+  year={2026},
+  selected={false},
+  topic={AutomatedTesting},
+  arxiv={2607.06873},
+  url={https://arxiv.org/abs/2607.06873},
+  pdf={https://arxiv.org/pdf/2607.06873},
+  abstract={Conversational LLM agents can cause real-world harm when their internal workflows fail, such as completing a transaction without confirmation. Testing these state-dependent failures is difficult because critical boundaries, such as identity checks and confirmation gates, are hidden behind multi-turn conversational prerequisites, rendering them inaccessible to standard tests. We present AgentEval, a black-box testing framework that discovers and stresses these stateful boundaries. AgentEval interacts with an agent to mine a conversational workflow graph, a model of its behavior. Instead of prompting blindly, AgentEval uses this graph's structure to enumerate specific guards and prerequisites as test targets, replaying the conversational path to a boundary before applying a perturbation. AgentEval then executes each test, determining whether it passes or fails using only the conversation turns. We benchmark AgentEval against a privileged, white-box auditor with access to the agent's underlying source code, which AgentEval never sees. On four tau-3-bench agents, AgentEval successfully generates tests covering 23--38 distinct boundaries per agent; ablation studies attribute the gain to the graph's structure: 23 distinct boundaries versus 12 with a prompt-only baseline, at lower duplicate and false-alarm rates.}
+}
+
+@article{xu2026bespec,
+  abbr={arXiv},
+  title={BeSpec: Behavior-Level Specification Alignment for Code Generation},
+  author={Xu, Qinghua and Wang, Guancheng and Yu, Boxi and Briand, Lionel},
+  journal={arXiv preprint arXiv:2607.02949},
+  year={2026},
+  selected={false},
+  topic={CodeAgents},
+  arxiv={2607.02949},
+  url={https://arxiv.org/abs/2607.02949},
+  pdf={https://arxiv.org/pdf/2607.02949},
+  abstract={LLMs have made substantial progress on automated code generation from natural-language descriptions of desired behavior (intent). Most existing methods improve generated programs through execution-guided code refinement: they generate a candidate solution, execute it, and patch the implementation using feedback, while leaving the underlying specification unchanged. This workflow implicitly assumes that the LLM's understanding of the intent is already correct and complete. In practice, however, intents are often ambiguous or underspecified. As a result, even a capable model may produce a correct implementation of the wrong intent, making specification mismatch a central bottleneck. This paper presents BeSpec, a behavioral model-based approach to specification alignment. BeSpec treats the task description as partial evidence about the intended behavior of the correct program. It first builds an explicit behavioral model, which are checkable properties that valid outputs must satisfy. BeSpec then generates candidate programs, executes them on probe inputs, and compares their observed behavior with the predicted behaviors. When observed behavior does not match the predicted behaviors, BeSpec either refines the specification or rejects the candidate program. We evaluate BeSpec with three LLMs on four benchmarks: CodeContests, xCodeEval, APPS, and the contamination-free LiveCodeBench. Against nine baselines, BeSpec achieves the highest Pass@1 and average pass rate across all settings, improving average Pass@1 over the strongest baseline by 8.1%--25.3% relative across the three LLMs. A failure analysis shows that after alignment, most remaining errors stem from algorithmic difficulty rather than misunderstood specifications, while ablation studies confirm that each major component of BeSpec contributes positively.}
+}
+
+@article{cao2026omnifocus,
+  abbr={arXiv},
+  title={OmniFocus: Query-Guided Modality-Balanced Token Compression for Omni-Modal Large Language Models},
+  author={Cao, Shijie and Zhang, Qingyu and Yu, Boxi and Zhang, Yuzhong and Cao, Boxi and Lu, Yaojie and Lin, Hongyu and Han, Xianpei and Sun, Le},
+  journal={arXiv preprint arXiv:2607.03050},
+  year={2026},
+  selected={false},
+  topic={MultimodalAI},
+  arxiv={2607.03050},
+  url={https://arxiv.org/abs/2607.03050},
+  pdf={https://arxiv.org/pdf/2607.03050},
+  abstract={Omni modal large language models (OmniLLMs) have attracted wide attention for their ability to jointly process audio and video, but they generate large token sequences under audio-visual inputs, leading to substantial inference cost. Existing audio-visual token compression methods often rely on unimodal guidance, overlooking the temporal locality of query-relevant evidence in audio-visual inputs and implicitly assuming that the two modalities share a temporally aligned information density distribution. We propose OmniFocus, a training-free query-guided token compression method for OmniLLMs that performs independent importance estimation for video and audio, enabling a modality-symmetric compression design that preserves modality-specific salient evidence while maintaining audio-visual alignment, thereby mitigating the modality bias issue that can arise from unimodal-guided compression. Experiments on the Qwen2.5-Omni model family across four audio-visual benchmarks show that OmniFocus maintains strong compressed performance at low token retention ratios and outperforms existing baselines on several major benchmark scores at 25% token retention. On DailyOmni with Qwen2.5-Omni-7B at 25% token retention, OmniFocus maintains 59.40 accuracy while delivering up to 1.38x prefill speedup relative to the full-token baseline, highlighting a favorable practical accuracy-efficiency trade-off.}
+}
+
+@article{li2026trace,
+  abbr={arXiv},
+  title={TRACE: Trajectory-Based Safety Patch Learning for LLM Post-Training Realignment},
+  author={Li, Changyue and He, Jiaming and Yuan, Youliang and Wu, Jialin and Yu, Boxi and Huang, Zhicong and He, Pinjia},
+  journal={arXiv preprint arXiv:2607.16242},
+  year={2026},
+  selected={false},
+  topic={TrustworthyAI},
+  arxiv={2607.16242},
+  url={https://arxiv.org/abs/2607.16242},
+  pdf={https://arxiv.org/pdf/2607.16242},
+  abstract={Fine-Tuning-as-a-Service (FTaaS) platforms let users train large language models (LLMs) on customized tasks, but this pipeline could erode models' safety alignment. In practice, service providers need to recover models' safety without re-running full alignment, or destroying the utility gained from customized tasks. A line of existing work refers to model parameter merging, which adds a safety patch on the fine-tuned model parameters to shift the model away from unsafe tendencies. However, this merging-based paradigm is fundamentally bottlenecked by task-safety update entanglement: downstream task updates and the safety patch often overlap in their dominant directions, so the merge strength is intrinsically hard to calibrate. If the safety vector is scaled too weakly, harmful components could still dominate, preventing the model from returning to a safe region; if it is scaled too aggressively, it suppresses task-relevant directions and degrades utility. To solve this problem, we shift the focus of merging-based methods from designing online merging operators to offline patch learning, and seek a safety patch that minimally interferes with task-relevant directions while retaining decisive control over unsafe behaviors. We propose TRACE, a trajectory-based safety patch learning framework that (i) simulates harmful tuning trajectories to generate progressively corrupted states, and (ii) optimizes a plug-in patch to recover safety while maintaining utility across varying corrupted base states. Across six benchmarks and two models, TRACE consistently dominates the safety-utility frontier. TRACE reaches nearly 100% safety on all settings, while maintaining comparable utility to the undefended fine-tuned model.}
+}
+
+@article{zheng2026adr,
+  abbr={arXiv},
+  title={Combinatorial Synthesis: Scaling Code RLVR via Atomic Decomposition and Recombination},
+  author={Zheng, Jiasheng and Cao, Boxi and Yu, Boxi and Zhang, Yuzhong and Cao, Jialun and Lu, Yaojie and Lin, Hongyu and Han, Xianpei and Sun, Le},
+  journal={arXiv preprint arXiv:2605.31058},
+  year={2026},
+  selected={false},
+  topic={CodeAgents},
+  arxiv={2605.31058},
+  url={https://arxiv.org/abs/2605.31058},
+  pdf={https://arxiv.org/pdf/2605.31058},
+  abstract={Reinforcement Learning with Verifiable Rewards (RLVR) has recently emerged as the cornerstone for shaping the remarkable coding abilities of Large Language Models (LLMs). However, the scalability of RLVR is severely constrained by the scarcity of sufficiently challenging verifiable code tasks that target near the model's edge of competence. Prior studies often rely on heuristic seed expansions for data synthesis, which severely limits both novelty and difficulty. Consequently, the training value of such data fails to scale proportionally with the size of its synthesis. To this end, we propose Atomic Decomposition and Recombination (ADR), a novel framework that generates verifiable code tasks via decomposition into atomic elements and controlled recombination, thereby enabling the generation of genuinely novel and challenging verifiable code tasks. Experiments and analysis demonstrate that ADR achieves superior originality, difficulty, diversity, and test quality over existing baselines, and consistently delivers greater improvements in code ability across RLVR in diverse downstream domains, including algorithmic programming, tool usage, and data science. Our work sheds light on a new paradigm for novel code task synthesis and scalable RLVR training.}
+}
+
+@article{yu2026rt4chart,
+  abbr={arXiv},
+  title={Retromorphic Testing with Hierarchical Verification for Hallucination Detection in RAG},
+  author={Yu, Boxi and Zhang, Yuzhong and Lin, Liting and Briand, Lionel and Muñoz, Emir},
+  journal={arXiv preprint arXiv:2603.27752},
+  year={2026},
+  selected={false},
+  topic={TrustworthyAI},
+  arxiv={2603.27752},
+  url={https://arxiv.org/abs/2603.27752},
+  pdf={https://arxiv.org/pdf/2603.27752},
+  abstract={Large language models can still hallucinate in retrieval-augmented generation (RAG), producing claims that are unsupported by or conflict with the retrieved context. Detecting such errors remains challenging when faithfulness is judged solely against the retrieved context: many existing detectors return holistic answer-level scores, while others target open-domain factuality or fail to provide evidence-grounded diagnostics. We present RT4CHART, a retromorphic testing framework for context-faithfulness assessment. RT4CHART decomposes an answer into independently verifiable claims, performs hierarchical local-to-global verification against the retrieved context, and assigns each claim one of three labels: entailed, contradicted, or baseless. It further maps these claim-level decisions back to specific answer spans and returns explicit context-side evidence, enabling fine-grained auditing rather than opaque scoring. We evaluate RT4CHART on RAGTruth++ (408 samples) and our re-annotated RAGTruth-Enhance (2,675 samples). RT4CHART achieves the best answer-level hallucination-detection F1 score among the evaluated baselines. On RAGTruth++, it attains a precision of 0.845, a recall of 0.718, and an F1 score of 0.776, representing an 83% relative improvement over the strongest baseline. It also achieves a span-level F1 score of 47.5% on RAGTruth-Enhance. Ablation studies show that claim-based local processing drives most of the observed improvement, while global verification provides selective benefits across datasets. Finally, our re-annotation identifies 1.68X more hallucination cases than the original labels, suggesting that commonly used benchmarks substantially underestimate the prevalence of hallucination.}
+}
+
+@article{yu2021maskgan,
+  abbr={Neurocomputing},
+  title={Mask-guided GAN for robust text editing in the scene},
+  author={Yu, Boxi and Xu, Yong and Huang, Yan and Yang, Shuai and Liu, Jiaying},
+  journal={Neurocomputing},
+  volume={441},
+  pages={192--201},
+  year={2021},
+  selected={false},
+  topic={ComputerVision},
+  doi={10.1016/j.neucom.2021.02.045},
+  url={https://doi.org/10.1016/j.neucom.2021.02.045}
+}

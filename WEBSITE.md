@@ -5,7 +5,7 @@ and is not included in the generated website.
 
 ## Current scope: academic homepage
 
-The homepage uses a compact biography followed by a linked research map. Its six
+The homepage uses a compact biography followed by a linked research map. Its seven
 selected publications are grouped into coding-agent evaluation, test oracles,
 AI-system testing, and AIOps. Edit `src/data/research.ts` to update map membership
 and publication groups together. The map describes thematic connections, not a

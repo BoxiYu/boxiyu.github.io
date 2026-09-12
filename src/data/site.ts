@@ -12,6 +12,22 @@ export const site = {
 
 export const projects = [
   {
+    id: 'rt4chart',
+    paper: 'yu2026rt4chart',
+    name: 'RT4CHART',
+    year: '2026',
+    venue: 'arXiv',
+    question: 'Which claims in a RAG answer are supported by the retrieved context?',
+    summary:
+      'Retromorphic testing with claim-level, local-to-global verification identifies unsupported or contradictory claims in RAG answers and links them to answer spans and context-side evidence.',
+    method:
+      'RT4CHART decomposes an answer into independently verifiable claims, checks them against the retrieved context, and assigns each claim an entailed, contradicted, or baseless label. Hierarchical verification maps these decisions back to answer spans with explicit supporting evidence.',
+    finding:
+      'On RAGTruth++ (408 samples), RT4CHART reports precision of 0.845, recall of 0.718, and F1 of 0.776. It also reports span-level F1 of 47.5% on the re-annotated RAGTruth-Enhance dataset (2,675 samples). These results measure faithfulness to retrieved context, rather than open-domain factual correctness.',
+    topic: 'Trustworthy AI',
+    links: [{ label: 'Preprint', href: 'https://arxiv.org/abs/2603.27752' }],
+  },
+  {
     id: 'swe-abs',
     paper: 'yu2026sweabs',
     name: 'SWE-ABS',

@@ -1,0 +1,47 @@
+[
+  {
+    "year": 2025,
+    "items": [
+      "Shadow Research Track Program Committee – IEEE International Conference on Software Engineering (ICSE 2025)",
+      "Program Committee – IEEE International Conference on Software Analysis, Evolution and Engineering (SANER 2025)"
+    ]
+  },
+  {
+    "year": 2024,
+    "items": [
+      "Artifact Evaluation Committee – 18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 2024)",
+      "Artifact Evaluation Committee – 2024 USENIX Annual Technical Conference (ATC 2024)",
+      "Reviewer – IEEE Transactions on Software Engineering",
+      "Reviewer – ACM Transactions on Software Engineering and Methodology",
+      "Reviewer – Journal of Systems and Software",
+      "External Reviewer – 46th International Conference on Software Engineering (ICSE 2024)",
+      "External Reviewer – ACM International Conference on the Foundations of Software Engineering (FSE 2024)",
+      "Artifact Evaluation Committee – ACM SIGPLAN International Conference on Object-Oriented Programming Systems, Languages, and Applications (OOPSLA 2024)",
+      "Artifact Evaluation Committee – ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2024)"
+    ]
+  },
+  {
+    "year": 2023,
+    "items": [
+      "Artifact Evaluation Committee – 17th USENIX Symposium on Operating Systems Design and Implementation (OSDI 2023)",
+      "Artifact Evaluation Committee – 2023 USENIX Annual Technical Conference (ATC 2023)",
+      "External Reviewer – 32nd ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2023)",
+      "External Artifact Evaluation Reviewer – ACM SIGPLAN International Conference on Object-Oriented Programming Systems, Languages, and Applications (OOPSLA 2023)"
+    ]
+  },
+  {
+    "year": 2022,
+    "items": [
+      "Artifact Evaluation Committee – 16th USENIX Symposium on Operating Systems Design and Implementation (OSDI 2022)",
+      "Artifact Evaluation Committee – 2022 USENIX Annual Technical Conference (ATC 2022)",
+      "External Artifact Evaluation Reviewer – ACM SIGPLAN International Conference on Object-Oriented Programming Systems, Languages, and Applications (OOPSLA 2022)",
+      "External Artifact Evaluation Reviewer – 49th ACM SIGPLAN Symposium on Principles of Programming Languages (POPL 2022)"
+    ]
+  },
+  {
+    "year": 2021,
+    "items": [
+      "External Artifact Evaluation Reviewer – ACM SIGPLAN International Conference on Object-Oriented Programming Systems, Languages, and Applications (OOPSLA 2021)"
+    ]
+  }
+]

@@ -1,0 +1,176 @@
+---
+import { researchGroups, empiricalResearch } from '../data/research';
+import { projects } from '../data/site';
+---
+
+<figure class="research-map" aria-labelledby="map-question" aria-describedby="map-caption">
+  <div class="map-question" id="map-question">
+    How do we establish that software and AI behave correctly?
+  </div>
+  <div class="map-branches">
+    {
+      researchGroups.map((group) => (
+        <section class="map-branch" aria-labelledby={`map-${group.id}`}>
+          <h3 id={`map-${group.id}`}>
+            <a href={`/research/#${group.id}`}>{group.title}</a>
+          </h3>
+          <p>{group.description}</p>
+          <ul>
+            {group.projects.map((id) => {
+              const project = projects.find((project) => project.id === id)!;
+              return (
+                <li>
+                  <a href={`/research/#${id}`}>
+                    {project.name}
+                    <span>
+                      {project.venue} {project.year}
+                      {project.venue === 'arXiv' ? ' · Preprint' : ''}
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+            {group.related.map((item) => (
+              <li>
+                <a href={item.href}>
+                  {item.name}
+                  <span>Related work</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+  <div class="map-empirical">
+    <a href={`/research/#${empiricalResearch.id}`}>{empiricalResearch.title}</a><p>
+      LightAD examines model choice, preprocessing, and efficiency in log anomaly detection.
+    </p>
+  </div>
+  <figcaption id="map-caption">
+    Connected research themes, with links to individual works. The grouping describes shared
+    questions rather than a chronological sequence.
+  </figcaption>
+</figure>
+
+<style>
+  .research-map {
+    margin-top: 24px;
+  }
+  .map-question {
+    padding: 18px 24px;
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    background: var(--wash);
+    border-block: 1px solid var(--line);
+  }
+  .map-branches {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    padding-top: 30px;
+  }
+  .map-branch {
+    position: relative;
+    padding: 20px;
+    border-top: 2px solid var(--blue);
+    background: linear-gradient(180deg, #f3f6fa, #fff 80%);
+  }
+  .map-branch::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 30px;
+    background: var(--line);
+    left: 50%;
+    top: -32px;
+  }
+  .map-branch h3 {
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+  .map-branch h3 a {
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .map-branch h3 a:hover {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+  .map-branch p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--muted);
+  }
+  .map-branch ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+  .map-branch li + li {
+    margin-top: 10px;
+  }
+  .map-branch li a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 12px;
+    font-size: 16px;
+  }
+  .map-branch li span {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .map-empirical {
+    margin-top: 22px;
+    padding: 16px 20px;
+    border-block: 1px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .map-empirical > a {
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .map-empirical p {
+    font-size: 15px;
+    color: var(--muted);
+  }
+  figcaption {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 760px) {
+    .map-branches {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding-top: 18px;
+    }
+    .map-branch {
+      border-top: 0;
+      border-left: 2px solid var(--blue);
+      padding: 16px 20px;
+    }
+    .map-branch::before {
+      display: none;
+    }
+    .map-question {
+      font-size: 1.2rem;
+      text-align: left;
+      padding: 16px 20px;
+    }
+    .map-branch ul {
+      margin-top: 14px;
+    }
+    .map-empirical {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+</style>

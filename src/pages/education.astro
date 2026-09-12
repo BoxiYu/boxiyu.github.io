@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import TestLab from '../components/TestLab.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getWriting } from '../lib/writing';
+const entries = (await getWriting())
+  .filter((entry) => entry.data.series === 'Evaluating AI in practice')
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+---
+
+<Base
+  title="AI education"
+  description="Learn to evaluate AI through concrete examples, research, and engineering practice. Start with a hands-on test quality exercise."
+>
+  <div class="wrapper">
+    <header class="page-header">
+      <h1>Build understanding.<br />Then put it to the test.</h1><p>
+        AI education for technical readers. Connecting research ideas to examples you can inspect,
+        question, and use in engineering practice.
+      </p>
+    </header>
+    <section class="section learning-grid" aria-labelledby="exercise">
+      <div>
+        <span class="topic-label">Start with an experiment</span><h2 id="exercise">
+          A passing test suite.<br />An incorrect function.
+        </h2><div class="prose mt">
+          <p>
+            This Python function is meant to return the largest value in a non-empty list of
+            integers. Two tests pass. Before adding a third, predict an input that could expose a
+            bug.
+          </p><p>
+            <strong>You will practice:</strong> identifying an untested input class and distinguishing
+            test success from a correctness claim.
+          </p><p class="muted">
+            Prerequisite: basic Python. This is a deterministic teaching example, not a live AI
+            model or a reproduction of a research benchmark.
+          </p>
+        </div>
+      </div>
+      <TestLab />
+    </section>
+    <section class="section learning-grid" aria-labelledby="lesson">
+      <div><h2 id="lesson">What changed<br />when the test changed?</h2></div><div>
+        <ol class="learning-steps">
+          <li>
+            <strong>State the contract.</strong><p>
+              The answer must be an element of the non-empty input list and must be at least as
+              large as every other element.
+            </p>
+          </li><li>
+            <strong>Challenge the assumption.</strong><p>
+              Initializing the result to zero works on these positive examples. It fails when every
+              input is negative.
+            </p>
+          </li><li>
+            <strong>Improve the implementation and the tests.</strong><p>
+              Initialize from the first element, then test negative values, duplicates, zero, and
+              single-element lists. Define empty-input behavior explicitly.
+            </p>
+          </li><li>
+            <strong>Keep the conclusion proportional.</strong><p>
+              Broader tests provide stronger evidence. They do not establish that every possible
+              behavior of a complex AI system is correct.
+            </p>
+          </li>
+        </ol><details>
+          <summary>See a corrected implementation</summary
+          ><pre><code>{`def largest(numbers):
+    if not numbers:
+        raise ValueError("expected a non-empty list")
+    best = numbers[0]
+    for n in numbers[1:]:
+        best = max(best, n)
+    return best`}</code></pre><p
+          >
+            This contract is for lists of integers. Other input types need their own specification.
+          </p>
+        </details>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="reading">
+      <div class="section-heading">
+        <h2 id="reading">From example to research</h2><a href="/research/">Explore the research</a>
+      </div><div class="prose">
+        <p>
+          The same question becomes more consequential when tests are used to score coding agents.
+          UTBoost studies rigorous evaluation on SWE-Bench; SWE-ABS examines inflated success rates
+          on test-based benchmarks.
+        </p><div class="resource-links">
+          <a href="/publications/#yu2025utboost">UTBoost</a><a href="/publications/#yu2026sweabs"
+            >SWE-ABS</a
+          ><a href="/publications/#yu2023Retro">Retromorphic Testing</a>
+        </div>
+      </div>
+    </section>
+    {
+      entries.length > 0 && (
+        <section class="section" aria-labelledby="series">
+          <>
+            <div class="section-heading">
+              <h2 id="series">Evaluating AI in practice</h2>
+            </div>
+            <p class="section-intro">
+              Read in order: begin with the evidence a test provides, then examine the benchmark
+              built around it.
+            </p>
+            <div class="article-list">
+              {entries.map((entry) => (
+                <ArticleCard entry={entry} />
+              ))}
+            </div>
+          </>
+        </section>
+      )
+    }
+  </div>
+</Base>

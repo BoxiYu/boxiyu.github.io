@@ -1,0 +1,199 @@
+---
+import Base from '../layouts/Base.astro';
+import ResearchList from '../components/ResearchList.astro';
+import ResearchMap from '../components/ResearchMap.astro';
+import { researchGroups, empiricalResearch } from '../data/research';
+import { site } from '../data/site';
+import { formatDate } from '../lib/writing';
+import { news } from '../lib/legacy';
+---
+
+<Base>
+  <div class="wrapper academic-home">
+    <section class="hero academic-hero" aria-labelledby="intro-title">
+      <div>
+        <h1 id="intro-title">Boxi Yu</h1>
+        <p class="academic-role">
+          Senior Research Fellow · <a href="https://lero.ie/">Lero</a>, Ireland
+        </p>
+        <p class="intro">
+          I study how to test and evaluate software and AI systems, with a focus on <strong
+            >coding agents, trustworthy AI, and automated testing</strong
+          >.
+        </p>
+        <p class="bio-note">
+          I received my Ph.D. from The Chinese University of Hong Kong, Shenzhen in 2025, advised by <a
+            href="https://pinjiahe.github.io/">Prof. Pinjia He</a
+          >.
+        </p>
+        <div class="hero-links">
+          <a href="/about/#contact">Email</a><a href={site.scholar}>Google Scholar</a><a
+            href={site.github}>GitHub</a
+          ><a href={site.orcid}>ORCID</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img
+          src="/assets/img/prof_pic.jpg"
+          width="600"
+          height="690"
+          alt="Portrait of Boxi Yu"
+          fetchpriority="high"
+        />
+        <figcaption>
+          <strong>Software engineering &amp; AI</strong><a href="/about/">Biography &amp; contact</a
+          >
+        </figcaption>
+      </figure>
+    </section>
+    <section class="section" aria-labelledby="overview-heading">
+      <div class="section-heading">
+        <h2 id="overview-heading">Research overview</h2><a href="/research/"
+          >Methods &amp; findings</a
+        >
+      </div>
+      <ResearchMap />
+    </section>
+    <section class="section" aria-labelledby="news-heading">
+      <div class="section-heading">
+        <h2 id="news-heading">Recent news</h2><a href="/news/">All news</a>
+      </div>
+      <ul class="news-list">
+        {
+          news.slice(0, 3).map((item) => (
+            <li>
+              <>
+                <time datetime={item.date.toISOString()}>{formatDate(item.date)}</time>
+                <div set:html={item.html} />
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section class="section" aria-labelledby="research-heading">
+      <div class="section-heading">
+        <h2 id="research-heading">Selected publications</h2><a href="/publications/"
+          >All publications</a
+        >
+      </div>
+      {
+        [...researchGroups, empiricalResearch].map((group) => (
+          <section class="publication-group" aria-labelledby={`selected-${group.id}`}>
+            <div class="group-heading">
+              <>
+                <h3 id={`selected-${group.id}`}>{group.title}</h3>
+                <a href={`/research/#${group.id}`}>Explore this direction</a>
+              </>
+            </div>
+            <ResearchList selected={group.projects} />
+          </section>
+        ))
+      }
+    </section>
+    <section class="section academic-community" aria-labelledby="community-heading">
+      <div>
+        <h2 id="community-heading">Academic community</h2><p>
+          I contribute to research through program committees, peer review, artifact evaluation, and
+          teaching.
+        </p>
+      </div>
+      <div>
+        <h3>Service</h3><p>
+          SANER 2025 program committee and ICSE 2025 shadow research track committee; artifact
+          evaluation for OSDI, USENIX ATC, OOPSLA, and ISSTA.
+        </p><a href="/services/">Full service record</a>
+      </div>
+      <div>
+        <h3>Teaching &amp; talks</h3><p>
+          Teaching assistantships in software engineering, algorithms, and introductory programming
+          at CUHK-Shenzhen.
+        </p><div class="resource-links">
+          <a href="/teaching/">Teaching</a><a href="/talks/">Talks</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .academic-home .academic-hero {
+    grid-template-columns: minmax(0, 1fr) 180px;
+    padding-block: 36px;
+    gap: 56px;
+  }
+  .academic-home .academic-hero h1 {
+    font-size: clamp(2.6rem, 4.5vw, 3.4rem);
+    margin-bottom: 8px;
+  }
+  .academic-home .academic-role {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .academic-home .intro {
+    font-size: 19px;
+    max-width: 740px;
+  }
+  .academic-home .bio-note {
+    font-size: 17px;
+    max-width: 740px;
+    margin-top: 14px;
+  }
+  .academic-home .hero-links {
+    margin-top: 18px;
+  }
+  .academic-home .portrait figcaption {
+    padding-top: 12px;
+  }
+  .academic-home .portrait figcaption strong {
+    font-size: 14px;
+  }
+  .academic-home .section {
+    padding-block: 36px;
+    border-top: 1px solid var(--line);
+  }
+  .academic-home .section-heading {
+    margin-bottom: 22px;
+  }
+  .academic-home .section-heading h2 {
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+  }
+  .publication-group + .publication-group {
+    margin-top: 32px;
+  }
+  .group-heading {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    justify-content: space-between;
+    background: var(--wash);
+    padding: 12px 16px;
+    margin-bottom: 22px;
+  }
+  .group-heading h3 {
+    font-size: 18px;
+  }
+  .group-heading a {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 680px) {
+    .academic-home .academic-hero {
+      gap: 24px;
+      padding-block: 28px;
+    }
+    .academic-home .intro {
+      font-size: 18px;
+    }
+    .academic-home .portrait figcaption {
+      padding: 0;
+    }
+    .academic-home .section {
+      padding-block: 28px;
+    }
+    .group-heading {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+</style>

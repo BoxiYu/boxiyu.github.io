@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fff"/>
+  <path d="M80 126h1040M80 522h1040" stroke="#d8e0ea"/>
+  <text x="80" y="90" font-family="sans-serif" font-size="26" fill="#2454c6">Senior Research Fellow / Lero, Ireland</text>
+  <text x="80" y="285" font-family="Georgia,serif" font-size="100" fill="#243247">Boxi Yu</text>
+  <text x="80" y="378" font-family="Georgia,serif" font-size="48" fill="#243247">Software testing &amp; trustworthy AI</text>
+  <text x="80" y="460" font-family="sans-serif" font-size="25" fill="#536176">Coding agents, test oracles, and rigorous evaluation</text>
+  <text x="80" y="575" font-family="sans-serif" font-size="21" fill="#536176">boxiyu.github.io</text>
+  <g fill="none" stroke="#2454c6" stroke-width="3"><path d="M942 209h108v180H942zm0 90h108"/></g>
+  <g fill="#2454c6"><circle cx="942" cy="209" r="10"/><circle cx="1050" cy="299" r="10"/><circle cx="942" cy="389" r="10"/></g>
+</svg>

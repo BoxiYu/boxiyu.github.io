@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import { publications } from '../lib/publications';
+const topics = [...new Set(publications.map((p) => p.topic))];
+---
+
+<Base
+  title="Publications"
+  description="Publications by Boxi Yu on trustworthy AI, coding agents, automated testing, and AIOps."
+>
+  <div class="wrapper">
+    <header class="page-header">
+      <a class="back-link" href="/research/">Research</a><h1>Publications</h1><p>
+        The complete research record, from testing AI systems to evaluating coding agents.
+      </p><div class="resource-links">
+        <a href="/papers.bib" download>Download BibTeX</a><a
+          href="https://scholar.google.com/citations?user=Tat3jMQAAAAJ">Google Scholar</a
+        >
+      </div>
+    </header>
+    <div class="page-body">
+      <form class="filter-bar" role="search" aria-label="Filter publications" data-filters hidden>
+        <label
+          >Find a publication<input
+            type="search"
+            name="query"
+            placeholder="Title, author, or venue"
+            autocomplete="off"
+          /></label
+        >
+        <label
+          >Research topic<select name="topic"
+            ><option value="">All topics</option>{
+              topics.map((topic) => <option value={topic}>{topic}</option>)
+            }</select
+          ></label
+        >
+        <output aria-live="polite">{publications.length} publications</output>
+      </form>
+      <div data-publications>
+        {
+          publications.map((p) => (
+            <article
+              class="publication"
+              id={p.id}
+              data-topic={p.topic}
+              data-search={`${p.title} ${p.authors.join(' ')} ${p.venue} ${p.year}`.toLowerCase()}
+            >
+              <div class="pub-year">{p.year}</div>
+              <div>
+                <>
+                  <h2>{p.title}</h2>
+                  <p class="authors">
+                    {p.authors.map((author, index) => (
+                      <>
+                        {index > 0 && ', '}
+                        {author === 'Boxi Yu' ? <strong>{author}</strong> : author}
+                      </>
+                    ))}
+                  </p>
+                  <p class="pub-venue">
+                    {p.venue} <span class="muted">/ {p.topic}</span>
+                  </p>
+                </>
+                {p.links.length > 0 && (
+                  <div class="resource-links">
+                    {p.links.map((link) => (
+                      <a href={link.href}>{link.label}</a>
+                    ))}
+                  </div>
+                )}
+                {p.abstract && (
+                  <details>
+                    <summary>Abstract</summary>
+                    <p>{p.abstract}</p>
+                  </details>
+                )}
+                <details>
+                  <>
+                    <summary>BibTeX</summary>
+                    <pre>
+                      <code>{p.bibtex}</code>
+                    </pre>
+                    <button class="copy-button" type="button" data-copy hidden>
+                      Copy citation
+                    </button>
+                    <span class="sr-only" aria-live="polite" data-copy-status />
+                  </>
+                </details>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="empty-result" data-empty hidden>
+        No matching publications. Try another title, author, or topic.
+      </p>
+    </div>
+  </div>
+</Base>
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-filters]')!;
+  form.hidden = false;
+  const query = form.querySelector<HTMLInputElement>('input')!;
+  const topic = form.querySelector<HTMLSelectElement>('select')!;
+  const items = [...document.querySelectorAll<HTMLElement>('.publication')];
+  const output = form.querySelector('output')!;
+  const applyFilters = () => {
+    let count = 0;
+    for (const item of items) {
+      const visible =
+        (item.dataset.search || '').includes(query.value.trim().toLowerCase()) &&
+        (!topic.value || item.dataset.topic === topic.value);
+      item.hidden = !visible;
+      count += Number(visible);
+    }
+    output.textContent = `${count} ${count === 1 ? 'publication' : 'publications'}`;
+    document.querySelector<HTMLElement>('[data-empty]')!.hidden = count > 0;
+  };
+  form.addEventListener('submit', (event) => event.preventDefault());
+  form.addEventListener('input', applyFilters);
+  const revealFragment = () => {
+    if (!location.hash) return;
+    query.value = '';
+    topic.value = '';
+    applyFilters();
+    document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
+  };
+  window.addEventListener('hashchange', revealFragment);
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+    if (!navigator.clipboard) continue;
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      const parent = button.parentElement!;
+      try {
+        await navigator.clipboard.writeText(parent.querySelector('code')!.textContent || '');
+        parent.querySelector('[data-copy-status]')!.textContent = 'Citation copied.';
+        button.textContent = 'Copied';
+      } catch {
+        parent.querySelector('[data-copy-status]')!.textContent =
+          'Copy unavailable. Select and copy the citation text above.';
+      }
+    });
+  }
+</script>

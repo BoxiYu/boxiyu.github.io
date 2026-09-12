@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import { news } from '../../lib/legacy';
+import { formatDate } from '../../lib/writing';
+export function getStaticPaths() {
+  return news.map((item) => ({ params: { id: item.id }, props: { item } }));
+}
+const { item } = Astro.props;
+const title = `Research update, ${formatDate(item.date)}`;
+---
+
+<Base title={title}
+  ><div class="wrapper">
+    <header class="page-header">
+      <a class="back-link" href="/news/">All updates</a><h1>Research update</h1><p>
+        {formatDate(item.date)}
+      </p>
+    </header><div class="page-body prose" set:html={item.html} />
+  </div></Base
+>

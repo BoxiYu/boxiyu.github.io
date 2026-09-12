@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="About"
+  description="Academic biography, education, and contact details for Boxi Yu, Senior Research Fellow at Lero, Ireland."
+>
+  <div class="wrapper page-body about-grid">
+    <div>
+      <header class="page-header">
+        <h1>About me</h1><p>
+          I am Boxi Yu, a software engineering researcher working on testing and trustworthy AI.
+        </p>
+      </header>
+      <div class="prose">
+        <p>
+          I am a Senior Research Fellow at <a href="https://lero.ie/">Lero</a>, the Irish software
+          research centre, directed by <a href="https://www.lbriand.info/">Prof. Lionel C. Briand</a
+          >.
+        </p><p>
+          I obtained my Ph.D. from <a href="https://www.cuhk.edu.cn/en"
+            >The Chinese University of Hong Kong, Shenzhen</a
+          > in 2025, supervised by <a href="https://pinjiahe.github.io/">Prof. Pinjia He</a>.
+        </p><p>
+          My research focuses on trustworthy AI, code agents, and automated testing. I proposed
+          Retromorphic Testing, a technique for automatically constructing test oracles for modern
+          software. My work has appeared at ICML, ICSE, ISSTA, ESEC/FSE, and ACL.
+        </p><p>
+          My recent work on UTBoost and SWE-ABS investigates how weaknesses in benchmark tests can
+          inflate the measured success of coding agents. Earlier work develops automated testing
+          methods for image captioning and named entity recognition, and examines the trade-offs
+          between classical and deep learning models for log anomaly detection.
+        </p>
+        <h2>Research and community</h2><ul>
+          <li><a href="/publications/">Complete publications</a></li><li>
+            <a href="/services/">Academic service and reviewing</a>
+          </li><li><a href="/talks/">Invited talks</a></li><li>
+            <a href="/teaching/">Teaching experience</a>
+          </li>
+        </ul>
+        <section class="contact-panel" aria-labelledby="contact">
+          <h2 id="contact" tabindex="-1">Contact</h2>
+          <p>For research discussions and collaboration enquiries:</p>
+          <p class="contact-address" data-email-address>{site.email}</p>
+          <div class="resource-links">
+            <button type="button" class="copy-button" data-copy-email hidden
+              >Copy email address</button
+            >
+            <a href={`mailto:${site.email}`}>Open email app</a>
+          </div>
+          <p class="contact-help">
+            You can also paste the address into your preferred email service.
+          </p>
+          <p class="contact-status" role="status" data-email-status></p>
+        </section>
+        <div class="resource-links">
+          <a href={site.scholar}>Google Scholar</a><a href={site.github}>GitHub</a><a
+            href={site.orcid}>ORCID</a
+          ><a href="https://twitter.com/BoshCavendish">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img
+        src="/assets/img/prof_pic.jpg"
+        width="600"
+        height="690"
+        alt="Portrait of Boxi Yu"
+      /><figcaption><strong>Boxi Yu</strong>{site.role}</figcaption>
+    </figure>
+  </div>
+</Base>
+
+<style>
+  .contact-panel {
+    padding: 24px;
+    background: var(--wash);
+  }
+  .contact-panel h2 {
+    margin-top: 0;
+  }
+  .contact-panel p {
+    margin-top: 12px;
+  }
+  .contact-panel .contact-address {
+    font-size: 21px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    user-select: all;
+  }
+  .contact-panel .contact-help,
+  .contact-panel .contact-status {
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .contact-status:empty {
+    display: none;
+  }
+</style>
+
+<script>
+  const copyEmail = document.querySelector<HTMLButtonElement>('[data-copy-email]');
+  const emailAddress = document.querySelector<HTMLElement>('[data-email-address]');
+  const emailStatus = document.querySelector<HTMLElement>('[data-email-status]');
+  if (copyEmail && emailAddress && emailStatus && navigator.clipboard) {
+    copyEmail.hidden = false;
+    copyEmail.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(emailAddress.textContent!.trim());
+        emailStatus.textContent = 'Email address copied.';
+      } catch {
+        emailStatus.textContent = 'Select the email address above and copy it manually.';
+      }
+    });
+  }
+</script>

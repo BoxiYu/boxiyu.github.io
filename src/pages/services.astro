@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import services from '../data/services.json';
+---
+
+<Base
+  title="Academic service"
+  description="Program committee, artifact evaluation, and reviewing service by Boxi Yu."
+  ><div class="wrapper">
+    <header class="page-header">
+      <a class="back-link" href="/about/">About</a><h1>Academic service</h1><p>
+        Program committees, artifact evaluation, and reviewing.
+      </p>
+    </header><div class="page-body service-record">
+      {
+        services.map((section) => (
+          <section class="service-year" aria-labelledby={`service-${section.year}`}>
+            <>
+              <h2 id={`service-${section.year}`}>{section.year}</h2>
+              <ul>
+                {section.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </>
+          </section>
+        ))
+      }
+    </div>
+  </div></Base
+>

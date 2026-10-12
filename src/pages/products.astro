@@ -1,0 +1,501 @@
+---
+import Base from '../layouts/Base.astro';
+import { pacificProducts } from '../data/pacific';
+---
+
+<Base
+  title="Products"
+  description="OneAI and other research-led products for trustworthy coding agents and AI-supported learning."
+>
+  <div class="wrapper products-page">
+    <header class="products-hero">
+      <div class="products-hero-copy">
+        <p class="products-kicker">Research → product</p>
+        <h1>Useful systems for the moments that matter.</h1>
+        <p class="products-lede">
+          I turn work on software testing and trustworthy AI into tools that help people build,
+          teach, and learn with better evidence.
+        </p>
+        <div class="products-actions">
+          <a class="products-button products-button-primary" href="#oneai"
+            >See the education product</a
+          >
+          <a class="products-text-link" href="/about/#contact"
+            >Talk about a pilot <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+      <aside class="products-signal" aria-label="Product principles">
+        <p class="products-signal-label">A simple rule</p>
+        <p class="products-signal-quote">
+          Every automated decision should leave a trail that a person can inspect.
+        </p>
+        <p class="products-signal-note">
+          That is the bridge between a research result and a system people can trust.
+        </p>
+      </aside>
+    </header>
+
+    <section class="product-feature" id="oneai" aria-labelledby="assessment-title">
+      <div class="product-feature-intro">
+        <p class="products-kicker">OneAI · AI education</p>
+        <h2 id="assessment-title">OneAI</h2>
+        <p>
+          A teacher-first workspace for creating assessments, guiding student reasoning, and turning
+          rubric decisions into feedback that students can act on.
+        </p>
+        <a class="products-text-link" href="#walkthrough"
+          >Watch the walkthrough <span aria-hidden="true">↓</span></a
+        >
+      </div>
+      <div class="product-capabilities" aria-label="OneAI capabilities">
+        <article>
+          <span class="capability-index">01</span>
+          <h3>Coach the next step</h3>
+          <p>Students get a hint or a check on their reasoning while the work is still theirs.</p>
+        </article>
+        <article>
+          <span class="capability-index">02</span>
+          <h3>Build a complete paper</h3>
+          <p>
+            Generate a structured test from a prompt, then export it in the format your class uses.
+          </p>
+        </article>
+        <article>
+          <span class="capability-index">03</span>
+          <h3>Keep teachers in control</h3>
+          <p>Rubrics make scoring consistent; teacher review keeps the final judgement human.</p>
+        </article>
+        <article>
+          <span class="capability-index">04</span>
+          <h3>Explain every gap</h3>
+          <p>Per-student error reports show the missed idea and a concrete route to practice it.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="walkthrough" id="walkthrough" aria-labelledby="walkthrough-title">
+      <div class="walkthrough-heading">
+        <div>
+          <p class="products-kicker">Product walkthrough</p>
+          <h2 id="walkthrough-title">From first question to useful feedback.</h2>
+        </div>
+        <p>One flow for students, teachers, and the evidence between them.</p>
+      </div>
+      <figure class="walkthrough-media">
+        <video
+          controls
+          preload="metadata"
+          poster="/assets/img/oneai-math-education-poster.jpg"
+          playsinline
+        >
+          <source src="/assets/video/oneai-math-education.mp4" type="video/mp4" />
+          Your browser does not support embedded video. <a
+            href="/assets/video/oneai-math-education.mp4">Open the walkthrough</a
+          >.
+        </video>
+        <figcaption>
+          OneAI combines guided student chat, paper building, rubric-based scoring, and
+          student-level error reports in one workspace.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="pacific-products" aria-labelledby="pacific-products-title">
+      <div class="pacific-products-heading">
+        <div>
+          <p class="products-kicker">Pacific Studio · selected products</p>
+          <h2 id="pacific-products-title">Three products. One Pacific Studio thesis.</h2>
+        </div>
+        <p>
+          Pacific Studio’s tools connect the same questions I work on: how agents build software,
+          how we prove it, and how people understand the research behind it.
+        </p>
+      </div>
+      <div class="pacific-products-grid">
+        {
+          pacificProducts.map((product, index) => (
+            <article class="pacific-product-card">
+              <div class="pacific-product-meta">
+                <>
+                  <span>
+                    0{index + 1} · {product.verb}
+                  </span>
+                  <span>{product.status}</span>
+                </>
+              </div>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <a href={product.href} target="_blank" rel="noreferrer">
+                {product.cta} <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+      <a class="products-text-link pacific-products-source" href="https://pacificstudio.ai/"
+        >View Pacific Studio <span aria-hidden="true">↗</span></a
+      >
+    </section>
+
+    <section class="product-secondary" aria-labelledby="engineering-title">
+      <div>
+        <p class="products-kicker">For engineering teams</p>
+        <h2 id="engineering-title">Make passing tests mean more.</h2>
+      </div>
+      <div>
+        <p>
+          My research on UTBoost and SWE-Bench reliability becomes practical test augmentation for
+          teams shipping coding agents. Stronger tests expose semantic regressions before a green
+          check reaches production.
+        </p>
+        <div class="product-secondary-links">
+          <a href="https://github.com/CUHK-Shenzhen-SE/UTBoost"
+            >Explore UTBoost <span aria-hidden="true">↗</span></a
+          >
+          <a href="/research/#coding-agents">Read the research <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-contact" aria-labelledby="contact-title">
+      <p class="products-kicker">Work together</p>
+      <h2 id="contact-title">Have a hard-to-measure workflow?</h2>
+      <p>
+        I work with research teams, product groups, and educators to turn a fuzzy quality question
+        into a testable workflow.
+      </p>
+      <a class="products-button products-button-primary" href="/about/#contact"
+        >Start a conversation</a
+      >
+    </section>
+  </div>
+</Base>
+
+<style>
+  .products-page {
+    --product-ink: var(--ink);
+    --product-muted: var(--muted);
+    --product-blue: var(--blue);
+    --product-pale: var(--wash);
+    --product-line: var(--line);
+  }
+  .products-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+    gap: clamp(40px, 9vw, 120px);
+    padding: 80px 0 72px;
+    border-bottom: 1px solid var(--product-line);
+  }
+  .products-kicker {
+    color: var(--product-blue);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    margin-bottom: 15px;
+  }
+  .products-hero h1 {
+    max-width: 800px;
+    color: var(--product-ink);
+    font-size: clamp(2.8rem, 6.4vw, 5.4rem);
+    line-height: 0.98;
+  }
+  .products-lede {
+    max-width: 640px;
+    margin-top: 28px;
+    color: var(--product-muted);
+    font-size: 20px;
+    line-height: 1.55;
+  }
+  .products-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .products-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 8px 18px;
+    text-decoration: none;
+    border: 1px solid var(--product-blue);
+  }
+  .products-button-primary {
+    color: var(--paper-raised);
+    background: var(--product-blue);
+  }
+  .products-button-primary:hover {
+    color: var(--paper-raised);
+    background: var(--blue-dark);
+  }
+  .products-text-link {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 16px;
+  }
+  .products-signal {
+    align-self: end;
+    border-left: 2px solid var(--product-blue);
+    padding: 8px 0 8px 26px;
+  }
+  .products-signal-label {
+    color: var(--product-muted);
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .products-signal-quote {
+    color: var(--product-ink);
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    line-height: 1.16;
+  }
+  .products-signal-note {
+    margin-top: 20px;
+    color: var(--product-muted);
+    font-size: 15px;
+  }
+  .product-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(40px, 8vw, 112px);
+    padding: 76px 0;
+    border-bottom: 1px solid var(--product-line);
+  }
+  .product-feature-intro h2,
+  .walkthrough h2,
+  .product-secondary h2,
+  .products-contact h2 {
+    color: var(--product-ink);
+    font-size: clamp(2.1rem, 4.1vw, 3.5rem);
+  }
+  .product-feature-intro > p:not(.products-kicker) {
+    max-width: 470px;
+    margin: 22px 0;
+    color: var(--product-muted);
+    font-size: 18px;
+  }
+  .product-capabilities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--product-line);
+  }
+  .product-capabilities article {
+    padding: 20px 18px 22px 0;
+    border-bottom: 1px solid var(--product-line);
+  }
+  .product-capabilities article:nth-child(odd) {
+    margin-right: 24px;
+    border-right: 1px solid var(--product-line);
+  }
+  .capability-index {
+    color: var(--product-blue);
+    font-size: 14px;
+  }
+  .product-capabilities h3 {
+    margin-top: 15px;
+    font-size: 20px;
+  }
+  .product-capabilities p {
+    margin-top: 8px;
+    color: var(--product-muted);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .walkthrough {
+    padding: 76px 0;
+    border-bottom: 1px solid var(--product-line);
+  }
+  .walkthrough-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    align-items: end;
+    margin-bottom: 30px;
+  }
+  .walkthrough-heading > p {
+    max-width: 280px;
+    margin-bottom: 3px;
+    color: var(--product-muted);
+    font-size: 16px;
+  }
+  .walkthrough-media {
+    margin: 0;
+  }
+  .walkthrough-media video {
+    width: 100%;
+    max-height: 640px;
+    display: block;
+    background: var(--product-pale);
+    border: 1px solid var(--product-line);
+  }
+  .walkthrough-media figcaption {
+    max-width: 670px;
+    margin-top: 14px;
+    color: var(--product-muted);
+    font-size: 15px;
+  }
+  .pacific-products {
+    padding: 76px 0 80px;
+    border-bottom: 1px solid var(--product-line);
+  }
+  .pacific-products-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 0.75fr);
+    gap: clamp(40px, 8vw, 112px);
+    align-items: end;
+  }
+  .pacific-products-heading h2 {
+    color: var(--product-ink);
+    font-size: clamp(2.1rem, 4.1vw, 3.5rem);
+  }
+  .pacific-products-heading > p {
+    max-width: 420px;
+    margin-bottom: 4px;
+    color: var(--product-muted);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .pacific-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 36px;
+  }
+  .pacific-product-card {
+    display: flex;
+    min-height: 300px;
+    flex-direction: column;
+    padding: 22px;
+    border: 1px solid var(--product-line);
+    background: linear-gradient(150deg, var(--wash), var(--paper-raised) 60%);
+  }
+  .pacific-product-card:nth-child(2) {
+    background: linear-gradient(150deg, var(--accent-soft), var(--paper-raised) 60%);
+  }
+  .pacific-product-card:nth-child(3) {
+    background: linear-gradient(150deg, var(--buttercream-soft), var(--paper-raised) 60%);
+  }
+  .pacific-product-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--product-muted);
+    font-size: 13px;
+  }
+  .pacific-product-meta span:last-child {
+    color: var(--product-blue);
+  }
+  .pacific-product-card h3 {
+    margin-top: 42px;
+    color: var(--product-ink);
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+  }
+  .pacific-product-card p {
+    margin-top: 12px;
+    color: var(--product-muted);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .pacific-product-card a {
+    display: inline-flex;
+    gap: 9px;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 22px;
+    color: var(--product-blue);
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .pacific-products-source {
+    margin-top: 26px;
+  }
+  .product-secondary {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(40px, 8vw, 112px);
+    padding: 76px 0;
+    border-bottom: 1px solid var(--product-line);
+  }
+  .product-secondary > div:last-child > p {
+    margin-top: 6px;
+    color: var(--product-muted);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .product-secondary-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    margin-top: 24px;
+  }
+  .product-secondary-links a {
+    font-size: 16px;
+  }
+  .products-contact {
+    max-width: 780px;
+    padding: 76px 0 96px;
+  }
+  .products-contact > p:not(.products-kicker) {
+    max-width: 580px;
+    margin: 18px 0 28px;
+    color: var(--product-muted);
+    font-size: 18px;
+  }
+  @media (max-width: 760px) {
+    .products-hero,
+    .product-feature,
+    .pacific-products-heading,
+    .product-secondary {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+    .products-hero {
+      padding: 54px 0 52px;
+    }
+    .products-hero h1 {
+      font-size: clamp(2.8rem, 14vw, 4.5rem);
+    }
+    .products-lede {
+      font-size: 19px;
+    }
+    .product-feature,
+    .pacific-products,
+    .walkthrough,
+    .product-secondary {
+      padding: 54px 0;
+    }
+    .pacific-products-grid {
+      grid-template-columns: 1fr;
+    }
+    .walkthrough-heading {
+      display: block;
+    }
+    .walkthrough-heading > p {
+      margin-top: 16px;
+    }
+  }
+  @media (max-width: 480px) {
+    .pacific-products-grid {
+      grid-template-columns: 1fr;
+    }
+    .product-capabilities {
+      grid-template-columns: 1fr;
+    }
+    .product-capabilities article:nth-child(odd) {
+      margin-right: 0;
+      border-right: 0;
+    }
+    .product-capabilities article:last-child {
+      border-bottom: 0;
+    }
+    .products-actions {
+      align-items: start;
+      flex-direction: column;
+    }
+  }
+</style>

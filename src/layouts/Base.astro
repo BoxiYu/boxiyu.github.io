@@ -26,10 +26,13 @@ const canonical = new URL(path, site.url);
 const navigation = [
   ['Research', '/research/'],
   ['Publications', '/publications/'],
+  ['Products', '/products/'],
+  ['Teaching', '/teaching/'],
+  ['Blog', '/writing/'],
   ['Service', '/services/'],
   ['About', '/about/'],
 ];
-const fullTitle = title ? `${title} | Boxi Yu` : 'Boxi Yu | Software Testing & Trustworthy AI';
+const fullTitle = title ? `${title} | Boxi Yu` : 'Boxi Yu | Human-centric AI and software';
 ---
 
 <!doctype html>
@@ -37,7 +40,7 @@ const fullTitle = title ? `${title} | Boxi Yu` : 'Boxi Yu | Software Testing & T
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#fbfaf7" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {(noindex || previewDrafts) && <meta name="robots" content="noindex, nofollow" />}
@@ -51,7 +54,7 @@ const fullTitle = title ? `${title} | Boxi Yu` : 'Boxi Yu | Software Testing & T
     <meta property="og:image" content={`${site.url}/social-card.png`} />
     <meta
       property="og:image:alt"
-      content="Boxi Yu. Software testing and trustworthy AI. Senior Research Fellow at Lero, Ireland."
+      content="Boxi Yu. Human-centric AI and software. Senior Research Fellow at Lero, Ireland."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <slot name="head" />
@@ -91,12 +94,12 @@ const fullTitle = title ? `${title} | Boxi Yu` : 'Boxi Yu | Software Testing & T
     <main id="main" tabindex="-1"><slot /></main>
     <footer class="site-footer wrapper">
       <div>
-        <a class="footer-name" href="/">Boxi Yu</a><p>Software testing &amp; trustworthy AI.</p>
+        <a class="footer-name" href="/">Boxi Yu</a><p>Human-centric AI and software.</p>
       </div>
       <nav aria-label="Social and resources">
         <a href="/about/#contact">Email</a><a href={site.scholar}>Scholar</a><a href={site.github}
           >GitHub</a
-        ><a href={site.orcid}>ORCID</a>
+        ><a href={site.x}>X</a><a href={site.orcid}>ORCID</a>
       </nav>
       <p class="copyright">&copy; {new Date().getFullYear()} Boxi Yu</p>
     </footer>

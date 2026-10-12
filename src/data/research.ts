@@ -6,9 +6,13 @@ export const researchGroups = [
     description: 'Strengthening tests and examining the reliability of benchmark results.',
     projects: ['swe-abs', 'utboost'],
     related: [
-      { name: 'BeSpec', href: '/publications/#xu2026bespec' },
-      { name: 'Code RLVR synthesis', href: '/publications/#zheng2026adr' },
-      { name: 'Benchmark design', href: '/publications/#cao2025' },
+      { name: 'BeSpec', venue: 'arXiv 2026 · Preprint', href: '/publications/#xu2026bespec' },
+      {
+        name: 'Code RLVR synthesis',
+        venue: 'arXiv 2026 · Preprint',
+        href: '/publications/#zheng2026adr',
+      },
+      { name: 'Benchmark design', venue: 'ICML 2026 · Position', href: '/publications/#cao2025' },
     ],
   },
   {
@@ -26,9 +30,13 @@ export const researchGroups = [
     description: 'Controlled transformations reveal errors in vision and language systems.',
     projects: ['rome', 'tin'],
     related: [
-      { name: 'AgentEval', href: '/publications/#lin2026agenteval' },
-      { name: 'TRACE', href: '/publications/#li2026trace' },
-      { name: 'MetaIC', href: '/publications/#yu2022automated' },
+      {
+        name: 'AgentEval',
+        venue: 'arXiv 2026 · Preprint',
+        href: '/publications/#lin2026agenteval',
+      },
+      { name: 'TRACE', venue: 'arXiv 2026 · Preprint', href: '/publications/#li2026trace' },
+      { name: 'MetaIC', venue: 'ISSTA 2022', href: '/publications/#yu2022automated' },
     ],
   },
 ];

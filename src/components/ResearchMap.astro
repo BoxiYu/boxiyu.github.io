@@ -34,7 +34,7 @@ import { projects } from '../data/site';
               <li>
                 <a href={item.href}>
                   {item.name}
-                  <span>Related work</span>
+                  <span>{item.venue}</span>
                 </a>
               </li>
             ))}
@@ -79,7 +79,7 @@ import { projects } from '../data/site';
     position: relative;
     padding: 20px;
     border-top: 2px solid var(--blue);
-    background: linear-gradient(180deg, #f3f6fa, #fff 80%);
+    background: linear-gradient(180deg, var(--wash), var(--paper-raised) 80%);
   }
   .map-branch::before {
     content: '';

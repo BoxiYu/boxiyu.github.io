@@ -1,201 +1,687 @@
 ---
 import Base from '../layouts/Base.astro';
-import ResearchList from '../components/ResearchList.astro';
 import ResearchMap from '../components/ResearchMap.astro';
-import { researchGroups, empiricalResearch } from '../data/research';
 import { site } from '../data/site';
-import { formatDate } from '../lib/writing';
+import { pacificProducts } from '../data/pacific';
+import { formatDate, getWriting } from '../lib/writing';
 import { news } from '../lib/legacy';
+
+const writing = (await getWriting()).slice(0, 2);
+const latest = [
+  ...writing.map((entry) => ({ kind: 'writing' as const, date: entry.data.publishedAt, entry })),
+  ...news.slice(0, 3).map((item) => ({ kind: 'news' as const, date: item.date, item })),
+]
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .slice(0, 4);
 ---
 
-<Base>
-  <div class="wrapper academic-home">
-    <section class="hero academic-hero" aria-labelledby="intro-title">
-      <div>
-        <h1 id="intro-title">Boxi Yu</h1>
-        <p class="academic-role">
-          Senior Research Fellow · <a href="https://lero.ie/">Lero</a>, Ireland
+<Base
+  description="Boxi Yu studies how to test and evaluate software and AI systems, then turns that evidence into products and teaching."
+>
+  <div class="home-shell">
+    <section class="home-hero wrapper" aria-labelledby="intro-title">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="hero-dot"></span> Research · products · teaching</p>
+        <h1 id="intro-title">Human-centric AI <em>and software.</em></h1>
+        <p class="hero-lede">
+          I am Boxi Yu, a software engineering researcher at Lero. I study how to test and evaluate
+          coding agents and AI systems so that people can decide when to trust them, then turn those
+          lessons into tools people can use and courses people can learn from.
         </p>
-        <p class="intro">
-          I study how to test and evaluate software and AI systems, with a focus on <strong
-            >coding agents, trustworthy AI, and automated testing</strong
-          >.
-        </p>
-        <p class="bio-note">
-          I received my Ph.D. from The Chinese University of Hong Kong, Shenzhen in 2025, advised by <a
-            href="https://pinjiahe.github.io/">Prof. Pinjia He</a
-          >.
-        </p>
-        <div class="hero-links">
-          <a href="/about/#contact">Email</a><a href={site.scholar}>Google Scholar</a><a
-            href={site.github}>GitHub</a
-          ><a href={site.orcid}>ORCID</a>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/research/"
+            >Explore the research <span aria-hidden="true">↗</span></a
+          >
+          <a class="button button-quiet" href="/products/">See the products</a>
         </div>
+        <p class="hero-elsewhere">
+          <a href={site.scholar}>Google Scholar</a><a href={site.github}>GitHub</a><a href={site.x}
+            >X</a
+          ><a href="/about/#contact">Email</a>
+        </p>
       </div>
-      <figure class="portrait">
-        <img
-          src="/assets/img/prof_pic.jpg"
-          width="600"
-          height="690"
-          alt="Portrait of Boxi Yu"
-          fetchpriority="high"
-        />
+      <figure class="hero-portrait">
+        <div class="hero-portrait-frame">
+          <img
+            src="/assets/img/prof_pic.jpg"
+            width="772"
+            height="766"
+            alt="Portrait of Boxi Yu"
+            fetchpriority="high"
+          />
+        </div>
         <figcaption>
-          <strong>Software engineering &amp; AI</strong><a href="/about/">Biography &amp; contact</a
+          <strong>Boxi Yu</strong>
+          <span>{site.role}</span>
+          <span class="hero-portrait-place"
+            ><span class="signal-pulse"></span> University of Limerick</span
           >
         </figcaption>
       </figure>
     </section>
-    <section class="section" aria-labelledby="overview-heading">
-      <div class="section-heading">
-        <h2 id="overview-heading">Research overview</h2><a href="/research/"
-          >Methods &amp; findings</a
-        >
+
+    <section class="home-section wrapper" aria-labelledby="research-heading">
+      <div class="home-section-head">
+        <h2 id="research-heading">Research</h2>
+        <a href="/research/">All research <span aria-hidden="true">↗</span></a>
       </div>
       <ResearchMap />
     </section>
-    <section class="section" aria-labelledby="news-heading">
-      <div class="section-heading">
-        <h2 id="news-heading">Recent news</h2><a href="/news/">All news</a>
+
+    <section class="home-section wrapper" aria-labelledby="applied-heading">
+      <div class="home-section-head">
+        <div>
+          <p class="eyebrow">Co-founder</p>
+          <h2 id="applied-heading">Products</h2>
+        </div>
+        <a href="/products/">All products <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="home-intro">
+        Alongside my research I co-founded OneAI and Pacific Studio, where we build AI products that
+        keep people in the decision seat.
+      </p>
+      <article class="applied-feature">
+        <div class="feature-copy">
+          <div class="feature-top">
+            <span class="status-dot"></span><span>Co-founder · In development · AI education</span>
+          </div>
+          <p class="product-mark">ONE<span>AI</span></p>
+          <h3>Assessment Studio</h3>
+          <p>
+            Turn a learning objective into a question set, rubric, and student-level feedback loop.
+            Teachers stay in the decision seat; AI handles the first pass.
+          </p>
+          <div class="tag-row"><span>Generate</span><span>Review</span><span>Explain</span></div>
+          <a class="feature-link" href="/products/#oneai"
+            >See the workflow <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <figure class="demo-video">
+          <video
+            controls
+            preload="metadata"
+            poster="/assets/img/oneai-math-education-poster.jpg"
+            playsinline
+            aria-describedby="demo-caption"
+          >
+            <source src="/assets/video/oneai-math-education.mp4" type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
+          <figcaption id="demo-caption">
+            Demo · student guidance, assessment generation, teacher review · 1:33
+          </figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="home-section wrapper pacific-section" aria-labelledby="pacific-heading">
+      <div class="home-section-head">
+        <div>
+          <p class="eyebrow">Co-founder · build, prove, understand</p>
+          <h2 id="pacific-heading">Pacific Studio</h2>
+        </div>
+        <a href="https://pacificstudio.ai/">See the studio <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="home-intro">
+        Three products from Pacific Studio, which I co-founded, show how AI can support the software
+        lifecycle: ship the work, check the proof, and read the ideas that shape it.
+      </p>
+      <div class="pacific-grid">
+        {
+          pacificProducts.map((product, index) => (
+            <article class="pacific-card">
+              <div class="pacific-card-top">
+                <span class="pacific-card-index">0{index + 1}</span>
+                <span class="pacific-card-status">{product.status}</span>
+              </div>
+              <p class="pacific-card-verb">{product.verb}</p>
+              <h3>{product.name}</h3>
+              <p class="pacific-card-copy">{product.description}</p>
+              <div class="pacific-card-footer">
+                <span>{product.detail}</span>
+                <a href={product.href} target="_blank" rel="noreferrer">
+                  {product.cta} <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="course-section" aria-labelledby="course-heading">
+      <div class="wrapper course-grid">
+        <div>
+          <p class="eyebrow">Teaching · open course · Fall 2026</p>
+          <h2 id="course-heading">Agentic Software Engineering</h2>
+          <div class="course-actions">
+            <a class="button button-primary" href="/teaching/"
+              >Course &amp; teaching <span aria-hidden="true">↗</span></a
+            ><a class="button button-quiet" href="https://boxi-cs.github.io/agentic-se/"
+              >Open course site</a
+            >
+          </div>
+        </div>
+        <div>
+          <p class="course-tagline">Agents generate. You verify, decide and explain.</p>
+          <p class="course-copy">
+            A practical twelve-week course for building with coding agents while keeping
+            specifications, tests, review, security, and judgment in the loop.
+          </p>
+          <p class="course-copy">
+            I have also mentored eleven students, nine of whom are now Ph.D. students.{' '}
+            <a href="/teaching/#mentoring">See where they went</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section wrapper home-latest" aria-labelledby="latest-heading">
+      <div class="home-section-head">
+        <h2 id="latest-heading">News &amp; writing</h2>
+        <p class="home-latest-links">
+          <a href="/news/">All news <span aria-hidden="true">↗</span></a>
+          <a href="/writing/">Blog <span aria-hidden="true">↗</span></a>
+        </p>
       </div>
       <ul class="news-list">
         {
-          news.slice(0, 3).map((item) => (
+          latest.map((row) => (
             <li>
-              <>
-                <time datetime={item.date.toISOString()}>{formatDate(item.date)}</time>
-                <div set:html={item.html} />
-              </>
+              <time datetime={row.date.toISOString()}>{formatDate(row.date)}</time>
+              {row.kind === 'writing' ? (
+                <div>
+                  <p>
+                    <span class="latest-tag">Blog</span>
+                    <a href={'/writing/' + row.entry.id + '/'}>{row.entry.data.title}</a>
+                  </p>
+                  <p class="latest-description">{row.entry.data.description}</p>
+                </div>
+              ) : (
+                <div set:html={row.item.html} />
+              )}
             </li>
           ))
         }
       </ul>
     </section>
-    <section class="section" aria-labelledby="research-heading">
-      <div class="section-heading">
-        <h2 id="research-heading">Selected publications</h2><a href="/publications/"
-          >All publications</a
-        >
-      </div>
-      {
-        [...researchGroups, empiricalResearch].map((group) => (
-          <section class="publication-group" aria-labelledby={`selected-${group.id}`}>
-            <div class="group-heading">
-              <>
-                <h3 id={`selected-${group.id}`}>{group.title}</h3>
-                <a href={`/research/#${group.id}`}>Explore this direction</a>
-              </>
-            </div>
-            <ResearchList selected={group.projects} />
-          </section>
-        ))
-      }
-    </section>
-    <section class="section academic-community" aria-labelledby="community-heading">
-      <div>
-        <h2 id="community-heading">Academic community</h2><p>
-          I contribute to research through program committees, peer review, artifact evaluation,
-          student supervision, and teaching.
-        </p>
-      </div>
-      <div>
-        <h3>Service</h3><p>
-          SANER 2025 program committee and ICSE 2025 shadow research track committee; artifact
-          evaluation for OSDI, USENIX ATC, OOPSLA, and ISSTA.
-        </p><a href="/services/">Full service record</a>
-      </div>
-      <div>
-        <h3>Supervision &amp; teaching</h3><p>
-          I co-supervise PhD student <a href="https://coxhin.github.io/">Zhiqing Zhong</a>
-          (September 2023-present). My teaching experience includes software engineering, algorithms,
-          and introductory programming at CUHK-Shenzhen.
-        </p><div class="resource-links">
-          <a href="/teaching/#phd-students">Teaching &amp; supervision</a><a href="/talks/">Talks</a
-          >
-        </div>
-      </div>
-    </section>
   </div>
 </Base>
 
 <style>
-  .academic-home .academic-hero {
-    grid-template-columns: minmax(0, 1fr) 180px;
-    padding-block: 36px;
-    gap: 56px;
+  .home-shell {
+    overflow: hidden;
   }
-  .academic-home .academic-hero h1 {
-    font-size: clamp(2.6rem, 4.5vw, 3.4rem);
-    margin-bottom: 8px;
+  .home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 80px;
+    align-items: center;
+    padding-block: 84px 88px;
   }
-  .academic-home .academic-role {
-    font-size: 18px;
-    margin-bottom: 16px;
+  .hero-kicker,
+  .eyebrow {
+    margin-bottom: 20px;
+    color: var(--strawberry);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
-  .academic-home .intro {
+  .hero-kicker {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+    color: var(--muted);
+  }
+  .hero-dot,
+  .status-dot,
+  .signal-pulse {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--strawberry);
+    box-shadow: 0 0 0 4px rgba(var(--strawberry-rgb), 0.14);
+  }
+  .hero-copy h1 {
+    max-width: 700px;
+    color: var(--blueberry);
+    font-size: clamp(3.2rem, 6.6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+  .hero-copy h1 em {
+    display: block;
+    color: var(--strawberry);
+  }
+  .hero-lede {
+    max-width: 600px;
+    margin-top: 28px;
+    color: var(--muted);
     font-size: 19px;
-    max-width: 740px;
+    line-height: 1.65;
   }
-  .academic-home .bio-note {
-    font-size: 17px;
-    max-width: 740px;
-    margin-top: 14px;
+  .hero-actions,
+  .course-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
   }
-  .academic-home .hero-links {
-    margin-top: 18px;
+  .hero-elsewhere {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    margin-top: 30px;
+    font-size: 15px;
   }
-  .academic-home .portrait figcaption {
-    padding-top: 12px;
+  .hero-elsewhere a {
+    color: var(--muted);
+    text-decoration-color: var(--line-strong);
   }
-  .academic-home .portrait figcaption strong {
+  .hero-elsewhere a:hover {
+    color: var(--blue);
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 9px 17px;
+    border: 1px solid var(--blue);
+    border-radius: 999px;
+    font-size: 15px;
+    text-decoration: none;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+  .button:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .button-primary {
+    color: white;
+    background: var(--strawberry);
+    border-color: var(--strawberry);
+  }
+  .button-primary:hover {
+    color: white;
+    background: var(--strawberry-dark);
+    border-color: var(--strawberry-dark);
+  }
+  .button-quiet {
+    color: var(--ink);
+    background: transparent;
+  }
+  .button-quiet:hover {
+    color: var(--blue);
+    background: var(--wash);
+  }
+  .hero-portrait-frame {
+    background: white;
+  }
+  .hero-portrait img {
+    width: 100%;
+    aspect-ratio: 4 / 4.5;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .hero-portrait figcaption {
+    display: grid;
+    gap: 2px;
+    margin-top: 20px;
+    color: var(--muted);
     font-size: 14px;
+    line-height: 1.5;
   }
-  .academic-home .section {
-    padding-block: 36px;
+  .hero-portrait figcaption strong {
+    color: var(--ink);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .hero-portrait-place {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .home-section {
+    padding-block: 80px;
+  }
+  .home-hero + .home-section,
+  .home-section + .home-section {
     border-top: 1px solid var(--line);
   }
-  .academic-home .section-heading {
-    margin-bottom: 22px;
-  }
-  .academic-home .section-heading h2 {
-    font-size: clamp(1.8rem, 3vw, 2.2rem);
-  }
-  .publication-group + .publication-group {
-    margin-top: 32px;
-  }
-  .group-heading {
+  .home-section-head {
     display: flex;
-    gap: 16px;
-    align-items: baseline;
+    align-items: end;
     justify-content: space-between;
-    background: var(--wash);
-    padding: 12px 16px;
-    margin-bottom: 22px;
+    gap: 24px;
+    margin-bottom: 36px;
   }
-  .group-heading h3 {
-    font-size: 18px;
+  .home-section-head .eyebrow {
+    margin-bottom: 12px;
   }
-  .group-heading a {
-    font-size: 14px;
+  .home-section-head h2 {
+    max-width: 650px;
+    font-size: clamp(2rem, 3.4vw, 2.9rem);
+  }
+  .home-section-head > a {
     flex-shrink: 0;
+    font-size: 15px;
+  }
+  .applied-feature {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+    gap: 48px;
+    align-items: center;
+    padding: 40px;
+    color: var(--paper-raised);
+    background: linear-gradient(135deg, var(--blueberry), var(--blue-dark) 80%);
+  }
+  .feature-top {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+    margin-bottom: 34px;
+    color: var(--buttercream);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .feature-top .status-dot {
+    background: var(--accent-light);
+    box-shadow: 0 0 0 4px rgba(var(--buttercream-rgb), 0.2);
+  }
+  .product-mark {
+    color: var(--accent-light);
+    font-family: monospace;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+  }
+  .product-mark span {
+    color: white;
+  }
+  .feature-copy h3 {
+    margin-top: 8px;
+    color: white;
+    font-family: var(--serif);
+    font-size: clamp(2.1rem, 3.6vw, 3rem);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  .feature-copy > p:not(.product-mark) {
+    margin-top: 18px;
+    color: var(--buttercream);
+    font-size: 16px;
+  }
+  .tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+  .tag-row span {
+    padding: 4px 9px;
+    border: 1px solid rgba(var(--buttercream-rgb), 0.5);
+    border-radius: 999px;
+    color: var(--accent-light);
+    font-size: 12px;
+  }
+  .feature-link {
+    display: inline-flex;
+    gap: 12px;
+    margin-top: 28px;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .feature-link:hover {
+    color: var(--accent-light);
+  }
+  .demo-video {
+    margin: 0;
+  }
+  .demo-video video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: var(--blue-dark);
+  }
+  .demo-video figcaption {
+    margin-top: 12px;
+    color: var(--accent-light);
+    font-size: 13px;
+  }
+  .home-intro {
+    max-width: 660px;
+    margin: -12px 0 34px;
+    color: var(--muted);
+    font-size: 17px;
+  }
+  .pacific-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .pacific-card {
+    display: flex;
+    min-height: 360px;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid var(--line);
+    background: linear-gradient(155deg, var(--wash) 0%, var(--paper-raised) 58%);
+  }
+  .pacific-card:nth-child(2) {
+    background: linear-gradient(155deg, var(--accent-soft) 0%, var(--paper-raised) 58%);
+  }
+  .pacific-card:nth-child(3) {
+    background: linear-gradient(155deg, var(--buttercream-soft) 0%, var(--paper-raised) 58%);
+  }
+  .pacific-card-top,
+  .pacific-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .pacific-card-index,
+  .pacific-card-status,
+  .pacific-card-verb,
+  .pacific-card-footer {
+    font-size: 13px;
+  }
+  .pacific-card-index {
+    color: var(--muted);
+    font-family: monospace;
+  }
+  .pacific-card-status {
+    padding: 3px 8px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--blue-dark);
+    line-height: 1.2;
+  }
+  .pacific-card-verb {
+    margin-top: 42px;
+    color: var(--blue);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .pacific-card h3 {
+    margin-top: 5px;
+    color: var(--blueberry);
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 400;
+  }
+  .pacific-card-copy {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .pacific-card-footer {
+    align-items: end;
+    margin-top: auto;
+    padding-top: 28px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .pacific-card-footer a {
+    flex-shrink: 0;
+    color: var(--blue);
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .pacific-card-footer a:hover {
+    color: var(--blue-dark);
+  }
+  .course-section {
+    background: linear-gradient(120deg, var(--accent-wash), var(--buttercream-soft));
+    border-block: 1px solid var(--line);
+  }
+  .course-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 64px;
+    align-items: center;
+    padding-block: 78px;
+  }
+  .course-grid h2 {
+    max-width: 700px;
+    font-size: clamp(2.5rem, 4.7vw, 4rem);
+    color: var(--blueberry);
+  }
+  .course-tagline {
+    color: var(--strawberry);
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+  .course-copy {
+    max-width: 570px;
+    margin-top: 16px;
+    color: var(--muted);
+  }
+  .course-grid .button-primary {
+    background: var(--blue-dark);
+    border-color: var(--blue-dark);
+  }
+  .feature-link:focus-visible {
+    outline-color: var(--buttercream);
+  }
+  .home-latest {
+    padding-bottom: 96px;
+  }
+  .home-latest-links {
+    display: flex;
+    gap: 22px;
+    font-size: 15px;
+  }
+  .home-latest .news-list {
+    margin: 0;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .home-latest .news-list li {
+    padding-block: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .home-latest .news-list div {
+    max-width: 760px;
+  }
+  .latest-tag {
+    margin-right: 8px;
+    padding: 2px 8px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .latest-description {
+    margin-top: 4px;
+    color: var(--muted);
+  }
+  @media (max-width: 900px) {
+    .home-hero {
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 44px;
+    }
+    .applied-feature {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 32px;
+    }
+    .course-grid {
+      gap: 40px;
+    }
   }
   @media (max-width: 680px) {
-    .academic-home .academic-hero {
-      gap: 24px;
-      padding-block: 28px;
+    .home-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 40px;
+      padding-block: 52px 56px;
     }
-    .academic-home .intro {
+    .hero-copy h1 {
+      font-size: clamp(2.3rem, 10.6vw, 4.6rem);
+    }
+    .hero-lede {
       font-size: 18px;
     }
-    .academic-home .portrait figcaption {
-      padding: 0;
+    .hero-portrait {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
     }
-    .academic-home .section {
-      padding-block: 28px;
+    .hero-portrait figcaption {
+      margin-top: 0;
     }
-    .group-heading {
+    .home-section {
+      padding-block: 56px;
+    }
+    .home-section-head {
+      align-items: start;
       flex-direction: column;
-      gap: 6px;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .applied-feature {
+      padding: 24px;
+    }
+    .pacific-grid {
+      grid-template-columns: 1fr;
+    }
+    .pacific-grid {
+      gap: 26px;
+    }
+    .home-latest {
+      padding-bottom: 64px;
+    }
+    .course-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding-block: 58px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .button {
+      transition: none;
+    }
+    .button:hover {
+      transform: none;
     }
   }
 </style>

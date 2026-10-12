@@ -1,36 +1,461 @@
 ---
 import Base from '../layouts/Base.astro';
+const menteeSites: Record<string, string> = {
+  'Qiuyang Mang': 'https://joyemang33.github.io/',
+  'Zhiqing Zhong': 'https://coxhin.github.io/',
+  'Aoyang Fang': 'https://profile.aoyangfang.top/',
+};
+const mentees = [
+  ['Qiuyang Mang', 'Graph database testing and retromorphic testing', 'Ph.D. student, UC Berkeley'],
+  ['Jiayi Yao', 'Log-based anomaly detection', 'Ph.D. student, The University of Chicago'],
+  ['Haotian Xie', 'Log-based anomaly detection', 'Ph.D. student, Rutgers University'],
+  [
+    'Zhiqing Zhong',
+    'Automated log analysis and Python ecosystem deprecation',
+    'Ph.D. student, CUHK–Shenzhen (co-supervised, see above)',
+  ],
+  ['Jiaqi Li', 'Testing of image captioning systems', 'Ph.D. student, CUHK–Shenzhen'],
+  [
+    'Yiyan Hu',
+    'Automated testing of named entity recognition systems',
+    'M.S. student, UC San Diego',
+  ],
+  [
+    'Qingshuo Guo',
+    'Retromorphic testing and the test-oracle problem',
+    'Ph.D. student, University of Waterloo',
+  ],
+  ['Aoyang Fang', 'Graph database testing', 'Ph.D. student, CUHK–Shenzhen'],
+  [
+    'Xinran Qin',
+    'Automated testing of image captioning systems',
+    'Ph.D. student, Sun Yat-sen University',
+  ],
+  [
+    'Yixing Yang',
+    'Testing of image captioning systems',
+    'M.S. student, Institut Polytechnique de Paris',
+  ],
+  [
+    'Haowen Yang',
+    'Package-level deprecation in the Python ecosystem',
+    'Ph.D. student, HKUST (Guangzhou)',
+  ],
+];
 ---
 
 <Base
-  title="Teaching & supervision"
-  description="PhD student co-supervision and teaching experience of Boxi Yu."
-  ><div class="wrapper">
-    <header class="page-header">
-      <a class="back-link" href="/about/">About</a><h1>Teaching &amp; supervision</h1><p>
-        PhD student co-supervision and teaching in software engineering and computer science.
-      </p>
-    </header><div class="page-body prose">
-      <section aria-labelledby="phd-students">
-        <h2 id="phd-students">PhD students</h2>
+  title="Teaching & courses"
+  description="Courses, workshops, PhD supervision, and teaching resources from Boxi Yu."
+>
+  <div class="wrapper teaching-page">
+    <header class="teaching-hero">
+      <div>
+        <a class="back-link" href="/about/">About</a>
+        <p class="teaching-kicker">Teaching · supervision · practice</p>
+        <h1>Make complex systems learnable.</h1>
+        <p class="teaching-lede">
+          I teach software engineering and agentic systems through short feedback loops: explain a
+          concept, build a small artifact, and test what it can actually do.
+        </p>
+        <div class="teaching-actions">
+          <a class="teaching-button" href="https://boxi-cs.github.io/agentic-se/"
+            >Open the Agentic SE course ↗</a
+          >
+          <a class="teaching-link" href="#supervision">See supervision</a>
+        </div>
+      </div>
+      <aside class="teaching-note">
+        <p class="teaching-note-label">Teaching stance</p>
+        <p>Students should leave with a working mental model and something they can run.</p>
+      </aside>
+    </header>
+
+    <section class="course-feature" aria-labelledby="course-title">
+      <div class="course-feature-label">
+        <span class="course-mark" aria-hidden="true">AS</span>
+        <p class="teaching-kicker">Open course · Fall 2026</p>
+      </div>
+      <div>
+        <h2 id="course-title">Agentic Software Engineering</h2>
+        <p class="course-summary">
+          A practical course on designing, evaluating, and shipping software with coding agents. It
+          connects prompts and tools to the engineering disciplines that keep systems dependable.
+        </p>
+        <dl class="course-details">
+          <div>
+            <dt>For</dt>
+            <dd>Software engineers, researchers, and advanced students</dd>
+          </div>
+          <div>
+            <dt>Topics</dt>
+            <dd>Agent loops, tool use, test design, evaluation, and reliability</dd>
+          </div>
+          <div>
+            <dt>Format</dt>
+            <dd>Notes, worked examples, and small experiments you can reproduce</dd>
+          </div>
+        </dl>
+        <a class="teaching-link" href="https://boxi-cs.github.io/agentic-se/"
+          >Browse the course materials ↗</a
+        >
+      </div>
+    </section>
+
+    <section class="teaching-grid" aria-label="Teaching formats">
+      <article>
+        <p class="teaching-kicker">In the classroom</p>
+        <h2>Build, inspect, revise.</h2>
+        <p>
+          I use programming exercises and test failures as teaching material. The goal is to make
+          invisible assumptions visible, then give students a way to check them.
+        </p>
+      </article>
+      <article>
+        <p class="teaching-kicker">For teams</p>
+        <h2>Turn a demo into a method.</h2>
+        <p>
+          Workshops help teams move from an exciting agent prototype to an evaluation loop with
+          clear evidence, useful baselines, and feedback they can repeat.
+        </p>
+      </article>
+      <article>
+        <p class="teaching-kicker">For researchers</p>
+        <h2>Make the claim testable.</h2>
+        <p>
+          I supervise projects that connect a research question to an executable artifact, a strong
+          baseline, and an honest account of what the result does and does not show.
+        </p>
+      </article>
+    </section>
+
+    <section class="supervision" id="supervision" aria-labelledby="supervision-title">
+      <span id="phd-students" class="teaching-anchor" aria-hidden="true"></span>
+      <div>
+        <p class="teaching-kicker">PhD supervision</p>
+        <h2 id="supervision-title">Research with a path to practice.</h2>
+      </div>
+      <div class="supervision-copy">
         <h3><a href="https://coxhin.github.io/">Zhiqing Zhong</a></h3>
-        <p>September 2023-present; my role: co-supervisor.</p>
+        <p>September 2023–present · co-supervisor</p>
         <ul>
-          <li><strong>Education:</strong> B.S., South China University of Technology</li>
-          <li><strong>Publications:</strong> ICSE 2025, FSE 2026</li>
-          <li><strong>Visits:</strong> Aalto University</li>
+          <li>B.S., South China University of Technology</li>
+          <li>Publications at ICSE 2025 and FSE 2026</li>
+          <li>Visiting researcher at Aalto University</li>
         </ul>
-      </section>
-      <h2>Teaching experience</h2>
-      <p>Teaching assistantships at The Chinese University of Hong Kong, Shenzhen.</p>
-      <ul>
-        <li><strong>2022-2023, semester 2:</strong> CSC4001, Software Engineering</li><li>
-          <strong>2022-2023, semester 1:</strong> DDA6050, Analysis of Algorithms
-        </li><li><strong>2021-2022, semester 2:</strong> CSC4001, Software Engineering</li><li>
-          <strong>2021-2022, semester 1:</strong> CSC1001, Introduction to Computer Science: Programming
-          Methodology
+      </div>
+    </section>
+
+    <section class="teaching-history" id="mentoring" aria-labelledby="mentoring-title">
+      <div>
+        <p class="teaching-kicker">Mentoring</p>
+        <h2 id="mentoring-title">Where my mentees went next.</h2>
+        <p class="mentoring-note">
+          Eleven junior researchers and students I mentored on research projects; nine are now Ph.D.
+          students.
+        </p>
+      </div>
+      <ul class="course-list mentee-list">
+        {
+          mentees.map(([name, topic, now]) => (
+            <li>
+              <strong>{menteeSites[name] ? <a href={menteeSites[name]}>{name}</a> : name}</strong>
+              <span>
+                {topic}
+                <em>Now: {now}</em>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="teaching-history" aria-labelledby="history-title">
+      <div>
+        <p class="teaching-kicker">Teaching experience</p>
+        <h2 id="history-title">Courses taught at CUHK–Shenzhen.</h2>
+      </div>
+      <ul class="course-list">
+        <li><strong>CSC4001</strong><span>Software Engineering · 2022–23, semester 2</span></li>
+        <li><strong>DDA6050</strong><span>Analysis of Algorithms · 2022–23, semester 1</span></li>
+        <li><strong>CSC4001</strong><span>Software Engineering · 2021–22, semester 2</span></li>
+        <li>
+          <strong>CSC1001</strong><span
+            >Introduction to Computer Science: Programming Methodology · 2021–22, semester 1</span
+          >
         </li>
       </ul>
-    </div>
-  </div></Base
->
+    </section>
+
+    <section class="teaching-contact" aria-labelledby="teaching-contact-title">
+      <p class="teaching-kicker">Invite me in</p>
+      <h2 id="teaching-contact-title">Planning a course, reading group, or workshop?</h2>
+      <p>Share the audience and the problem you want them to leave able to solve.</p>
+      <a class="teaching-button" href="/about/#contact">Get in touch ↗</a>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .teaching-page {
+    --teaching-ink: var(--ink);
+    --teaching-muted: var(--muted);
+    --teaching-blue: var(--blue);
+    --teaching-line: var(--line);
+    --teaching-wash: var(--wash);
+  }
+  .teaching-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(250px, 0.75fr);
+    gap: clamp(42px, 9vw, 120px);
+    padding: 66px 0 68px;
+    border-bottom: 1px solid var(--teaching-line);
+  }
+  .teaching-hero .back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 15px;
+  }
+  .teaching-kicker {
+    color: var(--teaching-blue);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    margin-bottom: 15px;
+  }
+  .teaching-hero h1 {
+    max-width: 760px;
+    color: var(--teaching-ink);
+    font-size: clamp(2.8rem, 6.4vw, 5.2rem);
+    line-height: 0.98;
+  }
+  .teaching-lede {
+    max-width: 630px;
+    margin-top: 28px;
+    color: var(--teaching-muted);
+    font-size: 20px;
+    line-height: 1.55;
+  }
+  .teaching-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .teaching-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 8px 18px;
+    color: var(--paper-raised);
+    background: var(--teaching-blue);
+    text-decoration: none;
+    border: 1px solid var(--teaching-blue);
+  }
+  .teaching-button:hover {
+    color: var(--paper-raised);
+    background: var(--blue-dark);
+  }
+  .teaching-link {
+    font-size: 16px;
+  }
+  .teaching-note {
+    align-self: end;
+    border-left: 2px solid var(--teaching-blue);
+    padding: 8px 0 8px 26px;
+  }
+  .teaching-note-label {
+    color: var(--teaching-muted);
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .teaching-note > p:last-child {
+    color: var(--teaching-ink);
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    line-height: 1.15;
+  }
+  .course-feature {
+    display: grid;
+    grid-template-columns: 0.72fr 1.28fr;
+    gap: clamp(42px, 9vw, 120px);
+    padding: 76px 0;
+    border-bottom: 1px solid var(--teaching-line);
+  }
+  .course-mark {
+    display: grid;
+    place-items: center;
+    width: 74px;
+    height: 74px;
+    margin-bottom: 28px;
+    color: var(--teaching-blue);
+    font-family: var(--serif);
+    font-size: 27px;
+    border: 1px solid var(--teaching-blue);
+  }
+  .course-feature h2,
+  .teaching-grid h2,
+  .supervision h2,
+  .teaching-history h2,
+  .teaching-contact h2 {
+    color: var(--teaching-ink);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+  }
+  .course-summary {
+    max-width: 670px;
+    margin: 22px 0 30px;
+    color: var(--teaching-muted);
+    font-size: 19px;
+    line-height: 1.6;
+  }
+  .course-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 0 0 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--teaching-line);
+  }
+  .course-details dt {
+    color: var(--teaching-blue);
+    font-size: 14px;
+  }
+  .course-details dd {
+    margin-top: 7px;
+    color: var(--teaching-muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    padding: 76px 0;
+    border-bottom: 1px solid var(--teaching-line);
+  }
+  .teaching-grid article {
+    padding-top: 20px;
+    border-top: 1px solid var(--teaching-line);
+  }
+  .teaching-grid h2 {
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+  }
+  .teaching-grid article > p:last-child {
+    margin-top: 15px;
+    color: var(--teaching-muted);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .supervision,
+  .teaching-history {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(42px, 9vw, 120px);
+    padding: 76px 0;
+    border-bottom: 1px solid var(--teaching-line);
+  }
+  .teaching-anchor {
+    position: absolute;
+    margin-top: -80px;
+  }
+  .supervision-copy h3 {
+    font-size: 24px;
+  }
+  .supervision-copy > p {
+    margin-top: 4px;
+    color: var(--teaching-muted);
+    font-size: 16px;
+  }
+  .supervision-copy ul {
+    display: grid;
+    gap: 10px;
+    margin: 24px 0 0;
+    padding-left: 20px;
+    color: var(--teaching-muted);
+    font-size: 16px;
+  }
+  .course-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--teaching-line);
+  }
+  .course-list li {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 22px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--teaching-line);
+    font-size: 16px;
+  }
+  .course-list strong {
+    color: var(--teaching-ink);
+  }
+  .mentoring-note {
+    margin-top: 18px;
+    color: var(--teaching-muted);
+    font-size: 16px;
+  }
+  .mentee-list li {
+    grid-template-columns: 150px 1fr;
+  }
+  .mentee-list em {
+    display: block;
+    font-size: 15px;
+    font-style: normal;
+  }
+  .course-list span {
+    color: var(--teaching-muted);
+  }
+  .teaching-contact {
+    max-width: 760px;
+    padding: 76px 0 96px;
+  }
+  .teaching-contact > p:not(.teaching-kicker) {
+    margin: 18px 0 28px;
+    color: var(--teaching-muted);
+    font-size: 18px;
+  }
+  @media (max-width: 760px) {
+    .teaching-hero,
+    .course-feature,
+    .supervision,
+    .teaching-history {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+    .teaching-hero {
+      padding: 54px 0;
+    }
+    .teaching-hero h1 {
+      font-size: clamp(2.8rem, 14vw, 4.5rem);
+    }
+    .teaching-lede {
+      font-size: 19px;
+    }
+    .course-feature,
+    .teaching-grid,
+    .supervision,
+    .teaching-history {
+      padding: 54px 0;
+    }
+    .teaching-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .course-details {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+  @media (max-width: 480px) {
+    .teaching-actions {
+      align-items: start;
+      flex-direction: column;
+    }
+    .course-list li {
+      grid-template-columns: 1fr;
+      gap: 3px;
+    }
+  }
+</style>

@@ -7,6 +7,7 @@ export const site = {
     'Boxi Yu, Senior Research Fellow at Lero, Ireland. Research on software testing, trustworthy AI, and the evaluation of coding agents.',
   scholar: 'https://scholar.google.com/citations?user=Tat3jMQAAAAJ',
   github: 'https://github.com/BoxiYu',
+  x: 'https://x.com/BoshCavendish',
   orcid: 'https://orcid.org/0000-0001-5213-7189',
 };
 

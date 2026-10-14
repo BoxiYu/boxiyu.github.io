@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ResearchMap from '../components/ResearchMap.astro';
 import { site } from '../data/site';
-import { oneaiSchools, oneaiSubjects } from '../data/oneai';
+import { oneaiOlympiadSchools, oneaiSchoolCount, oneaiSubjects } from '../data/oneai';
 import { pacificProducts } from '../data/pacific';
 import { formatDate, getWriting } from '../lib/writing';
 import { news } from '../lib/legacy';
@@ -93,9 +93,10 @@ const latest = [
             Teachers stay in the decision seat; AI handles the first pass.
           </p>
           <p class="feature-use">
-            In use for olympiad training in {oneaiSubjects} at{' '}
+            In use at {oneaiSchoolCount} schools in Guangzhou and Shenzhen, including olympiad training
+            in {oneaiSubjects} at{' '}
             {
-              oneaiSchools.map((school, index) => (
+              oneaiOlympiadSchools.map((school, index) => (
                 <>
                   {index > 0 && ' and '}
                   <a href={school.href}>{school.name}</a>

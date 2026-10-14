@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { pacificProducts } from '../data/pacific';
+import { oneaiSchools, oneaiSubjects } from '../data/oneai';
 ---
 
 <Base
@@ -44,6 +45,20 @@ import { pacificProducts } from '../data/pacific';
           A teacher-first workspace for creating assessments, guiding student reasoning, and turning
           rubric decisions into feedback that students can act on.
         </p>
+        <div class="oneai-in-use">
+          <p class="products-kicker">In use</p>
+          <p>Olympiad training in {oneaiSubjects} at:</p>
+          <ul>
+            {
+              oneaiSchools.map((school) => (
+                <li>
+                  <a href={school.href}>{school.name}</a>
+                  <span lang="zh-Hans">{school.localName}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
         <a class="products-text-link" href="#walkthrough"
           >Watch the walkthrough <span aria-hidden="true">↓</span></a
         >
@@ -276,6 +291,34 @@ import { pacificProducts } from '../data/pacific';
     margin: 22px 0;
     color: var(--product-muted);
     font-size: 18px;
+  }
+  .oneai-in-use {
+    max-width: 470px;
+    margin: 0 0 26px;
+    padding: 18px 20px;
+    border-left: 2px solid var(--product-blue);
+    background: var(--wash);
+  }
+  .oneai-in-use .products-kicker {
+    margin-bottom: 6px;
+  }
+  .oneai-in-use > p:not(.products-kicker) {
+    color: var(--product-muted);
+    font-size: 16px;
+  }
+  .oneai-in-use ul {
+    display: grid;
+    gap: 8px;
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .oneai-in-use li span {
+    display: block;
+    color: var(--product-muted);
+    font-size: 14px;
   }
   .product-capabilities {
     display: grid;

@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { pacificProducts } from '../data/pacific';
-import { oneaiSchools, oneaiSubjects } from '../data/oneai';
+import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
 ---
 
 <Base
@@ -47,13 +47,17 @@ import { oneaiSchools, oneaiSubjects } from '../data/oneai';
         </p>
         <div class="oneai-in-use">
           <p class="products-kicker">In use</p>
-          <p>Olympiad training in {oneaiSubjects} at:</p>
+          <p>
+            At {oneaiSchoolCount} schools in Guangzhou and Shenzhen. Olympiad training covers
+            {' ' + oneaiSubjects}.
+          </p>
           <ul>
             {
               oneaiSchools.map((school) => (
                 <li>
-                  <a href={school.href}>{school.name}</a>
+                  {school.href ? <a href={school.href}>{school.name}</a> : school.name}
                   <span lang="zh-Hans">{school.localName}</span>
+                  {school.olympiad && <span class="oneai-use-tag">Olympiad training</span>}
                 </li>
               ))
             }
@@ -319,6 +323,14 @@ import { oneaiSchools, oneaiSubjects } from '../data/oneai';
     display: block;
     color: var(--product-muted);
     font-size: 14px;
+  }
+  .oneai-in-use li .oneai-use-tag {
+    color: var(--product-blue);
+    font-size: 13px;
+  }
+  .oneai-in-use li + li {
+    padding-top: 8px;
+    border-top: 1px solid var(--product-line);
   }
   .product-capabilities {
     display: grid;

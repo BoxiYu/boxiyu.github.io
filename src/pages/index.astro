@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ResearchMap from '../components/ResearchMap.astro';
 import { site } from '../data/site';
+import { oneaiSchools, oneaiSubjects } from '../data/oneai';
 import { pacificProducts } from '../data/pacific';
 import { formatDate, getWriting } from '../lib/writing';
 import { news } from '../lib/legacy';
@@ -83,13 +84,25 @@ const latest = [
       <article class="applied-feature">
         <div class="feature-copy">
           <div class="feature-top">
-            <span class="status-dot"></span><span>Co-founder · In development · AI education</span>
+            <span class="status-dot"></span><span>Co-founder · In use · AI education</span>
           </div>
           <p class="product-mark">ONE<span>AI</span></p>
           <h3>Assessment Studio</h3>
           <p>
             Turn a learning objective into a question set, rubric, and student-level feedback loop.
             Teachers stay in the decision seat; AI handles the first pass.
+          </p>
+          <p class="feature-use">
+            In use for olympiad training in {oneaiSubjects} at{' '}
+            {
+              oneaiSchools.map((school, index) => (
+                <>
+                  {index > 0 && ' and '}
+                  <a href={school.href}>{school.name}</a>
+                </>
+              ))
+            }
+            .
           </p>
           <div class="tag-row"><span>Generate</span><span>Review</span><span>Explain</span></div>
           <a class="feature-link" href="/products/#oneai"
@@ -419,6 +432,19 @@ const latest = [
     margin-top: 18px;
     color: var(--buttercream);
     font-size: 16px;
+  }
+  .feature-copy > p.feature-use {
+    padding-top: 16px;
+    border-top: 1px solid rgba(var(--buttercream-rgb), 0.3);
+    color: white;
+    font-size: 15px;
+  }
+  .feature-use a {
+    color: white;
+    text-decoration-color: rgba(var(--buttercream-rgb), 0.6);
+  }
+  .feature-use a:hover {
+    color: var(--accent-light);
   }
   .tag-row {
     display: flex;

@@ -4,6 +4,7 @@ import ResearchMap from '../components/ResearchMap.astro';
 import { site } from '../data/site';
 import { oneaiOlympiadSchools, oneaiSchoolCount, oneaiSubjects } from '../data/oneai';
 import { pacificProducts } from '../data/pacific';
+import { equityProjects } from '../data/equity';
 import { formatDate, getWriting } from '../lib/writing';
 import { news } from '../lib/legacy';
 
@@ -155,6 +156,42 @@ const latest = [
                 <span>{product.detail}</span>
                 <a href={product.href} target="_blank" rel="noreferrer">
                   {product.cta} <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="home-section wrapper equity-section" aria-labelledby="equity-heading">
+      <div class="home-section-head">
+        <div>
+          <p class="eyebrow">AI education · free and open</p>
+          <h2 id="equity-heading">Education equity</h2>
+        </div>
+        <a href="https://boxi-math.github.io/">Visit Boxi Math <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="home-intro">
+        A good tutor is still a luxury. I want every child to understand why maths works, whatever
+        their family can pay and whichever language they speak. So I make maths teaching that is free
+        to watch and free to reuse, with AI tools I release as open source.
+      </p>
+      <div class="pacific-grid equity-grid">
+        {
+          equityProjects.map((project, index) => (
+            <article class="pacific-card">
+              <div class="pacific-card-top">
+                <span class="pacific-card-index">0{index + 1}</span>
+                <span class="pacific-card-status">{project.status}</span>
+              </div>
+              <p class="pacific-card-verb">{project.verb}</p>
+              <h3>{project.name}</h3>
+              <p class="pacific-card-copy">{project.description}</p>
+              <div class="pacific-card-footer">
+                <span>{project.detail}</span>
+                <a href={project.href} target="_blank" rel="noreferrer">
+                  {project.cta} <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </article>
@@ -510,6 +547,12 @@ const latest = [
   }
   .pacific-card:nth-child(3) {
     background: linear-gradient(155deg, var(--buttercream-soft) 0%, var(--paper-raised) 58%);
+  }
+  .equity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .equity-grid .pacific-card {
+    min-height: 320px;
   }
   .pacific-card-top,
   .pacific-card-footer {

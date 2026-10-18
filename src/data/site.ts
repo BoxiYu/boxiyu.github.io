@@ -87,6 +87,26 @@ export const projects = [
     topic: 'Automated testing',
   },
   {
+    id: 'cxbench',
+    paper: 'yu2026cxbench',
+    name: 'CXBench',
+    year: '2026',
+    venue: 'Preprint',
+    question: 'Does a correct outcome mean the agent followed the required process?',
+    summary:
+      'A benchmark that scores business outcomes and process compliance separately for LLM agents in regulated customer-experience workflows, built with Genesys.',
+    method:
+      'CXBench pairs each customer request with a tool-based environment and explicit process requirements across six regulated domains. Rule cards link cited regulatory obligations to observable trace evidence, and a hybrid grader combines deterministic checks for ordering and authority with an LLM judge for semantic requirements.',
+    finding:
+      'Across seven models and 120 tasks, 55.5% of the 840 retained executions were false-passes: they reached the correct business outcome but failed a process check. These account for 80.1% of outcome-passing runs, and only 13.8% of executions passed both. Process-inclusive scoring also changed the observed model ordering.',
+    topic: 'Trustworthy AI',
+    links: [
+      { label: 'Project page', href: 'https://cxbench.github.io/' },
+      { label: 'Paper', href: 'https://cxbench.github.io/assets/cxbench-paper.pdf' },
+      { label: 'Code', href: 'https://github.com/CXBench/cxbench' },
+    ],
+  },
+  {
     id: 'rome',
     paper: 'yu2023rome',
     name: 'ROME',

@@ -1,0 +1,311 @@
+---
+import { featuredCourses } from '../data/courses';
+
+const steps = [
+  ['Step through', 'Watch the code or the agent loop run, one state at a time.'],
+  ['Predict', 'Commit to an answer before the page shows you the real output.'],
+  ['Check', 'End every lecture with a self-check and exercises.'],
+];
+const number = (n: number) => String(n).padStart(2, '0');
+---
+
+<div class="course-showcase">
+  <ol class="course-steps" aria-label="How each lecture works">
+    {
+      steps.map(([title, copy], index) => (
+        <li>
+          <span class="course-step-index">{index + 1}</span>
+          <div>
+            <strong>{title}</strong>
+            <span>{copy}</span>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+  <div class="course-cards">
+    {
+      featuredCourses.map((course) => (
+        <article
+          class:list={['course-card', `course-card-${course.tone}`]}
+          id={course.id}
+          aria-labelledby={`${course.id}-title`}
+        >
+          <header class="course-card-band">
+            <div class="course-card-meta">
+              <span>{course.level}</span>
+              <span>
+                {course.lectures.length} {course.unit}
+              </span>
+            </div>
+            <p
+              class:list={['course-card-badge', { 'course-card-badge-long': course.badge.length > 8 }]}
+              aria-hidden="true"
+            >
+              {course.badge}
+            </p>
+          </header>
+          <div class="course-card-body">
+            <h3 id={`${course.id}-title`}>
+              {course.badge !== course.name && (
+                <span class="visually-hidden">{course.badge}: </span>
+              )}
+              {course.name}
+            </h3>
+            <p class="course-card-who">
+              {course.context} · {course.role}:{' '}
+              {course.people.map((person, index) => (
+                <>
+                  {index > 0 && ' and '}
+                  {person.href ? <a href={person.href}>{person.name}</a> : person.name}
+                </>
+              ))}
+              {course.official && (
+                <>
+                  {' · '}
+                  <a href={course.official}>Official course site</a>
+                </>
+              )}
+            </p>
+            <p class="course-card-summary">{course.summary}</p>
+            <ol class="course-card-lectures" start={course.firstLecture}>
+              {course.lectures.map((lecture, index) => {
+                const n = course.firstLecture + index;
+                return (
+                  <li>
+                    <a href={`${course.href}L${number(n)}/`}>
+                      <span class="course-card-lecture-number">{number(n)}</span>
+                      <span>{lecture}</span>
+                      {course.inPreparation?.includes(n) && (
+                        <span class="course-card-soon">Notes soon</span>
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+            <div class="course-card-footer">
+              <span>{course.detail}</span>
+              <a class="course-card-cta" href={course.href}>
+                Open the notes <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+  <p class="course-credit">
+    Interactive notes and videos built with 培玉智能. I teach Data Structures with Yintong Huo and
+    co-designed the AIE1001 and CSC4801 notes; their slides and course content belong to each
+    instructor.
+  </p>
+</div>
+
+<style>
+  .course-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+  }
+  .course-steps li {
+    display: flex;
+    gap: 14px;
+    align-items: start;
+    padding: 16px 0 0;
+    border-top: 2px solid var(--blueberry);
+  }
+  .course-step-index {
+    flex-shrink: 0;
+    color: var(--strawberry);
+    font-family: var(--serif);
+    font-size: 28px;
+    line-height: 1;
+  }
+  .course-steps strong {
+    display: block;
+    color: var(--ink);
+    font-size: 16px;
+  }
+  .course-steps li span:not(.course-step-index) {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .course-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .course-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line-strong);
+    background: var(--paper-raised);
+    scroll-margin-top: 96px;
+  }
+  .course-card-band {
+    padding: 22px 26px 18px;
+    color: var(--buttercream);
+    background: linear-gradient(135deg, var(--blueberry), var(--blue-dark) 85%);
+  }
+  .course-card-teal .course-card-band {
+    background: linear-gradient(135deg, #0f6e73, #0a4b4f 85%);
+  }
+  .course-card-strawberry .course-card-band {
+    background: linear-gradient(135deg, var(--strawberry-dark), #5d1612 85%);
+  }
+  .course-card-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .course-card-badge {
+    display: flex;
+    align-items: end;
+    min-height: 64px;
+    margin-top: 22px;
+    color: white;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .course-card-badge-long {
+    font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+    line-height: 1.05;
+  }
+  .course-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 24px 26px 26px;
+  }
+  .course-card-body h3 {
+    color: var(--blueberry);
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 2.2vw, 1.9rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+  .course-card-who {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .course-card-summary {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .course-card-lectures {
+    display: grid;
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .course-card-lectures li {
+    border-bottom: 1px solid var(--line);
+  }
+  .course-card-lectures a {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+  .course-card-lectures a:hover {
+    color: var(--strawberry);
+  }
+  .course-card-soon {
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 1px 7px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  .course-card-lecture-number {
+    flex-shrink: 0;
+    color: var(--muted);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .course-card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: auto;
+    padding-top: 24px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .course-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 9px 17px;
+    border-radius: 999px;
+    color: white;
+    background: var(--strawberry);
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .course-card-cta:hover {
+    color: white;
+    background: var(--strawberry-dark);
+    text-decoration: none;
+  }
+  .course-credit {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  @media (max-width: 1080px) {
+    .course-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 760px) {
+    .course-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 680px) {
+    .course-steps {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .course-card-band,
+    .course-card-body {
+      padding-inline: 20px;
+    }
+  }
+</style>

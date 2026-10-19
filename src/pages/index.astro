@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import ResearchMap from '../components/ResearchMap.astro';
+import CourseShowcase from '../components/CourseShowcase.astro';
 import { site } from '../data/site';
 import { oneaiOlympiadSchools, oneaiSchoolCount, oneaiSubjects } from '../data/oneai';
 import { pacificProducts } from '../data/pacific';
@@ -34,7 +35,7 @@ const latest = [
           <a class="button button-primary" href="/research/"
             >Explore the research <span aria-hidden="true">↗</span></a
           >
-          <a class="button button-quiet" href="/products/">See the products</a>
+          <a class="button button-quiet" href="#courses">Learn from the courses</a>
         </div>
         <p class="hero-elsewhere">
           <a href={site.scholar}>Google Scholar</a><a href={site.github}>GitHub</a><a href={site.x}
@@ -60,6 +61,22 @@ const latest = [
           >
         </figcaption>
       </figure>
+    </section>
+
+    <section class="home-section wrapper courses-section" id="courses" aria-labelledby="courses-heading">
+      <div class="home-section-head">
+        <div>
+          <p class="eyebrow">Teaching · interactive lecture notes</p>
+          <h2 id="courses-heading">Three courses, every lecture you can run</h2>
+        </div>
+        <a href="/teaching/#notes">All teaching <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="home-intro">
+        For three courses, I build one interactive page per lecture: from a first Python program,
+        through data structures, to building software with coding agents. Every program has been
+        run, and every output shown is the real one.
+      </p>
+      <CourseShowcase />
     </section>
 
     <section class="home-section wrapper" aria-labelledby="research-heading">
@@ -246,11 +263,6 @@ const latest = [
             specifications, tests, review, security, and judgment in the loop.
           </p>
           <p class="course-copy">
-            Alongside it, I build interactive lecture notes for two CUHK–Shenzhen courses:
-            <a href="https://boxi-cs.github.io/aie1001/">AIE1001</a> (Intro to AI Programming) and
-            <a href="https://boxi-cs.github.io/csc4801/">CSC4801</a> (AI-assisted Software Engineering).
-          </p>
-          <p class="course-copy">
             I have also mentored ten students, eight of whom are now Ph.D. students.{' '}
             <a href="/teaching/#mentoring">See where they went</a>.
           </p>
@@ -433,6 +445,9 @@ const latest = [
   }
   .home-section {
     padding-block: 80px;
+  }
+  .courses-section {
+    padding-top: 64px;
   }
   .home-hero + .home-section,
   .home-section + .home-section {

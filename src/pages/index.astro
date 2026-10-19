@@ -200,6 +200,30 @@ const latest = [
           ))
         }
       </div>
+      <aside class="equity-invite" aria-labelledby="equity-invite-heading">
+        <div>
+          <p class="eyebrow">Open invitation</p>
+          <h3 id="equity-invite-heading">Build it with us, in your language</h3>
+        </div>
+        <div>
+          <p>
+            Boxi Math and Boxi Learn are in English and Chinese today, but children learn best in
+            the language they think in. I would like to build this with scholars and teachers who
+            speak other languages: adapting lessons and videos to your language and curriculum,
+            checking that the subject reads naturally to your students, and making new lessons with
+            the open animind tools. Everything stays free under CC BY 4.0.
+          </p>
+          <div class="equity-invite-links">
+            <a href={`mailto:${site.email}?subject=Education%20equity`}>Write to me</a>
+            <a href="https://github.com/boxi-learn" target="_blank" rel="noreferrer"
+              >Boxi Learn on GitHub <span aria-hidden="true">↗</span></a
+            >
+            <a href="https://github.com/boxi-math" target="_blank" rel="noreferrer"
+              >Boxi Math on GitHub <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </aside>
     </section>
 
     <section class="course-section" aria-labelledby="course-heading">
@@ -613,6 +637,38 @@ const latest = [
   .pacific-card-footer a:hover {
     color: var(--blue-dark);
   }
+  .equity-invite {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 16px 40px;
+    margin-top: 16px;
+    padding: 28px 24px;
+    border: 1px dashed var(--line-strong);
+  }
+  .equity-invite h3 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .equity-invite p:not(.eyebrow) {
+    margin: 0;
+    color: var(--muted);
+  }
+  .equity-invite-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: 18px;
+    font-size: 15px;
+  }
+  .equity-invite-links a {
+    color: var(--blue);
+  }
+  .equity-invite-links a:hover {
+    color: var(--blue-dark);
+  }
   .course-section {
     background: linear-gradient(120deg, var(--accent-wash), var(--buttercream-soft));
     border-block: 1px solid var(--line);
@@ -693,6 +749,9 @@ const latest = [
     }
     .course-grid {
       gap: 40px;
+    }
+    .equity-invite {
+      grid-template-columns: 1fr;
     }
   }
   @media (max-width: 680px) {

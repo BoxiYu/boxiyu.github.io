@@ -8,11 +8,11 @@ export const equityProjects = [
     id: 'boxi-math',
     name: 'Boxi Math',
     verb: 'Learn',
-    status: 'First videos in production',
+    status: '39 videos published',
     description:
       'Short K–12 maths videos in English and Chinese. Each answers one “why” and draws it so you can see it. Organised by stage rather than school year, with the matching year in China, the US, the UK, and Singapore.',
     detail: 'Free · CC BY 4.0 · English & 中文',
-    href: 'https://boxi-math.github.io/',
+    href: 'https://boxi-math.github.io/en/',
     cta: 'Visit the site',
   },
   {

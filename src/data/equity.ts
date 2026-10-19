@@ -1,7 +1,8 @@
 /**
  * Free and open education work, shown in the homepage "Education equity"
- * section. Boxi Math is the public K-12 maths site; animind is the open
- * toolchain its videos are made with.
+ * section. Boxi Math is the public K-12 maths site; Boxi Learn extends the
+ * same stage-based approach to other school subjects; animind is the open
+ * toolchain the maths videos are made with.
  */
 export const equityProjects = [
   {
@@ -13,6 +14,17 @@ export const equityProjects = [
       'Short K–12 maths videos in English and Chinese. Each answers one “why” and draws it so you can see it. Organised by stage rather than school year, with the matching year in China, the US, the UK, and Singapore.',
     detail: 'Free · CC BY 4.0 · English & 中文',
     href: 'https://boxi-math.github.io/en/',
+    cta: 'Visit the site',
+  },
+  {
+    id: 'boxi-learn',
+    name: 'Boxi Learn',
+    verb: 'Try',
+    status: '65 lessons in 9 subjects',
+    description:
+      'The same stage-based approach for the other K–12 subjects, from Chinese and English to physics, history, and computing. Each subject starts from a few core ideas, and every lesson is something to try with your own hands.',
+    detail: 'Free · CC BY 4.0 · English & 中文',
+    href: 'https://boxi-learn.github.io/en/',
     cta: 'Visit the site',
   },
   {

@@ -124,6 +124,31 @@ const mentees = [
       </article>
     </section>
 
+    <section class="teaching-history" id="notes" aria-labelledby="notes-title">
+      <div>
+        <p class="teaching-kicker">Interactive lecture notes</p>
+        <h2 id="notes-title">Companion sites for CUHK–Shenzhen courses.</h2>
+        <p class="mentoring-note">
+          One page per lecture: step through the code or the agent loop, predict before it shows
+          you, and end with a self-check.
+        </p>
+      </div>
+      <ul class="course-list notes-list">
+        <li>
+          <strong>AIE1001</strong><span
+            ><a href="https://boxi-cs.github.io/aie1001/">Introduction to AI Programming ↗</a>
+            <em>Instructor: Prof. Pinjia He</em></span
+          >
+        </li>
+        <li>
+          <strong>CSC4801</strong><span
+            ><a href="https://boxi-cs.github.io/csc4801/">AI-assisted Software Engineering ↗</a>
+            <em>Fall 2026 · Instructor: Jinsheng Ba</em></span
+          >
+        </li>
+      </ul>
+    </section>
+
     <section class="supervision" id="supervision" aria-labelledby="supervision-title">
       <span id="phd-students" class="teaching-anchor" aria-hidden="true"></span>
       <div>
@@ -396,6 +421,11 @@ const mentees = [
     grid-template-columns: 150px 1fr;
   }
   .mentee-list em {
+    display: block;
+    font-size: 15px;
+    font-style: normal;
+  }
+  .notes-list em {
     display: block;
     font-size: 15px;
     font-style: normal;

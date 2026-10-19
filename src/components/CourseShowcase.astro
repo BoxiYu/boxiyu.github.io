@@ -1,16 +1,12 @@
 ---
 import { featuredCourses } from '../data/courses';
 
-interface Props {
-  headingLevel?: 'h2' | 'h3';
-}
-const { headingLevel = 'h3' } = Astro.props;
-const Heading = headingLevel;
 const steps = [
   ['Step through', 'Watch the code or the agent loop run, one state at a time.'],
   ['Predict', 'Commit to an answer before the page shows you the real output.'],
   ['Check', 'End every lecture with a self-check and exercises.'],
 ];
+const number = (n: number) => String(n).padStart(2, '0');
 ---
 
 <div class="course-showcase">
@@ -30,28 +26,40 @@ const steps = [
   <div class="course-cards">
     {
       featuredCourses.map((course) => (
-        <article class="course-card" id={course.id} aria-labelledby={`${course.id}-title`}>
+        <article
+          class:list={['course-card', `course-card-${course.tone}`]}
+          id={course.id}
+          aria-labelledby={`${course.id}-title`}
+        >
           <header class="course-card-band">
             <div class="course-card-meta">
               <span>{course.level}</span>
-              <span>{course.lectures.length} lectures</span>
+              <span>
+                {course.lectures.length} {course.unit}
+              </span>
             </div>
-            <p class="course-card-code" aria-hidden="true">
-              {course.code}
+            <p
+              class:list={['course-card-badge', { 'course-card-badge-long': course.badge.length > 8 }]}
+              aria-hidden="true"
+            >
+              {course.badge}
             </p>
           </header>
           <div class="course-card-body">
-            <Heading id={`${course.id}-title`}>
-              <span class="visually-hidden">{course.code}: </span>
-              {course.name}
-            </Heading>
-            <p class="course-card-who">
-              {course.term} · Instructor:{' '}
-              {course.instructorHref ? (
-                <a href={course.instructorHref}>{course.instructor}</a>
-              ) : (
-                course.instructor
+            <h3 id={`${course.id}-title`}>
+              {course.badge !== course.name && (
+                <span class="visually-hidden">{course.badge}: </span>
               )}
+              {course.name}
+            </h3>
+            <p class="course-card-who">
+              {course.context} · {course.role}:{' '}
+              {course.people.map((person, index) => (
+                <>
+                  {index > 0 && ' and '}
+                  {person.href ? <a href={person.href}>{person.name}</a> : person.name}
+                </>
+              ))}
               {course.official && (
                 <>
                   {' · '}
@@ -61,16 +69,20 @@ const steps = [
             </p>
             <p class="course-card-summary">{course.summary}</p>
             <ol class="course-card-lectures" start={course.firstLecture}>
-              {course.lectures.map((lecture, index) => (
-                <li>
-                  <a href={`${course.href}L${String(course.firstLecture + index).padStart(2, '0')}/`}>
-                    <span class="course-card-lecture-number">
-                      {String(course.firstLecture + index).padStart(2, '0')}
-                    </span>
-                    {lecture}
-                  </a>
-                </li>
-              ))}
+              {course.lectures.map((lecture, index) => {
+                const n = course.firstLecture + index;
+                return (
+                  <li>
+                    <a href={`${course.href}L${number(n)}/`}>
+                      <span class="course-card-lecture-number">{number(n)}</span>
+                      <span>{lecture}</span>
+                      {course.inPreparation?.includes(n) && (
+                        <span class="course-card-soon">Notes soon</span>
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
             </ol>
             <div class="course-card-footer">
               <span>{course.detail}</span>
@@ -84,7 +96,9 @@ const steps = [
     }
   </div>
   <p class="course-credit">
-    I co-designed these notes and videos, built with 培玉智能. Slides and course content belong to each instructor.
+    Interactive notes and videos built with 培玉智能. I teach Data Structures with Yintong Huo and
+    co-designed the AIE1001 and CSC4801 notes; their slides and course content belong to each
+    instructor.
   </p>
 </div>
 
@@ -123,8 +137,8 @@ const steps = [
   }
   .course-cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
     margin-top: 32px;
   }
   .course-card {
@@ -139,7 +153,10 @@ const steps = [
     color: var(--buttercream);
     background: linear-gradient(135deg, var(--blueberry), var(--blue-dark) 85%);
   }
-  .course-card:nth-child(2) .course-card-band {
+  .course-card-teal .course-card-band {
+    background: linear-gradient(135deg, #0f6e73, #0a4b4f 85%);
+  }
+  .course-card-strawberry .course-card-band {
     background: linear-gradient(135deg, var(--strawberry-dark), #5d1612 85%);
   }
   .course-card-meta {
@@ -150,14 +167,21 @@ const steps = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .course-card-code {
-    margin-top: 26px;
+  .course-card-badge {
+    display: flex;
+    align-items: end;
+    min-height: 64px;
+    margin-top: 22px;
     color: white;
     font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: clamp(2.6rem, 5.4vw, 4.2rem);
+    font-size: clamp(2.2rem, 3.6vw, 3.2rem);
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.02em;
+  }
+  .course-card-badge-long {
+    font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+    line-height: 1.05;
   }
   .course-card-body {
     display: flex;
@@ -165,10 +189,10 @@ const steps = [
     flex-direction: column;
     padding: 24px 26px 26px;
   }
-  .course-card-body :is(h2, h3) {
+  .course-card-body h3 {
     color: var(--blueberry);
     font-family: var(--serif);
-    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    font-size: clamp(1.6rem, 2.2vw, 1.9rem);
     font-weight: 400;
     line-height: 1.1;
   }
@@ -185,8 +209,6 @@ const steps = [
   }
   .course-card-lectures {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 20px;
     margin: 22px 0 0;
     padding: 0;
     list-style: none;
@@ -206,6 +228,17 @@ const steps = [
   }
   .course-card-lectures a:hover {
     color: var(--strawberry);
+  }
+  .course-card-soon {
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 1px 7px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+    white-space: nowrap;
   }
   .course-card-lecture-number {
     flex-shrink: 0;
@@ -255,7 +288,12 @@ const steps = [
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
+    .course-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 760px) {
     .course-cards {
       grid-template-columns: 1fr;
     }
@@ -268,9 +306,6 @@ const steps = [
     .course-card-band,
     .course-card-body {
       padding-inline: 20px;
-    }
-    .course-card-lectures {
-      grid-template-columns: 1fr;
     }
   }
 </style>

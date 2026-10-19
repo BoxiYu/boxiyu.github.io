@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import CourseShowcase from '../components/CourseShowcase.astro';
 const menteeSites: Record<string, string> = {
   'Qiuyang Mang': 'https://joyemang33.github.io/',
   'Zhiqing Zhong': 'https://coxhin.github.io/',
@@ -54,9 +55,8 @@ const mentees = [
           concept, build a small artifact, and test what it can actually do.
         </p>
         <div class="teaching-actions">
-          <a class="teaching-button" href="https://boxi-cs.github.io/agentic-se/"
-            >Open the Agentic SE course ↗</a
-          >
+          <a class="teaching-button" href="#notes">Browse AIE1001 &amp; CSC4801</a>
+          <a class="teaching-link" href="#course-title">Agentic SE course</a>
           <a class="teaching-link" href="#supervision">See supervision</a>
         </div>
       </div>
@@ -65,6 +65,16 @@ const mentees = [
         <p>Students should leave with a working mental model and something they can run.</p>
       </aside>
     </header>
+
+    <section class="teaching-notes" id="notes" aria-labelledby="notes-title">
+      <p class="teaching-kicker">Interactive lecture notes · CUHK–Shenzhen</p>
+      <h2 id="notes-title">One page per lecture, from first program to coding agents.</h2>
+      <p class="teaching-notes-lede">
+        Companion sites for two courses. Each lecture follows the slides, lets you step through what
+        the code or the agent actually does, and ends with a self-check.
+      </p>
+      <CourseShowcase />
+    </section>
 
     <section class="course-feature" aria-labelledby="course-title">
       <div class="course-feature-label">
@@ -122,31 +132,6 @@ const mentees = [
           baseline, and an honest account of what the result does and does not show.
         </p>
       </article>
-    </section>
-
-    <section class="teaching-history" id="notes" aria-labelledby="notes-title">
-      <div>
-        <p class="teaching-kicker">Interactive lecture notes</p>
-        <h2 id="notes-title">Companion sites for CUHK–Shenzhen courses.</h2>
-        <p class="mentoring-note">
-          One page per lecture: step through the code or the agent loop, predict before it shows
-          you, and end with a self-check.
-        </p>
-      </div>
-      <ul class="course-list notes-list">
-        <li>
-          <strong>AIE1001</strong><span
-            ><a href="https://boxi-cs.github.io/aie1001/">Introduction to AI Programming ↗</a>
-            <em>Instructor: Prof. Pinjia He</em></span
-          >
-        </li>
-        <li>
-          <strong>CSC4801</strong><span
-            ><a href="https://boxi-cs.github.io/csc4801/">AI-assisted Software Engineering ↗</a>
-            <em>Fall 2026 · Instructor: Jinsheng Ba</em></span
-          >
-        </li>
-      </ul>
     </section>
 
     <section class="supervision" id="supervision" aria-labelledby="supervision-title">
@@ -296,6 +281,22 @@ const mentees = [
     font-size: clamp(1.7rem, 2.8vw, 2.4rem);
     line-height: 1.15;
   }
+  .teaching-notes {
+    padding: 76px 0;
+    border-bottom: 1px solid var(--teaching-line);
+  }
+  .teaching-notes h2 {
+    max-width: 820px;
+    color: var(--teaching-ink);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+  }
+  .teaching-notes-lede {
+    max-width: 680px;
+    margin: 20px 0 40px;
+    color: var(--teaching-muted);
+    font-size: 19px;
+    line-height: 1.6;
+  }
   .course-feature {
     display: grid;
     grid-template-columns: 0.72fr 1.28fr;
@@ -425,11 +426,6 @@ const mentees = [
     font-size: 15px;
     font-style: normal;
   }
-  .notes-list em {
-    display: block;
-    font-size: 15px;
-    font-style: normal;
-  }
   .course-list span {
     color: var(--teaching-muted);
   }
@@ -459,6 +455,7 @@ const mentees = [
     .teaching-lede {
       font-size: 19px;
     }
+    .teaching-notes,
     .course-feature,
     .teaching-grid,
     .supervision,

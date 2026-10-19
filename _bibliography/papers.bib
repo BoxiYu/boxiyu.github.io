@@ -241,6 +241,20 @@ slides={MetaIC_slides.pdf}
   abstract={Conversational LLM agents can cause real-world harm when their internal workflows fail, such as completing a transaction without confirmation. Testing these state-dependent failures is difficult because critical boundaries, such as identity checks and confirmation gates, are hidden behind multi-turn conversational prerequisites, rendering them inaccessible to standard tests. We present AgentEval, a black-box testing framework that discovers and stresses these stateful boundaries. AgentEval interacts with an agent to mine a conversational workflow graph, a model of its behavior. Instead of prompting blindly, AgentEval uses this graph's structure to enumerate specific guards and prerequisites as test targets, replaying the conversational path to a boundary before applying a perturbation. AgentEval then executes each test, determining whether it passes or fails using only the conversation turns. We benchmark AgentEval against a privileged, white-box auditor with access to the agent's underlying source code, which AgentEval never sees. On four tau-3-bench agents, AgentEval successfully generates tests covering 23--38 distinct boundaries per agent; ablation studies attribute the gain to the graph's structure: 23 distinct boundaries versus 12 with a prompt-only baseline, at lower duplicate and false-alarm rates.}
 }
 
+@article{yu2026cxbench,
+  abbr={Preprint},
+  title={CXBench: A Benchmark for Process-Compliant LLM Agents in Regulated Customer-Experience Workflows},
+  author={Yu, Boxi and Zhang, Yuzhong and Su, Zhenfeng and Xi, Linfu and Yao, Yinghan and Chen, Shitao and Cao, Yang and Lin, Liting and Briand, Lionel and Muñoz, Emir},
+  journal={Preprint},
+  year={2026},
+  selected={false},
+  topic={TrustworthyAI},
+  url={https://cxbench.github.io/},
+  pdf={https://cxbench.github.io/assets/cxbench-paper.pdf},
+  code={https://github.com/CXBench/cxbench},
+  abstract={Tool-using language agents increasingly perform regulated customer-service workflows, where a correct final state is insufficient: agents must also provide disclosures, obtain consent, and follow required procedures. Existing tool-agent benchmarks largely score final business states, accepting trajectories that reach correct outcomes through non-compliant processes. We introduce CXBench, a benchmark that evaluates outcome and process compliance separately across six regulated domains. Each task combines a customer request, a tool-based environment, and explicit process requirements. Rule cards link cited regulatory obligations to observable trace evidence. A hybrid grader combines deterministic checks for ordering and authority with an LLM judge for semantic requirements. We define a false-pass as an outcome-pass run that fails process checks. Across seven models and 120 tasks, 55.5\% of the 840 retained executions are false-passes, representing 80.1\% of outcome-passing runs; only 13.8\% pass both checks. Process-inclusive evaluation changes the observed model ordering and exposes differences hidden by outcome-only scoring. CXBench makes these failures inspectable through trace-linked criteria.}
+}
+
 @article{xu2026bespec,
   abbr={arXiv},
   title={BeSpec: Behavior-Level Specification Alignment for Code Generation},

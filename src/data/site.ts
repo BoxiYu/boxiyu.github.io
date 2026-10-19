@@ -41,7 +41,10 @@ export const projects = [
       'SWE-ABS first uses program slicing to guide tests toward untested code, then uses plausible incorrect patches to generate adversarial tests that expose semantic blind spots.',
     finding:
       "The study strengthened tests for 50.2% of the 500 benchmark instances. The leading evaluated agent's success rate fell from 78.80% to 62.20%, and the previously top-ranked agent moved to fifth place. These figures describe the systems and benchmark evaluated in the paper.",
-    links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2603.00520' }],
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2603.00520' },
+      { label: 'Results', href: 'https://openagenteval.github.io/SWE-ABS/' },
+    ],
     topic: 'Coding agent evaluation',
   },
   {

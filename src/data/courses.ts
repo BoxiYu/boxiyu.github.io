@@ -68,7 +68,7 @@ export const featuredCourses: Course[] = [
     people: [{ name: 'Boxi Yu' }, { name: 'Yintong Huo', href: 'https://yintonghuo.github.io/' }],
     summary:
       'The structures behind every program, from arrays and linked lists to search trees, hash tables, heaps, and graphs, with complexity and proof methods as the common language. Pick Python or Java: the concepts are shared, the code is in your language.',
-    detail: 'Notes and four 8–10 minute videos per chapter',
+    detail: 'Notes and four 8–10 minute videos in every chapter',
     href: 'https://boxi-cs.github.io/data-structures/',
     unit: 'chapters',
     firstLecture: 1,
@@ -83,7 +83,6 @@ export const featuredCourses: Course[] = [
       'Heaps and Priority Queues',
       'Graphs and Graph Algorithms',
     ],
-    inPreparation: [6, 7, 9],
     tone: 'teal',
   },
   {

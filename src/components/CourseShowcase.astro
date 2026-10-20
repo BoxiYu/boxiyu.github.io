@@ -34,9 +34,7 @@ const number = (n: number) => String(n).padStart(2, '0');
           <header class="course-card-band">
             <div class="course-card-meta">
               <span>{course.level}</span>
-              <span>
-                {course.lectures.length} {course.unit}
-              </span>
+              <span>{course.count ?? `${course.lectures.length} ${course.unit}`}</span>
             </div>
             <p
               class:list={['course-card-badge', { 'course-card-badge-long': course.badge.length > 8 }]}
@@ -60,18 +58,18 @@ const number = (n: number) => String(n).padStart(2, '0');
                   {person.href ? <a href={person.href}>{person.name}</a> : person.name}
                 </>
               ))}
-              {course.official && (
+              {course.links?.map((link) => (
                 <>
                   {' · '}
-                  <a href={course.official}>Official course site</a>
+                  <a href={link.href}>{link.label}</a>
                 </>
-              )}
+              ))}
             </p>
             <p class="course-card-summary">{course.summary}</p>
             <ol class="course-card-lectures" start={course.firstLecture}>
               {course.lectures.map((lecture, index) => {
                 const n = course.firstLecture + index;
-                const label = course.lectureIds?.[index] ?? number(n);
+                const label = course.lectureLabels?.[index] ?? course.lectureIds?.[index] ?? number(n);
                 const path = course.lectureIds?.[index] ?? `L${number(n)}`;
                 return (
                   <li>
@@ -98,8 +96,8 @@ const number = (n: number) => String(n).padStart(2, '0');
     }
   </div>
   <p class="course-credit">
-    Interactive notes and videos built with 培玉智能. I designed AI for All, teach Data Structures
-    with Yintong Huo, and co-designed the AIE1001 and CSC4801 notes; their slides and course content belong to each
+    Interactive notes and videos built with 培玉智能. I designed AI for All and LA101, teach Data
+    Structures with Yintong Huo, and co-designed the AIE1001 and CSC4801 notes; their slides and course content belong to each
     instructor.
   </p>
 </div>
@@ -143,6 +141,18 @@ const number = (n: number) => String(n).padStart(2, '0');
     gap: 16px;
     margin-top: 32px;
   }
+  /* An odd last card spans the row and splits its list into two columns. */
+  .course-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .course-card:last-child:nth-child(odd) .course-card-lectures {
+    display: block;
+    columns: 2;
+    column-gap: 32px;
+  }
+  .course-card:last-child:nth-child(odd) .course-card-lectures li {
+    break-inside: avoid;
+  }
   .course-card {
     display: flex;
     flex-direction: column;
@@ -157,6 +167,9 @@ const number = (n: number) => String(n).padStart(2, '0');
   }
   .course-card-moss .course-card-band {
     background: linear-gradient(135deg, #2f7a56, #1d4f37 85%);
+  }
+  .course-card-ochre .course-card-band {
+    background: linear-gradient(135deg, #8a5a14, #5c3b0c 85%);
   }
   .course-card-teal .course-card-band {
     background: linear-gradient(135deg, #0f6e73, #0a4b4f 85%);
@@ -296,6 +309,9 @@ const number = (n: number) => String(n).padStart(2, '0');
   @media (max-width: 760px) {
     .course-cards {
       grid-template-columns: 1fr;
+    }
+    .course-card:last-child:nth-child(odd) .course-card-lectures {
+      columns: 1;
     }
   }
   @media (max-width: 680px) {

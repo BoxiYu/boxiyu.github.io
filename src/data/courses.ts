@@ -1,11 +1,13 @@
 /**
  * Interactive lecture notes, shown on the homepage "Courses" section and the
  * Teaching page, ordered from AI literacy for everyone, through a first
- * program, to coding agents. Boxi Yu designed AI for All (AI 通识课) and
- * teaches Data Structures with Yintong Huo; AIE1001 and CSC4801 are
+ * program, data structures and linear algebra, to coding agents. Boxi Yu
+ * designed AI for All (AI 通识课) and LA101, and teaches Data Structures with
+ * Yintong Huo; AIE1001 and CSC4801 are
  * CUHK–Shenzhen courses taught by their own instructors, with notes and
  * videos co-designed by Boxi Yu. Lecture titles follow the published sites
- * under https://boxi-cs.github.io/ and https://boxi-ai.github.io/.
+ * under https://boxi-cs.github.io/, https://boxi-ai.github.io/ and
+ * https://boxi-math.github.io/.
  */
 export interface Course {
   id: string;
@@ -17,18 +19,23 @@ export interface Course {
   /** Leading word for the people line, e.g. "Instructor". */
   role: string;
   people: { name: string; href?: string }[];
-  official?: string;
+  /** Extra links after the people line, e.g. an official course site. */
+  links?: { label: string; href: string }[];
   summary: string;
   detail: string;
   href: string;
   unit: 'lectures' | 'chapters' | 'modules';
   firstLecture: number;
   lectures: string[];
-  /** Module codes (e.g. "C1") used as the label and URL path instead of L01, L02, … */
+  /** Folder names (e.g. "C1") used as the URL path instead of L01, L02, … */
   lectureIds?: string[];
+  /** Labels shown before each item; default: lectureIds, else the lecture number. */
+  lectureLabels?: string[];
+  /** Overrides the "N lectures" count on the card band. */
+  count?: string;
   /** Lecture numbers whose notes are still being written. */
   inPreparation?: number[];
-  tone: 'moss' | 'blueberry' | 'teal' | 'strawberry';
+  tone: 'moss' | 'blueberry' | 'teal' | 'ochre' | 'strawberry';
 }
 
 export const featuredCourses: Course[] = [
@@ -40,6 +47,7 @@ export const featuredCourses: Course[] = [
     context: 'Open course in Chinese and English',
     role: 'Designer',
     people: [{ name: 'Boxi Yu' }],
+    links: [{ label: 'English version', href: 'https://boxi-ai.github.io/ai-for-all/en/' }],
     summary:
       'Eight shared modules on using AI, checking what it says, and knowing when not to use it, with tracks for K12, university, working adults, seniors, and teachers. The core module, C4, teaches how to check AI: it makes mistakes, so learn to catch them.',
     detail: 'Notes, 3–5 minute videos, and interactive pages per module',
@@ -116,6 +124,41 @@ export const featuredCourses: Course[] = [
     tone: 'teal',
   },
   {
+    id: 'la101',
+    badge: 'LA101',
+    name: 'Linear Algebra',
+    level: 'Core · Math with code',
+    context: 'Open course in English',
+    role: 'Designer',
+    people: [{ name: 'Boxi Yu' }],
+    links: [
+      {
+        label: "Inspired by MIT 18.06",
+        href: 'https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/',
+      },
+    ],
+    summary:
+      'From three pictures of a linear system to the singular value decomposition and computing with matrices. Every number in the notes is computed by running code, and every unit ends with a machine-learning example and a section on working with AI: what to ask, and how to check the answer.',
+    detail: 'Notes, demos, and two short videos per lecture, plus electives',
+    href: 'https://boxi-math.github.io/la101/',
+    unit: 'lectures',
+    count: '30 lectures',
+    firstLecture: 1,
+    lectures: [
+      'Equations and elimination',
+      'The four subspaces',
+      'Orthogonality and least squares',
+      'Determinants',
+      'Eigenvalues and dynamics',
+      'Symmetric, complex and similar matrices',
+      'The SVD and its uses',
+      'Computing with matrices',
+    ],
+    lectureIds: ['L01', 'L06', 'L12', 'L16', 'L18', 'L22', 'L26', 'L29'],
+    lectureLabels: ['L01–05', 'L06–11', 'L12–15', 'L16–17', 'L18–21', 'L22–25', 'L26–28', 'L29–30'],
+    tone: 'ochre',
+  },
+  {
     id: 'csc4801',
     badge: 'CSC4801',
     name: 'AI-assisted Software Engineering',
@@ -123,7 +166,7 @@ export const featuredCourses: Course[] = [
     context: 'CUHK–Shenzhen · Fall 2026',
     role: 'Instructor',
     people: [{ name: 'Jinsheng Ba' }],
-    official: 'https://sra-research.github.io/CSC4801/',
+    links: [{ label: 'Official course site', href: 'https://sra-research.github.io/CSC4801/' }],
     summary:
       'How LLMs and agents work, then how to use them across the software lifecycle: prompts, MCP and skills, requirements, coding, and team collaboration. Step through the agent loop, prompts, and tool calls, then try each step with a coding agent of your own.',
     detail: 'Notes and videos, released with the lectures',

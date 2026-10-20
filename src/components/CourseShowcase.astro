@@ -71,10 +71,12 @@ const number = (n: number) => String(n).padStart(2, '0');
             <ol class="course-card-lectures" start={course.firstLecture}>
               {course.lectures.map((lecture, index) => {
                 const n = course.firstLecture + index;
+                const label = course.lectureIds?.[index] ?? number(n);
+                const path = course.lectureIds?.[index] ?? `L${number(n)}`;
                 return (
                   <li>
-                    <a href={`${course.href}L${number(n)}/`}>
-                      <span class="course-card-lecture-number">{number(n)}</span>
+                    <a href={`${course.href}${path}/`}>
+                      <span class="course-card-lecture-number">{label}</span>
                       <span>{lecture}</span>
                       {course.inPreparation?.includes(n) && (
                         <span class="course-card-soon">Notes soon</span>
@@ -96,8 +98,8 @@ const number = (n: number) => String(n).padStart(2, '0');
     }
   </div>
   <p class="course-credit">
-    Interactive notes and videos built with 培玉智能. I teach Data Structures with Yintong Huo and
-    co-designed the AIE1001 and CSC4801 notes; their slides and course content belong to each
+    Interactive notes and videos built with 培玉智能. I designed AI for All, teach Data Structures
+    with Yintong Huo, and co-designed the AIE1001 and CSC4801 notes; their slides and course content belong to each
     instructor.
   </p>
 </div>
@@ -137,7 +139,7 @@ const number = (n: number) => String(n).padStart(2, '0');
   }
   .course-cards {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
     margin-top: 32px;
   }
@@ -152,6 +154,9 @@ const number = (n: number) => String(n).padStart(2, '0');
     padding: 22px 26px 18px;
     color: var(--buttercream);
     background: linear-gradient(135deg, var(--blueberry), var(--blue-dark) 85%);
+  }
+  .course-card-moss .course-card-band {
+    background: linear-gradient(135deg, #2f7a56, #1d4f37 85%);
   }
   .course-card-teal .course-card-band {
     background: linear-gradient(135deg, #0f6e73, #0a4b4f 85%);
@@ -287,11 +292,6 @@ const number = (n: number) => String(n).padStart(2, '0');
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
-  }
-  @media (max-width: 1080px) {
-    .course-cards {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
   }
   @media (max-width: 760px) {
     .course-cards {

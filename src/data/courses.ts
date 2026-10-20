@@ -1,10 +1,11 @@
 /**
  * Interactive lecture notes, shown on the homepage "Courses" section and the
- * Teaching page, ordered from a first program to coding agents. Boxi Yu
+ * Teaching page, ordered from AI literacy for everyone, through a first
+ * program, to coding agents. Boxi Yu designed AI for All (AI 通识课) and
  * teaches Data Structures with Yintong Huo; AIE1001 and CSC4801 are
  * CUHK–Shenzhen courses taught by their own instructors, with notes and
  * videos co-designed by Boxi Yu. Lecture titles follow the published sites
- * under https://boxi-cs.github.io/.
+ * under https://boxi-cs.github.io/ and https://boxi-ai.github.io/.
  */
 export interface Course {
   id: string;
@@ -20,15 +21,44 @@ export interface Course {
   summary: string;
   detail: string;
   href: string;
-  unit: 'lectures' | 'chapters';
+  unit: 'lectures' | 'chapters' | 'modules';
   firstLecture: number;
   lectures: string[];
+  /** Module codes (e.g. "C1") used as the label and URL path instead of L01, L02, … */
+  lectureIds?: string[];
   /** Lecture numbers whose notes are still being written. */
   inPreparation?: number[];
-  tone: 'blueberry' | 'teal' | 'strawberry';
+  tone: 'moss' | 'blueberry' | 'teal' | 'strawberry';
 }
 
 export const featuredCourses: Course[] = [
+  {
+    id: 'ai-for-all',
+    badge: 'AI 通识课',
+    name: 'AI Literacy for Everyone',
+    level: 'Open course · No coding',
+    context: 'Open course in Chinese and English',
+    role: 'Designer',
+    people: [{ name: 'Boxi Yu' }],
+    summary:
+      'Eight shared modules on using AI, checking what it says, and knowing when not to use it, with tracks for K12, university, working adults, seniors, and teachers. The core module, C4, teaches how to check AI: it makes mistakes, so learn to catch them.',
+    detail: 'Notes, 3–5 minute videos, and interactive pages per module',
+    href: 'https://boxi-ai.github.io/ai-for-all/',
+    unit: 'modules',
+    firstLecture: 1,
+    lectures: [
+      "What AI is and isn't",
+      'Data, models and hallucination',
+      'Describing and delegating',
+      "Checking AI's answers",
+      'Safety, privacy, scams and deepfakes',
+      'Fairness, ethics, society and work',
+      'Agents: delegation and oversight',
+      'When not to use AI',
+    ],
+    lectureIds: ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8'],
+    tone: 'moss',
+  },
   {
     id: 'aie1001',
     badge: 'AIE1001',

@@ -94,7 +94,7 @@ export const projects = [
     paper: 'yu2026cxbench',
     name: 'CXBench',
     year: '2026',
-    venue: 'Preprint',
+    venue: 'arXiv',
     question: 'Does a correct outcome mean the agent followed the required process?',
     summary:
       'A benchmark that scores business outcomes and process compliance separately for LLM agents in regulated customer-experience workflows, built with Genesys.',
@@ -105,7 +105,7 @@ export const projects = [
     topic: 'Trustworthy AI',
     links: [
       { label: 'Project page', href: 'https://cxbench.github.io/' },
-      { label: 'Paper', href: 'https://cxbench.github.io/assets/cxbench-paper.pdf' },
+      { label: 'Paper', href: 'https://arxiv.org/abs/2610.25954' },
       { label: 'Code', href: 'https://github.com/CXBench/cxbench' },
     ],
   },

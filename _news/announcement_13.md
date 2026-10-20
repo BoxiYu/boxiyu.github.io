@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-We released [CXBench](https://cxbench.github.io/), a benchmark built with Genesys that scores LLM agents in regulated customer-experience workflows on both the business outcome and the required process. Across seven models, 80.1% of outcome-passing runs failed a process check. See [the research summary](/research/#cxbench).
+We released [CXBench](https://cxbench.github.io/), a benchmark built with Genesys that scores LLM agents in regulated customer-experience workflows on both the business outcome and the required process. Across seven models, 80.1% of outcome-passing runs failed a process check. The paper is now on [arXiv](https://arxiv.org/abs/2610.25954); see [the research summary](/research/#cxbench).

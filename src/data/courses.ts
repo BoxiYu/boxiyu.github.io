@@ -1,9 +1,10 @@
 /**
  * Interactive lecture notes, shown on the homepage "Courses" section and the
  * Teaching page, ordered from AI literacy for everyone, through a first
- * program, data structures and linear algebra, to coding agents. Boxi Yu
+ * program, data structures, linear algebra and machine learning, to coding
+ * agents. Boxi Yu
  * designed AI for All (AI 通识课) and LA101, and teaches Data Structures with
- * Yintong Huo; AIE1001, CSC4801 and DDA3020 (Teaching page only) are
+ * Yintong Huo; AIE1001, DDA3020 and CSC4801 are
  * CUHK–Shenzhen courses taught by their own instructors, with notes and
  * videos co-designed by Boxi Yu. Lecture titles follow the published sites
  * under https://boxi-cs.github.io/, https://boxi-ai.github.io/ and
@@ -160,6 +161,23 @@ export const featuredCourses: Course[] = [
     tone: 'ochre',
   },
   {
+    id: 'dda3020',
+    badge: 'DDA3020',
+    name: 'Machine Learning',
+    level: 'Core · Neural networks',
+    context: 'CUHK–Shenzhen · Lectures 9–11',
+    role: 'Instructor',
+    people: [{ name: 'Prof. Jicong Fan' }],
+    summary:
+      'From a single neuron to attention: backpropagation on computational graphs, convolution and pooling, recurrent networks with LSTM and GRU, and the Transformer. Move the numbers, predict each result, and run the NumPy labs.',
+    detail: 'Notes, nine videos with English and Chinese subtitles, and NumPy labs',
+    href: 'https://boxi-math.github.io/dda3020/',
+    unit: 'lectures',
+    firstLecture: 9,
+    lectures: ['Neural Networks', 'Convolutional Neural Networks', 'RNN and Transformer'],
+    tone: 'blueberry',
+  },
+  {
     id: 'csc4801',
     badge: 'CSC4801',
     name: 'AI-assisted Software Engineering',
@@ -191,23 +209,3 @@ export const featuredCourses: Course[] = [
   },
 ];
 
-/** Companion sites shown on the Teaching page only; the homepage keeps the five above. */
-export const companionCourses: Course[] = [
-  {
-    id: 'dda3020',
-    badge: 'DDA3020',
-    name: 'Machine Learning',
-    level: 'Core · Neural networks',
-    context: 'CUHK–Shenzhen · Lectures 9–11',
-    role: 'Instructor',
-    people: [{ name: 'Prof. Jicong Fan' }],
-    summary:
-      'From a single neuron to attention: backpropagation on computational graphs, convolution and pooling, recurrent networks with LSTM and GRU, and the Transformer. Move the numbers, predict each result, and run the NumPy labs.',
-    detail: 'Notes, nine videos with English and Chinese subtitles, and NumPy labs',
-    href: 'https://boxi-math.github.io/dda3020/',
-    unit: 'lectures',
-    firstLecture: 9,
-    lectures: ['Neural Networks', 'Convolutional Neural Networks', 'RNN and Transformer'],
-    tone: 'blueberry',
-  },
-];

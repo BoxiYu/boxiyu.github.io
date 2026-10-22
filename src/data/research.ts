@@ -6,7 +6,7 @@ export const researchGroups = [
     description: 'Strengthening tests and examining the reliability of benchmark results.',
     projects: ['swe-abs', 'utboost'],
     related: [
-      { name: 'BeSpec', venue: 'arXiv 2026 · Preprint', href: '/publications/#xu2026bespec' },
+      { name: 'BeSpec', venue: 'ICSE 2027', href: '/publications/#xu2026bespec' },
       {
         name: 'Code RLVR synthesis',
         venue: 'arXiv 2026 · Preprint',

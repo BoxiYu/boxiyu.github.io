@@ -20,10 +20,10 @@ export const equityProjects = [
     id: 'boxi-learn',
     name: 'Boxi Learn',
     verb: 'Try',
-    status: '65 lessons in 9 subjects',
+    status: '109 lessons in 9 subjects',
     description:
       'The same stage-based approach for the other K–12 subjects, from Chinese and English to physics, history, and computing. Each subject starts from a few core ideas, and every lesson is something to try with your own hands.',
-    detail: 'Free · CC BY 4.0 · English & 中文',
+    detail: 'Free · CC BY-SA 4.0 · English & 中文',
     href: 'https://boxi-learn.github.io/en/',
     cta: 'Visit the site',
   },

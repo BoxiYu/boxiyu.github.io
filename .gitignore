@@ -17,3 +17,6 @@ public/social-card.png
 .env
 .env.*
 !.env.example
+
+# Local Claude Code settings
+.claude/

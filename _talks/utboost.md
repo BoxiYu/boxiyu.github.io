@@ -5,4 +5,4 @@ place: Online
 inline: true
 ---
 
-Invited talk to AI Insight Talk ｜ Code Bench.
+Invited talk at AI Insight Talk: Trustworthy Benchmark Construction for Code-Related LLMs.

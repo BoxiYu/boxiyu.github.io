@@ -29,6 +29,7 @@ export const publications = bibtex
     else if (tags.html || tags.url) links.push({ label: 'Paper', href: tags.html || tags.url });
     else if (tags.arxiv)
       links.push({ label: 'Paper', href: `https://arxiv.org/abs/${tags.arxiv}` });
+    if (tags.website) links.push({ label: 'Project page', href: tags.website });
     if (tags.code) links.push({ label: 'Code', href: tags.code });
     if (tags.slides) links.push({ label: 'Slides', href: localResource(tags.slides) });
     return {
@@ -49,7 +50,14 @@ export const publications = bibtex
       bibtex: bibtex.toBibtex([entry]),
     };
   })
-  .sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+  // Within a year: peer-reviewed before preprints, first-authored before co-authored.
+  .sort(
+    (a, b) =>
+      b.year - a.year ||
+      Number(a.venue === 'arXiv') - Number(b.venue === 'arXiv') ||
+      Number(a.authors[0] !== 'Boxi Yu') - Number(b.authors[0] !== 'Boxi Yu') ||
+      a.title.localeCompare(b.title),
+  );
 
 if (new Set(publications.map((p) => p.id)).size !== publications.length)
   throw new Error('Duplicate publication keys.');

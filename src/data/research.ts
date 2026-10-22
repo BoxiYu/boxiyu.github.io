@@ -30,11 +30,6 @@ export const researchGroups = [
     description: 'Controlled transformations reveal errors in vision and language systems.',
     projects: ['cxbench', 'rome', 'tin'],
     related: [
-      {
-        name: 'AgentEval',
-        venue: 'arXiv 2026 · Preprint',
-        href: '/publications/#lin2026agenteval',
-      },
       { name: 'TRACE', venue: 'arXiv 2026 · Preprint', href: '/publications/#li2026trace' },
       { name: 'MetaIC', venue: 'ISSTA 2022', href: '/publications/#yu2022automated' },
     ],

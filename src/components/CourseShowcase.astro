@@ -1,10 +1,5 @@
 ---
-import { featuredCourses, type Course } from '../data/courses';
-
-interface Props {
-  courses?: Course[];
-}
-const { courses = featuredCourses } = Astro.props;
+import { featuredCourses } from '../data/courses';
 
 const steps = [
   ['Step through', 'Watch each idea unfold one step at a time, from code to AI answers.'],
@@ -30,7 +25,7 @@ const number = (n: number) => String(n).padStart(2, '0');
   </ol>
   <div class="course-cards">
     {
-      courses.map((course) => (
+      featuredCourses.map((course) => (
         <article
           class:list={['course-card', `course-card-${course.tone}`]}
           id={course.id}

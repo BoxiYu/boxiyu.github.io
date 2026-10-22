@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import CourseShowcase from '../components/CourseShowcase.astro';
-import { companionCourses, featuredCourses } from '../data/courses';
 const menteeSites: Record<string, string> = {
   'Qiuyang Mang': 'https://joyemang33.github.io/',
   'Zhiqing Zhong': 'https://coxhin.github.io/',
@@ -75,7 +74,7 @@ const mentees = [
         Companion sites for six courses. Each lecture lets you step through what the code or the
         agent actually does, asks you to predict before it shows you, and ends with a self-check.
       </p>
-      <CourseShowcase courses={[...featuredCourses, ...companionCourses]} />
+      <CourseShowcase />
     </section>
 
     <section class="course-feature" aria-labelledby="course-title">
@@ -86,8 +85,9 @@ const mentees = [
       <div>
         <h2 id="course-title">Agentic Software Engineering</h2>
         <p class="course-summary">
-          A practical course on designing, evaluating, and shipping software with coding agents. It
-          connects prompts and tools to the engineering disciplines that keep systems dependable.
+          A practical twelve-week course on designing, evaluating, and shipping software with coding
+          agents. It connects prompts and tools to the engineering disciplines that keep systems
+          dependable.
         </p>
         <dl class="course-details">
           <div>

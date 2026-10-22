@@ -41,17 +41,17 @@ export interface Course {
 export const featuredCourses: Course[] = [
   {
     id: 'ai-for-all',
-    badge: 'AI 通识课',
+    badge: 'AI for All',
     name: 'AI Literacy for Everyone',
     level: 'Open course · No coding',
     context: 'Open course in Chinese and English',
     role: 'Designer',
     people: [{ name: 'Boxi Yu' }],
-    links: [{ label: 'English version', href: 'https://boxi-ai.github.io/ai-for-all/en/' }],
+    links: [{ label: '中文版', href: 'https://boxi-ai.github.io/ai-for-all/' }],
     summary:
       'Eight shared modules on using AI, checking what it says, and knowing when not to use it, with tracks for K12, university, working adults, seniors, and teachers. The core module, C4, teaches how to check AI: it makes mistakes, so learn to catch them.',
     detail: 'Notes, 3–5 minute videos, and interactive pages per module',
-    href: 'https://boxi-ai.github.io/ai-for-all/',
+    href: 'https://boxi-ai.github.io/ai-for-all/en/',
     unit: 'modules',
     firstLecture: 1,
     lectures: [
@@ -65,6 +65,7 @@ export const featuredCourses: Course[] = [
       'When not to use AI',
     ],
     lectureIds: ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8'],
+    inPreparation: [1, 2, 3, 5, 6, 7, 8],
     tone: 'moss',
   },
   {

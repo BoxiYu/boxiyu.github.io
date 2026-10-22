@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import ResearchMap from '../components/ResearchMap.astro';
+import ResearchList from '../components/ResearchList.astro';
 import CourseShowcase from '../components/CourseShowcase.astro';
 import { site } from '../data/site';
 import { oneaiOlympiadSchools, oneaiSchoolCount, oneaiSubjects } from '../data/oneai';
@@ -63,6 +64,16 @@ const latest = [
       </figure>
     </section>
 
+    <section class="home-section wrapper" aria-labelledby="research-heading">
+      <div class="home-section-head">
+        <h2 id="research-heading">Research</h2>
+        <a href="/research/">All research <span aria-hidden="true">↗</span></a>
+      </div>
+      <ResearchMap />
+      <h3 class="home-subhead" id="selected-heading">Representative work</h3>
+      <ResearchList selected={['swe-abs', 'utboost', 'cxbench', 'lightad']} />
+    </section>
+
     <section class="home-section wrapper courses-section" id="courses" aria-labelledby="courses-heading">
       <div class="home-section-head">
         <div>
@@ -74,17 +85,37 @@ const latest = [
       <p class="home-intro">
         For five courses, I build one interactive page per lecture: from AI literacy for everyone,
         through a first Python program, data structures and linear algebra, to building software with
-        coding agents. Every program has been run, and every output shown is the real one.
+        coding agents. Every program and interactive check has been run, and every output shown is the real one.
       </p>
       <CourseShowcase />
     </section>
 
-    <section class="home-section wrapper" aria-labelledby="research-heading">
-      <div class="home-section-head">
-        <h2 id="research-heading">Research</h2>
-        <a href="/research/">All research <span aria-hidden="true">↗</span></a>
+    <section class="course-section" aria-labelledby="course-heading">
+      <div class="wrapper course-grid">
+        <div>
+          <p class="eyebrow">Teaching · open course · Fall 2026</p>
+          <h2 id="course-heading">Agentic Software Engineering</h2>
+          <div class="course-actions">
+            <a class="button button-primary" href="/teaching/"
+              >Course &amp; teaching <span aria-hidden="true">↗</span></a
+            ><a class="button button-quiet" href="https://boxi-cs.github.io/agentic-se/"
+              >Open course site</a
+            >
+          </div>
+        </div>
+        <div>
+          <p class="course-tagline">Agents generate. You verify, decide and explain.</p>
+          <p class="course-copy">
+            A practical twelve-week course for building with coding agents while keeping
+            specifications, tests, review, security, and judgment in the loop.
+          </p>
+          <p class="course-copy">
+            I have also mentored ten students. All ten co-authored peer-reviewed papers with me at
+            ICSE, ESEC/FSE, or ISSTA, and eight are now Ph.D. students.{' '}
+            <a href="/teaching/#mentoring">See where they went</a>.
+          </p>
+        </div>
       </div>
-      <ResearchMap />
     </section>
 
     <section class="home-section wrapper" aria-labelledby="applied-heading">
@@ -228,7 +259,7 @@ const latest = [
             the language they think in. I would like to build this with scholars and teachers who
             speak other languages: adapting lessons and videos to your language and curriculum,
             checking that the subject reads naturally to your students, and making new lessons with
-            the open animind tools. Everything stays free under CC BY 4.0.
+            the open animind tools. Everything stays free: Boxi Math under CC BY 4.0, Boxi Learn under CC BY-SA 4.0.
           </p>
           <div class="equity-invite-links">
             <a href={`mailto:${site.email}?subject=Education%20equity`}>Write to me</a>
@@ -241,33 +272,6 @@ const latest = [
           </div>
         </div>
       </aside>
-    </section>
-
-    <section class="course-section" aria-labelledby="course-heading">
-      <div class="wrapper course-grid">
-        <div>
-          <p class="eyebrow">Teaching · open course · Fall 2026</p>
-          <h2 id="course-heading">Agentic Software Engineering</h2>
-          <div class="course-actions">
-            <a class="button button-primary" href="/teaching/"
-              >Course &amp; teaching <span aria-hidden="true">↗</span></a
-            ><a class="button button-quiet" href="https://boxi-cs.github.io/agentic-se/"
-              >Open course site</a
-            >
-          </div>
-        </div>
-        <div>
-          <p class="course-tagline">Agents generate. You verify, decide and explain.</p>
-          <p class="course-copy">
-            A practical twelve-week course for building with coding agents while keeping
-            specifications, tests, review, security, and judgment in the loop.
-          </p>
-          <p class="course-copy">
-            I have also mentored ten students, eight of whom are now Ph.D. students.{' '}
-            <a href="/teaching/#mentoring">See where they went</a>.
-          </p>
-        </div>
-      </div>
     </section>
 
     <section class="home-section wrapper home-latest" aria-labelledby="latest-heading">
@@ -688,6 +692,16 @@ const latest = [
   }
   .equity-invite-links a:hover {
     color: var(--blue-dark);
+  }
+  .home-subhead {
+    margin: 56px 0 24px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .course-section {
     background: linear-gradient(120deg, var(--accent-wash), var(--buttercream-soft));

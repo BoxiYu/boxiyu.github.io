@@ -68,4 +68,4 @@ The useful question is specific: what evidence supports using this system for th
 ## References
 
 - [UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench](https://arxiv.org/abs/2506.09289)
-- [How Should We Build A Benchmark? Revisiting 274 Code-Related Benchmarks For LLMs](https://arxiv.org/abs/2501.10711)
+- [Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility](https://arxiv.org/abs/2501.10711)

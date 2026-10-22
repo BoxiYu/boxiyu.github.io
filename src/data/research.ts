@@ -28,7 +28,7 @@ export const researchGroups = [
     title: 'Testing AI systems',
     question: 'Which changes should an AI system respond to?',
     description: 'Controlled transformations reveal errors in vision and language systems.',
-    projects: ['rome', 'tin'],
+    projects: ['cxbench', 'rome', 'tin'],
     related: [
       {
         name: 'AgentEval',

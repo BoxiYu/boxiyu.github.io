@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import CourseShowcase from '../components/CourseShowcase.astro';
+import { companionCourses, featuredCourses } from '../data/courses';
 const menteeSites: Record<string, string> = {
   'Qiuyang Mang': 'https://joyemang33.github.io/',
   'Zhiqing Zhong': 'https://coxhin.github.io/',
@@ -55,7 +56,7 @@ const mentees = [
           concept, build a small artifact, and test what it can actually do.
         </p>
         <div class="teaching-actions">
-          <a class="teaching-button" href="#notes">Browse the five courses</a>
+          <a class="teaching-button" href="#notes">Browse the six courses</a>
           <a class="teaching-link" href="#course-title">Agentic SE course</a>
           <a class="teaching-link" href="#supervision">See supervision</a>
           <a class="teaching-link" href="/education/">Try a test-quality exercise</a>
@@ -71,10 +72,10 @@ const mentees = [
       <p class="teaching-kicker">Interactive lecture notes and videos</p>
       <h2 id="notes-title">One page per lecture, from AI literacy to coding agents.</h2>
       <p class="teaching-notes-lede">
-        Companion sites for five courses. Each lecture lets you step through what the code or the
+        Companion sites for six courses. Each lecture lets you step through what the code or the
         agent actually does, asks you to predict before it shows you, and ends with a self-check.
       </p>
-      <CourseShowcase />
+      <CourseShowcase courses={[...featuredCourses, ...companionCourses]} />
     </section>
 
     <section class="course-feature" aria-labelledby="course-title">

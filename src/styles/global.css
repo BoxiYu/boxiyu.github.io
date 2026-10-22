@@ -1123,7 +1123,15 @@
       font-size: 20px;
     }
     .about-grid .portrait {
-      display: none;
+      order: -1;
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+      margin-top: 28px;
+    }
+    .about-grid .portrait figcaption {
+      padding-top: 0;
     }
     .article-layout .prose {
       font-size: 18px;

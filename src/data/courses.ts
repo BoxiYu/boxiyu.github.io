@@ -41,7 +41,7 @@ export interface Course {
 export const featuredCourses: Course[] = [
   {
     id: 'ai-for-all',
-    badge: 'AI 通识课',
+    badge: 'AI for All',
     name: 'AI Literacy for Everyone',
     level: 'Open course · No coding',
     context: 'Open course in Chinese and English',

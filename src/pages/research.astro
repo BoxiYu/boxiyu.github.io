@@ -131,6 +131,22 @@ const themes = [
                 </p>
               </aside>
             )}
+            {theme.id === 'coding-agents' && (
+              <aside class="related-research">
+                <h3>From coding tasks to research tasks</h3>
+                <p>
+                  <a href="/publications/#mang2026frontiercs2">FrontierCS 2</a>, a 2026 preprint I
+                  contributed to, asks whether agents can do computer science R&amp;D. Each of its 48
+                  tasks removes a paper's key contribution from the code released with it; an agent
+                  passes only if its implementation beats the original on every metric of hidden
+                  workloads. The best of 12 agents passes 58% of its runs, and no run passes 16 tasks.
+                </p>
+                <div class="resource-links">
+                  <a href="https://frontier-cs.org/">Project page</a>
+                  <a href="https://github.com/FrontierCS/FrontierCS-2">Code</a>
+                </div>
+              </aside>
+            )}
             {theme.id === 'ai-systems' && (
               <aside class="related-research">
                 <h3>Model safety</h3>

@@ -5,9 +5,17 @@
  * one are left out. The wall is decorative (each paper is listed on
  * /publications/), so it is hidden from assistive tech and keyboard focus;
  * the caption carries the one real link.
+ *
+ * With `background`, only the drifting stage is rendered, absolutely
+ * positioned behind its parent's content under a paper-coloured veil.
  */
 import { existsSync } from 'node:fs';
 import { publications } from '../lib/publications';
+
+interface Props {
+  background?: boolean;
+}
+const { background = false } = Astro.props;
 
 const papers = publications
   .filter((p) => existsSync(`assets/img/papers/${p.id}.webp`))
@@ -26,45 +34,71 @@ const durations = [74, 92, 68, 86, 78, 96, 70, 88, 72, 84];
 ---
 
 {
-  columns.length > 0 && (
-    <section class="paper-wall" aria-labelledby="paper-wall-caption">
-      <div class="paper-wall-stage" aria-hidden="true">
-        <div class="paper-wall-plane">
-          {columns.map((column, c) => (
-            <div
-              class:list={['paper-wall-column', { 'paper-wall-column-down': c % 2 === 1 }]}
-              style={`--drift: ${durations[c]}s`}
-            >
-              {[...column, ...column].map((paper) => (
-                <a class="paper-wall-card" href={`/publications/#${paper.id}`} tabindex="-1">
-                  <img
-                    src={`/assets/img/papers/${paper.id}.webp`}
-                    width="360"
-                    height="466"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span>{paper.label}</span>
-                </a>
-              ))}
-            </div>
-          ))}
+  columns.length > 0 &&
+    (background ? (
+      <div class="paper-wall-bg" aria-hidden="true">
+        <div class="paper-wall-stage">
+          <div class="paper-wall-plane">
+            {columns.map((column, c) => (
+              <div
+                class:list={['paper-wall-column', { 'paper-wall-column-down': c % 2 === 1 }]}
+                style={`--drift: ${durations[c]}s`}
+              >
+                {[...column, ...column, ...column].map((paper) => (
+                  <span class="paper-wall-card">
+                    <img
+                      src={`/assets/img/papers/${paper.id}.webp`}
+                      width="360"
+                      height="466"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span>{paper.label}</span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <p class="paper-wall-caption" id="paper-wall-caption">
-        <>
+    ) : (
+      <section class="paper-wall" aria-labelledby="paper-wall-caption">
+        <div class="paper-wall-stage" aria-hidden="true">
+          <div class="paper-wall-plane">
+            {columns.map((column, c) => (
+              <div
+                class:list={['paper-wall-column', { 'paper-wall-column-down': c % 2 === 1 }]}
+                style={`--drift: ${durations[c]}s`}
+              >
+                {[...column, ...column].map((paper) => (
+                  <a class="paper-wall-card" href={`/publications/#${paper.id}`} tabindex="-1">
+                    <img
+                      src={`/assets/img/papers/${paper.id}.webp`}
+                      width="360"
+                      height="466"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span>{paper.label}</span>
+                  </a>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <p class="paper-wall-caption" id="paper-wall-caption">
           <span>{publications.length} papers</span>
           <span class="paper-wall-topic">
             on testing and evaluating AI systems and coding agents.
           </span>
-        </>
-        <a href="/publications/">
-          All publications <span aria-hidden="true">↗</span>
-        </a>
-      </p>
-    </section>
-  )
+          <a href="/publications/">
+            All publications <span aria-hidden="true">↗</span>
+          </a>
+        </p>
+      </section>
+    ))
 }
 
 <style>
@@ -190,6 +224,47 @@ const durations = [74, 92, 68, 86, 78, 96, 70, 88, 72, 84];
     }
     .paper-wall-topic {
       display: none;
+    }
+  }
+  /* Background mode: the wall fills its positioned parent, under a veil. */
+  .paper-wall-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .paper-wall-bg .paper-wall-stage {
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 85%, transparent);
+  }
+  .paper-wall-bg .paper-wall-plane {
+    top: -30%;
+  }
+  .paper-wall-bg .paper-wall-card {
+    width: 190px;
+    box-shadow: none;
+  }
+  .paper-wall-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse at 50% 45%,
+        color-mix(in srgb, var(--paper) 78%, transparent),
+        transparent 75%
+      ),
+      color-mix(in srgb, var(--paper) 58%, transparent);
+  }
+  @media (max-width: 860px) {
+    .paper-wall-bg {
+      position: relative;
+      inset: auto;
+      height: 200px;
+      margin-bottom: -40px;
+    }
+    .paper-wall-bg .paper-wall-card {
+      width: 120px;
     }
   }
   @media (prefers-reduced-motion: reduce) {

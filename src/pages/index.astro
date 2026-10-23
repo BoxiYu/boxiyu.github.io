@@ -10,6 +10,7 @@ import { pacificProducts } from '../data/pacific';
 import { equityProjects } from '../data/equity';
 import { formatDate, getWriting } from '../lib/writing';
 import { news } from '../lib/legacy';
+import { publications } from '../lib/publications';
 
 const writing = (await getWriting()).slice(0, 2);
 const latest = [
@@ -65,15 +66,30 @@ const latest = [
       </figure>
     </section>
 
-    <PaperWall />
-
-    <section class="home-section wrapper" aria-labelledby="research-heading">
-      <div class="home-section-head">
-        <h2 id="research-heading">Research</h2>
-        <a href="/research/">All research <span aria-hidden="true">↗</span></a>
+    <section class="research-stage" aria-labelledby="research-heading">
+      <PaperWall background />
+      <div class="wrapper research-stage-inner">
+        <div class="home-section-head">
+          <h2 id="research-heading">Research</h2>
+          <p class="home-latest-links">
+            <a href="/publications/"
+              >{publications.length} papers <span aria-hidden="true">↗</span></a
+            >
+            <a href="/research/">All research <span aria-hidden="true">↗</span></a>
+          </p>
+        </div>
+        <ResearchMap />
       </div>
-      <ResearchMap />
-      <h3 class="home-subhead" id="selected-heading">Representative work</h3>
+    </section>
+
+    <section class="home-section wrapper" aria-labelledby="selected-heading">
+      <div class="home-section-head">
+        <div>
+          <p class="eyebrow">Research · first-authored</p>
+          <h2 id="selected-heading">Representative work</h2>
+        </div>
+        <a href="/publications/">All publications <span aria-hidden="true">↗</span></a>
+      </div>
       <ResearchList
         selected={['swe-abs', 'utboost', 'retromorphic-testing', 'cxbench', 'lightad']}
       />
@@ -704,15 +720,16 @@ const latest = [
   .equity-invite-links a:hover {
     color: var(--blue-dark);
   }
-  .home-subhead {
-    margin: 56px 0 24px;
-    padding-top: 28px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .research-stage {
+    position: relative;
+    isolation: isolate;
+    padding-block: 84px 72px;
+    border-block: 1px solid var(--line);
+    background: var(--wash);
+  }
+  .research-stage-inner {
+    position: relative;
+    z-index: 1;
   }
   .course-section {
     background: linear-gradient(120deg, var(--accent-wash), var(--buttercream-soft));
@@ -824,6 +841,9 @@ const latest = [
     }
     .home-section {
       padding-block: 56px;
+    }
+    .research-stage {
+      padding-block: 0 48px;
     }
     .home-section-head {
       align-items: start;

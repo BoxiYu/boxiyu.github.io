@@ -34,14 +34,15 @@ export interface Course {
   lectureLabels?: string[];
   /** Overrides the "N lectures" count on the card band. */
   count?: string;
-  /** Lecture numbers whose notes are still being written. */
-  inPreparation?: number[];
+  /** A short muted loop in assets/video/courses/<id>.mp4 (with <id>-poster.jpg) leads the card. */
+  clip?: boolean;
   tone: 'moss' | 'blueberry' | 'teal' | 'ochre' | 'strawberry';
 }
 
 export const featuredCourses: Course[] = [
   {
     id: 'ai-for-all',
+    clip: true,
     badge: 'AI for All',
     name: 'AI Literacy for Everyone',
     level: 'Open course · No coding',
@@ -66,11 +67,11 @@ export const featuredCourses: Course[] = [
       'When not to use AI',
     ],
     lectureIds: ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8'],
-    inPreparation: [1, 2, 3, 5, 6, 7, 8],
     tone: 'moss',
   },
   {
     id: 'aie1001',
+    clip: true,
     badge: 'AIE1001',
     name: 'Introduction to AI Programming',
     level: 'Introductory · Python',
@@ -100,6 +101,7 @@ export const featuredCourses: Course[] = [
   },
   {
     id: 'data-structures',
+    clip: true,
     badge: 'Data Structures',
     name: 'Data Structures',
     level: 'Core · Python & Java',
@@ -127,6 +129,7 @@ export const featuredCourses: Course[] = [
   },
   {
     id: 'la101',
+    clip: true,
     badge: 'LA101',
     name: 'Linear Algebra',
     level: 'Core · Math with code',
@@ -162,6 +165,7 @@ export const featuredCourses: Course[] = [
   },
   {
     id: 'dda3020',
+    clip: true,
     badge: 'DDA3020',
     name: 'Machine Learning',
     level: 'Core · Neural networks',
@@ -179,6 +183,7 @@ export const featuredCourses: Course[] = [
   },
   {
     id: 'csc4801',
+    clip: true,
     badge: 'CSC4801',
     name: 'AI-assisted Software Engineering',
     level: 'Advanced · Coding agents',

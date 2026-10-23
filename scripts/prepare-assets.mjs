@@ -16,6 +16,7 @@ await cp(
 );
 await mkdir('public/assets/video', { recursive: true });
 await cp('assets/video/oneai-math-education.mp4', 'public/assets/video/oneai-math-education.mp4');
+await cp('assets/video/courses', 'public/assets/video/courses', { recursive: true });
 const bibliography = await readFile('_bibliography/papers.bib', 'utf8');
 await writeFile('public/papers.bib', bibliography.replace(/^---\s*\n---\s*\n/, ''));
 await sharp('public/social-card.svg').png().toFile('public/social-card.png');

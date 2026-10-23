@@ -235,6 +235,22 @@
     color: var(--muted);
     font-size: 14px;
   }
+  .research-video {
+    margin: 20px 0 4px;
+  }
+  .research-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+  }
+  .research-video figcaption {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 14px;
+  }
   .rt-diagram {
     container-type: inline-size;
     margin-top: 28px;

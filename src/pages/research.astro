@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import RetromorphicDiagram from '../components/RetromorphicDiagram.astro';
 import { projects, site } from '../data/site';
 const themes = [
   {
@@ -77,19 +78,7 @@ const themes = [
                     <dd>{project.finding}</dd>
                   </dl>
                   {id === 'retromorphic-testing' && (
-                    <figure class="oracle-diagram">
-                      <ol>
-                        <li>Original input</li>
-                        <li>Forward program</li>
-                        <li>Output</li>
-                        <li>Backward program</li>
-                        <li>Transformed input</li>
-                      </ol>
-                      <figcaption>
-                        Check the expected relation between the original and transformed inputs. A
-                        conceptual view of the dual-program architecture.
-                      </figcaption>
-                    </figure>
+                    <RetromorphicDiagram />
                   )}
                   <div class="resource-links">
                     {project.links.map((link) => (

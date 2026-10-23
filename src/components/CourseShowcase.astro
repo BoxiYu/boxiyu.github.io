@@ -31,13 +31,33 @@ const number = (n: number) => String(n).padStart(2, '0');
           id={course.id}
           aria-labelledby={`${course.id}-title`}
         >
+          {course.clip && (
+            <div class="course-card-media">
+              <video
+                class="course-card-clip"
+                muted
+                loop
+                playsinline
+                preload="none"
+                poster={`/assets/video/courses/${course.id}-poster.jpg`}
+                data-autoplay
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <source src={`/assets/video/courses/${course.id}.mp4`} type="video/mp4" />
+              </video>
+            </div>
+          )}
           <header class="course-card-band">
             <div class="course-card-meta">
               <span>{course.level}</span>
               <span>{course.count ?? `${course.lectures.length} ${course.unit}`}</span>
             </div>
             <p
-              class:list={['course-card-badge', { 'course-card-badge-long': course.badge.length > 8 }]}
+              class:list={[
+                'course-card-badge',
+                { 'course-card-badge-long': course.badge.length > 8 },
+              ]}
               aria-hidden="true"
             >
               {course.badge}
@@ -66,24 +86,23 @@ const number = (n: number) => String(n).padStart(2, '0');
               ))}
             </p>
             <p class="course-card-summary">{course.summary}</p>
-            <ol class="course-card-lectures" start={course.firstLecture}>
-              {course.lectures.map((lecture, index) => {
+            <p class="course-card-path">
+              {[0, course.lectures.length - 1].map((index, position) => {
                 const n = course.firstLecture + index;
-                const label = course.lectureLabels?.[index] ?? course.lectureIds?.[index] ?? number(n);
+                const label =
+                  course.lectureLabels?.[index] ?? course.lectureIds?.[index] ?? number(n);
                 const path = course.lectureIds?.[index] ?? `L${number(n)}`;
                 return (
-                  <li>
+                  <>
+                    <span class="course-card-path-word">{position === 0 ? 'From' : 'to'}</span>
                     <a href={`${course.href}${path}/`}>
                       <span class="course-card-lecture-number">{label}</span>
-                      <span>{lecture}</span>
-                      {course.inPreparation?.includes(n) && (
-                        <span class="course-card-soon">Notes soon</span>
-                      )}
+                      {course.lectures[index]}
                     </a>
-                  </li>
+                  </>
                 );
               })}
-            </ol>
+            </p>
             <div class="course-card-footer">
               <span>{course.detail}</span>
               <a class="course-card-cta" href={course.href}>
@@ -97,8 +116,8 @@ const number = (n: number) => String(n).padStart(2, '0');
   </div>
   <p class="course-credit">
     Interactive notes and videos built with 培玉智能. I designed AI for All and LA101, teach Data
-    Structures with Yintong Huo, and co-designed the AIE1001 and CSC4801 notes; their slides and course content belong to each
-    instructor.
+    Structures with Yintong Huo, and co-designed the AIE1001, DDA3020 and CSC4801 notes; their
+    slides and course content belong to each instructor.
   </p>
 </div>
 
@@ -141,18 +160,6 @@ const number = (n: number) => String(n).padStart(2, '0');
     gap: 16px;
     margin-top: 32px;
   }
-  /* An odd last card spans the row and splits its list into two columns. */
-  .course-card:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-  }
-  .course-card:last-child:nth-child(odd) .course-card-lectures {
-    display: block;
-    columns: 2;
-    column-gap: 32px;
-  }
-  .course-card:last-child:nth-child(odd) .course-card-lectures li {
-    break-inside: avoid;
-  }
   .course-card {
     display: flex;
     flex-direction: column;
@@ -176,6 +183,40 @@ const number = (n: number) => String(n).padStart(2, '0');
   }
   .course-card-strawberry .course-card-band {
     background: linear-gradient(135deg, var(--strawberry-dark), #5d1612 85%);
+  }
+  .course-card-media {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #f6f4f0;
+    border-bottom: 1px solid var(--line);
+  }
+  .course-card-clip {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .course-card-media + .course-card-band {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 16px;
+  }
+  .course-card-media + .course-card-band .course-card-badge {
+    order: -1;
+    min-height: 0;
+    margin-top: 0;
+    font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  }
+  .course-card-media + .course-card-band .course-card-badge-long {
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+  }
+  .course-card-media + .course-card-band .course-card-meta {
+    flex-direction: column;
+    align-items: end;
+    gap: 4px;
+    text-align: right;
   }
   .course-card-meta {
     display: flex;
@@ -225,45 +266,35 @@ const number = (n: number) => String(n).padStart(2, '0');
     font-size: 16px;
     line-height: 1.6;
   }
-  .course-card-lectures {
+  .course-card-path {
     display: grid;
-    margin: 22px 0 0;
-    padding: 0;
-    list-style: none;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    gap: 6px 12px;
+    margin-top: 18px;
+    padding-top: 16px;
     border-top: 1px solid var(--line);
-  }
-  .course-card-lectures li {
-    border-bottom: 1px solid var(--line);
-  }
-  .course-card-lectures a {
-    display: flex;
-    gap: 10px;
-    padding: 8px 0;
-    color: var(--ink);
     font-size: 14px;
-    line-height: 1.35;
+    line-height: 1.4;
+  }
+  .course-card-path-word {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .course-card-path a {
+    color: var(--ink);
     text-decoration: none;
   }
-  .course-card-lectures a:hover {
+  .course-card-path a:hover {
     color: var(--strawberry);
   }
-  .course-card-soon {
-    flex-shrink: 0;
-    margin-left: auto;
-    padding: 1px 7px;
-    border: 1px solid var(--line-strong);
-    border-radius: 999px;
-    color: var(--muted);
-    font-size: 11px;
-    line-height: 1.5;
-    white-space: nowrap;
-  }
   .course-card-lecture-number {
-    flex-shrink: 0;
+    margin-right: 6px;
     color: var(--muted);
     font-family: ui-monospace, 'SF Mono', Menlo, monospace;
     font-size: 12px;
-    line-height: 1.6;
   }
   .course-card-footer {
     display: flex;
@@ -309,9 +340,6 @@ const number = (n: number) => String(n).padStart(2, '0');
   @media (max-width: 760px) {
     .course-cards {
       grid-template-columns: 1fr;
-    }
-    .course-card:last-child:nth-child(odd) .course-card-lectures {
-      columns: 1;
     }
   }
   @media (max-width: 680px) {

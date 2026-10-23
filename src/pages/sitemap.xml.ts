@@ -15,6 +15,7 @@ export async function GET() {
     '/education/',
     '/about/',
     '/services/',
+    '/courses/',
     '/teaching/',
     '/talks/',
     '/news/',

@@ -170,6 +170,7 @@ test('legacy routes and feeds remain available without shipping template source'
     '/about/',
     '/publications/',
     '/services/',
+    '/courses/',
     '/teaching/',
     '/talks/',
     '/talks/utboost/',

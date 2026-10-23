@@ -23,11 +23,14 @@ const {
 } = Astro.props;
 const path = Astro.url.pathname === '/404/' ? '/404.html' : Astro.url.pathname;
 const canonical = new URL(path, site.url);
+// /teaching/ sits under About, so About stays highlighted there.
+const navActive = (href: string) =>
+  path.startsWith(href) || (href === '/about/' && path.startsWith('/teaching/'));
 const navigation = [
   ['Research', '/research/'],
   ['Publications', '/publications/'],
   ['Products', '/products/'],
-  ['Teaching', '/teaching/'],
+  ['Courses', '/courses/'],
   ['Blog', '/writing/'],
   ['Service', '/services/'],
   ['About', '/about/'],
@@ -83,7 +86,7 @@ const fullTitle = title ? `${title} | Boxi Yu` : 'Boxi Yu | Human-centric AI and
       <nav aria-label="Main navigation">
         {
           navigation.map(([label, href]) => (
-            <a href={href} aria-current={path.startsWith(href) ? 'page' : undefined}>
+            <a href={href} aria-current={navActive(href) ? 'page' : undefined}>
               {label}
             </a>
           ))

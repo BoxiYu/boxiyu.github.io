@@ -1,6 +1,6 @@
 /**
  * Interactive lecture notes, shown on the homepage "Courses" section and the
- * Teaching page, ordered from AI literacy for everyone, through a first
+ * Courses page, ordered from AI literacy for everyone, through a first
  * program, data structures, linear algebra and machine learning, to coding
  * agents. Boxi Yu
  * designed AI for All (AI 通识课) and LA101, and teaches Data Structures with

@@ -197,15 +197,45 @@ const themes = [
               </aside>
             )}
             {theme.id === 'aiops' && (
-              <aside class="related-research">
-                <h3>Causal diagnosis &amp; contaminated time series</h3>
+              <aside class="related-research" id="openrca2">
+                <h3>Causal diagnosis for LLM agents</h3>
                 <p>
-                  <a href="/publications/#fang2026openrca">OpenRCA 2.0</a> provides 500
-                  root-cause-analysis instances with step-wise causal annotations, exposing failures
-                  that outcome-only evaluation can miss.{' '}
-                  <a href="/publications/#zhang2025cleanet">CLEANet</a> combines
+                  <a href="/publications/#fang2026openrca">OpenRCA 2.0</a>, a 2026 preprint I
+                  co-authored, labels the causal propagation path from each injected fault to the
+                  observed symptom, not only the root cause. Across its 500 instances and 11
+                  frontier LLMs, agents name at least one correct root-cause service in 76.0% of
+                  cases but ground it in a verified propagation path in only 61.5%.
+                </p>
+                <figure class="research-video">
+                  <video
+                    controls
+                    preload="none"
+                    playsinline
+                    poster="/assets/img/paper-openrca-poster.jpg"
+                    width="1920"
+                    height="1080"
+                    aria-describedby="openrca-video-caption"
+                  >
+                    <source src="/assets/video/paper-openrca.mp4" type="video/mp4" />
+                    Your browser does not support embedded video.
+                  </video>
+                  <figcaption id="openrca-video-caption">
+                    {paperVideos.openrca.caption} · {paperVideos.openrca.duration}
+                  </figcaption>
+                </figure>
+                <div class="resource-links">
+                  <a href="https://arxiv.org/abs/2606.27154">Paper</a>
+                  <a href="/publications/#fang2026openrca">Full citation</a>
+                </div>
+              </aside>
+            )}
+            {theme.id === 'aiops' && (
+              <aside class="related-research">
+                <h3>Contaminated time series</h3>
+                <p>
+                  <a href="/publications/#zhang2025cleanet">CLEANet</a>, a preprint, combines
                   contamination-resilient training with a lightweight model for multivariate
-                  time-series anomaly detection. These works are available as preprints.
+                  time-series anomaly detection.
                 </p>
               </aside>
             )}

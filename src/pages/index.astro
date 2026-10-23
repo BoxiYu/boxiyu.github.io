@@ -318,8 +318,15 @@ const latest = [
             the open animind tools. Everything stays free: Boxi Math under CC BY 4.0, Boxi Learn
             under CC BY-SA 4.0.
           </p>
+          <div class="equity-invite-email" data-email-box>
+            <p>
+              Write to me at <strong class="invite-address" data-email-address>{site.email}</strong>
+            </p>
+            <button type="button" class="copy-button" data-copy-email hidden>Copy address</button>
+            <a href={`mailto:${site.email}?subject=Education%20equity`}>Open email app</a>
+            <p class="invite-status" role="status" data-email-status></p>
+          </div>
           <div class="equity-invite-links">
-            <a href={`mailto:${site.email}?subject=Education%20equity`}>Write to me</a>
             <a href="https://github.com/boxi-learn" target="_blank" rel="noreferrer"
               >Boxi Learn on GitHub <span aria-hidden="true">↗</span></a
             >
@@ -800,6 +807,36 @@ const latest = [
     margin: 0;
     color: var(--muted);
   }
+  .equity-invite-email {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 16px;
+    margin-top: 18px;
+    font-size: 15px;
+  }
+  .equity-invite .equity-invite-email p {
+    color: var(--ink);
+  }
+  .invite-address {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    user-select: all;
+  }
+  .equity-invite-email .copy-button {
+    margin-top: 0;
+    cursor: pointer;
+  }
+  .equity-invite-email a {
+    color: var(--blue);
+  }
+  .equity-invite .invite-status {
+    flex-basis: 100%;
+    font-size: 14px;
+  }
+  .invite-status:empty {
+    display: none;
+  }
   .equity-invite-links {
     display: flex;
     flex-wrap: wrap;
@@ -971,3 +1008,7 @@ const latest = [
     }
   }
 </style>
+
+<script>
+  import '../scripts/copy-email';
+</script>

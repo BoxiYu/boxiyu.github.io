@@ -46,7 +46,7 @@ import { site } from '../data/site';
             <a href="/teaching/">Teaching &amp; supervision</a>
           </li>
         </ul>
-        <section class="contact-panel" aria-labelledby="contact">
+        <section class="contact-panel" aria-labelledby="contact" data-email-box>
           <h2 id="contact" tabindex="-1">Contact</h2>
           <p>I am open to research collaborations and industry partnerships. Get in touch at:</p>
           <p class="contact-address" data-email-address>{site.email}</p>
@@ -107,18 +107,5 @@ import { site } from '../data/site';
 </style>
 
 <script>
-  const copyEmail = document.querySelector<HTMLButtonElement>('[data-copy-email]');
-  const emailAddress = document.querySelector<HTMLElement>('[data-email-address]');
-  const emailStatus = document.querySelector<HTMLElement>('[data-email-status]');
-  if (copyEmail && emailAddress && emailStatus && navigator.clipboard) {
-    copyEmail.hidden = false;
-    copyEmail.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(emailAddress.textContent!.trim());
-        emailStatus.textContent = 'Email address copied.';
-      } catch {
-        emailStatus.textContent = 'Select the email address above and copy it manually.';
-      }
-    });
-  }
+  import '../scripts/copy-email';
 </script>

@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import RetromorphicDiagram from '../components/RetromorphicDiagram.astro';
-import { projects, site } from '../data/site';
+import { paperVideos, projects, site } from '../data/site';
 const themes = [
   {
     id: 'coding-agents',
@@ -22,7 +22,7 @@ const themes = [
     title: 'Testing AI systems',
     description:
       'AI systems produce outputs that can be difficult to assess automatically. Controlled transformations and consistency relations provide practical ways to uncover mistakes in language and vision systems, and process-level checks show when an agent reaches the right outcome the wrong way.',
-    projects: ['cxbench', 'rome', 'tin'],
+    projects: ['cxbench', 'rome', 'tin', 'metaic'],
   },
   {
     id: 'aiops',
@@ -77,8 +77,25 @@ const themes = [
                     <dt>Findings &amp; contribution</dt>
                     <dd>{project.finding}</dd>
                   </dl>
-                  {id === 'retromorphic-testing' && (
-                    <RetromorphicDiagram />
+                  {id === 'retromorphic-testing' && <RetromorphicDiagram />}
+                  {paperVideos[id] && (
+                    <figure class="research-video">
+                      <video
+                        controls
+                        preload="none"
+                        playsinline
+                        poster={`/assets/img/paper-${id}-poster.jpg`}
+                        width="1920"
+                        height="1080"
+                        aria-describedby={`${id}-video-caption`}
+                      >
+                        <source src={`/assets/video/paper-${id}.mp4`} type="video/mp4" />
+                        Your browser does not support embedded video.
+                      </video>
+                      <figcaption id={`${id}-video-caption`}>
+                        {paperVideos[id].caption} · {paperVideos[id].duration}
+                      </figcaption>
+                    </figure>
                   )}
                   <div class="resource-links">
                     {project.links.map((link) => (

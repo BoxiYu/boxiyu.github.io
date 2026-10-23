@@ -148,6 +148,25 @@ export const projects = [
     ],
   },
   {
+    id: 'metaic',
+    paper: 'yu2022automated',
+    name: 'MetaIC',
+    year: '2022',
+    venue: 'ISSTA',
+    question: 'Can inserting an object reveal image captioning errors?',
+    summary:
+      'Object insertion creates image pairs whose captions should change in a predictable way, providing a metamorphic test oracle for image captioning.',
+    method:
+      'MetaIC builds an object corpus from existing images, inserts an object into a seed image with resizing and location tuning, and reports image pairs whose captions do not change as expected.',
+    finding:
+      'Testing one widely used captioning API and five captioning models with 1,000 seed images, MetaIC reported 16,825 erroneous issues with precision from 84.9% to 98.4%. The same idea found 151 incorrect labels in the MS COCO Caption dataset.',
+    topic: 'Trustworthy AI',
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2206.06550' },
+      { label: 'Code', href: 'https://github.com/RobustNLP/TestIC' },
+    ],
+  },
+  {
     id: 'lightad',
     paper: 'yu2024LightAD',
     name: 'LightAD',
@@ -167,3 +186,48 @@ export const projects = [
     ],
   },
 ];
+
+// One-minute explainer videos shown on /research/. Files: assets/video/paper-<id>.mp4 and
+// assets/img/paper-<id>-poster.jpg (made with the paper-videos toolchain, English voice-over and captions).
+export const paperVideos: Record<string, { caption: string; duration: string }> = {
+  'swe-abs': {
+    caption:
+      'SWE-ABS explained: a real weak test, the two-stage method, and the re-ranked leaderboard',
+    duration: '1:12',
+  },
+  utboost: {
+    caption:
+      'UTBoost explained: a real insufficient test, generated tests, and the leaderboard changes',
+    duration: '1:06',
+  },
+  'retromorphic-testing': {
+    caption:
+      'Retromorphic Testing explained: the forward–backward loop, three modes, and a translation example',
+    duration: '1:02',
+  },
+  cxbench: {
+    caption:
+      'CXBench explained: a false pass from the paper, rule cards, and outcome versus process scores',
+    duration: '1:04',
+  },
+  rome: {
+    caption:
+      'ROME explained: object melting, two metamorphic relations, and the evaluation results',
+    duration: '0:57',
+  },
+  tin: {
+    caption:
+      'TIN explained: a consistency check, a repair example, and the testing and repair results',
+    duration: '1:01',
+  },
+  metaic: {
+    caption:
+      'MetaIC explained: object insertion, two metamorphic relations, and the evaluation results',
+    duration: '1:04',
+  },
+  lightad: {
+    caption:
+      'LightAD explained: F1 and training cost of simple and deep models, and automated model selection',
+    duration: '1:00',
+  },
+};

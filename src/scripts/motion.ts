@@ -6,7 +6,6 @@ const REVEAL = [
   '.home-intro',
   '.map-branch',
   '.map-empirical',
-  '.home-subhead',
   '.research-item',
   '.course-steps li',
   '.course-card',

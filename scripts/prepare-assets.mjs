@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 
 await mkdir('public/assets/img', { recursive: true });
@@ -20,6 +20,13 @@ await cp('assets/video/oneai-math-education.mp4', 'public/assets/video/oneai-mat
 await cp('assets/img/frontiercs2-poster.jpg', 'public/assets/img/frontiercs2-poster.jpg');
 await cp('assets/video/frontiercs2.mp4', 'public/assets/video/frontiercs2.mp4');
 await cp('assets/video/courses', 'public/assets/video/courses', { recursive: true });
+// One-minute paper videos on /research/ (src/data/site.ts: paperVideos), each with a poster.
+for (const file of await readdir('assets/video')) {
+  const id = file.match(/^paper-(.+)\.mp4$/)?.[1];
+  if (!id) continue;
+  await cp(`assets/video/${file}`, `public/assets/video/${file}`);
+  await cp(`assets/img/paper-${id}-poster.jpg`, `public/assets/img/paper-${id}-poster.jpg`);
+}
 const bibliography = await readFile('_bibliography/papers.bib', 'utf8');
 await writeFile('public/papers.bib', bibliography.replace(/^---\s*\n---\s*\n/, ''));
 await sharp('public/social-card.svg').png().toFile('public/social-card.png');

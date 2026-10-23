@@ -225,6 +225,16 @@ export const paperVideos: Record<string, { caption: string; duration: string }> 
       'MetaIC explained: object insertion, two metamorphic relations, and the evaluation results',
     duration: '1:04',
   },
+  rt4chart: {
+    caption:
+      'RT4CHART explained: a running example from the paper, claim-level local and global checks, and the results',
+    duration: '1:06',
+  },
+  openrca: {
+    caption:
+      'OpenRCA 2.0 explained: an ungrounded diagnosis, path annotation with PAVE, and results across 11 LLMs',
+    duration: '1:05',
+  },
   lightad: {
     caption:
       'LightAD explained: F1 and training cost of simple and deep models, and automated model selection',

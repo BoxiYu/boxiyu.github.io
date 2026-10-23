@@ -52,6 +52,7 @@ const groups = researchGroups.map((group) => {
         <section
           class:list={['map-branch', `map-branch-${group.tone}`]}
           aria-labelledby={`map-${group.id}`}
+          data-theme={group.id}
         >
           <div class="map-branch-top">
             <span class="map-icon" aria-hidden="true">
@@ -97,7 +98,7 @@ const groups = researchGroups.map((group) => {
       ))
     }
   </div>
-  <div class="map-empirical">
+  <div class="map-empirical" data-theme={empiricalResearch.id}>
     <a class="map-empirical-title" href={`/research/#${empiricalResearch.id}`}
       >{empiricalResearch.title}</a
     >
@@ -117,6 +118,22 @@ const groups = researchGroups.map((group) => {
     The grouping describes shared questions rather than a chronological sequence.
   </figcaption>
 </figure>
+
+<script>
+  // Light up a theme's papers on the wall behind the map (see PaperWall).
+  for (const map of document.querySelectorAll<HTMLElement>('.research-map')) {
+    const stage = map.closest<HTMLElement>('.research-stage');
+    if (!stage) continue;
+    for (const theme of map.querySelectorAll<HTMLElement>('[data-theme]')) {
+      const on = () => (stage.dataset.focus = theme.dataset.theme);
+      const off = () => delete stage.dataset.focus;
+      theme.addEventListener('pointerenter', on);
+      theme.addEventListener('pointerleave', off);
+      theme.addEventListener('focusin', on);
+      theme.addEventListener('focusout', off);
+    }
+  }
+</script>
 
 <style>
   .research-map {
@@ -271,6 +288,15 @@ const groups = researchGroups.map((group) => {
   .map-venue-pre {
     color: var(--tone, var(--blueberry));
     background: transparent;
+  }
+  .map-branch,
+  .map-empirical {
+    transition:
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .map-branch:hover {
+    box-shadow: 0 24px 50px -28px rgba(var(--blueberry-rgb), 0.75);
   }
   .map-empirical {
     display: flex;

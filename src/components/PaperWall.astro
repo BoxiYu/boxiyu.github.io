@@ -11,15 +11,32 @@
  */
 import { existsSync } from 'node:fs';
 import { publications } from '../lib/publications';
+import { researchGroups, empiricalResearch } from '../data/research';
+import { projects } from '../data/site';
 
 interface Props {
   background?: boolean;
 }
 const { background = false } = Astro.props;
 
+// Which research theme each paper belongs to, from the homepage research map,
+// so hovering a theme can light up its papers on the wall.
+const themeOf: Record<string, string> = {};
+for (const group of [...researchGroups, empiricalResearch]) {
+  for (const id of group.projects) {
+    const key = projects.find((project) => project.id === id)?.paper;
+    if (key) themeOf[key] = group.id;
+  }
+  for (const item of group.related) themeOf[item.href.split('#')[1]] = group.id;
+}
+
 const papers = publications
   .filter((p) => existsSync(`assets/img/papers/${p.id}.webp`))
-  .map((p) => ({ id: p.id, label: `${p.venue === 'arXiv' ? 'arXiv' : p.venue} ${p.year}` }));
+  .map((p) => ({
+    id: p.id,
+    label: `${p.venue === 'arXiv' ? 'arXiv' : p.venue} ${p.year}`,
+    theme: themeOf[p.id] ?? '',
+  }));
 
 const columnCount = 10;
 const perColumn = 5;
@@ -45,7 +62,7 @@ const durations = [74, 92, 68, 86, 78, 96, 70, 88, 72, 84];
                 style={`--drift: ${durations[c]}s`}
               >
                 {[...column, ...column, ...column].map((paper) => (
-                  <span class="paper-wall-card">
+                  <span class="paper-wall-card" data-theme={paper.theme || undefined}>
                     <img
                       src={`/assets/img/papers/${paper.id}.webp`}
                       width="360"
@@ -248,6 +265,7 @@ const durations = [74, 92, 68, 86, 78, 96, 70, 88, 72, 84];
     content: '';
     position: absolute;
     inset: 0;
+    transition: opacity 0.35s ease;
     background:
       radial-gradient(
         ellipse at 50% 45%,
@@ -266,6 +284,50 @@ const durations = [74, 92, 68, 86, 78, 96, 70, 88, 72, 84];
     .paper-wall-bg .paper-wall-card {
       width: 120px;
     }
+  }
+  /* Hovering a theme on the research map lights up its papers. */
+  .paper-wall-bg .paper-wall-card {
+    transition:
+      opacity 0.35s ease,
+      filter 0.35s ease,
+      outline-color 0.35s ease,
+      box-shadow 0.35s ease;
+    outline: 4px solid transparent;
+    outline-offset: 0;
+  }
+  :global(.research-stage[data-focus]) .paper-wall-bg::after {
+    opacity: 0.12;
+  }
+  :global(.research-stage[data-focus]) .paper-wall-bg .paper-wall-card {
+    opacity: 0.1;
+    filter: grayscale(1);
+  }
+  :global(.research-stage[data-focus='coding-agents'])
+    .paper-wall-bg
+    .paper-wall-card[data-theme='coding-agents'],
+  :global(.research-stage[data-focus='test-oracles'])
+    .paper-wall-bg
+    .paper-wall-card[data-theme='test-oracles'],
+  :global(.research-stage[data-focus='ai-systems'])
+    .paper-wall-bg
+    .paper-wall-card[data-theme='ai-systems'],
+  :global(.research-stage[data-focus='aiops']) .paper-wall-bg .paper-wall-card[data-theme='aiops'] {
+    opacity: 1;
+    filter: none;
+    outline-color: var(--focus-tone);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--focus-tone) 22%, transparent);
+  }
+  :global(.research-stage[data-focus='coding-agents']) {
+    --focus-tone: var(--blueberry);
+  }
+  :global(.research-stage[data-focus='test-oracles']) {
+    --focus-tone: var(--strawberry);
+  }
+  :global(.research-stage[data-focus='ai-systems']) {
+    --focus-tone: #2f7a56;
+  }
+  :global(.research-stage[data-focus='aiops']) {
+    --focus-tone: #0f6e73;
   }
   @media (prefers-reduced-motion: reduce) {
     .paper-wall-column {

@@ -1,0 +1,141 @@
+---
+/**
+ * Retromorphic Testing as a loop: a forward and a backward program take an
+ * input back to the input domain, where it is checked against the original.
+ * The worked example (sin tested through arcsin) is the one in the paper's
+ * abstract, arXiv:2310.06433.
+ */
+---
+
+<figure class="rt-diagram" aria-labelledby="rt-caption">
+  <svg
+    class="rt-svg rt-svg-wide"
+    viewBox="0 0 760 286"
+    role="img"
+    aria-labelledby="rt-wide-title"
+  >
+    <title id="rt-wide-title">
+      The original input x goes through a forward program P to an output y, then through a
+      backward program Q to a transformed input x prime. The test checks the expected relation
+      between x and x prime; a mismatch reveals a bug.
+    </title>
+    <defs>
+      <marker id="rt-arrow-wide" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="rt-arrowhead" d="M0 0 L10 5 L0 10 z"></path>
+      </marker>
+      <marker id="rt-arrow-wide-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="rt-arrowhead-check" d="M0 0 L10 5 L0 10 z"></path>
+      </marker>
+    </defs>
+
+    <!-- Flow -->
+    <line class="rt-flow" x1="192" y1="66" x2="566" y2="66" marker-end="url(#rt-arrow-wide)"></line>
+    <line class="rt-flow" x1="655" y1="104" x2="655" y2="182" marker-end="url(#rt-arrow-wide)"></line>
+    <line class="rt-flow rt-flow-check" x1="568" y1="222" x2="194" y2="222" marker-end="url(#rt-arrow-wide-check)"></line>
+    <line class="rt-keep" x1="105" y1="106" x2="105" y2="182" marker-end="url(#rt-arrow-wide-check)"></line>
+
+    <!-- Program chips -->
+    <rect class="rt-chip" x="290" y="47" width="180" height="38" rx="19"></rect>
+    <text class="rt-chip-text" x="380" y="71">Forward program <tspan class="rt-sym-chip">P</tspan></text>
+    <rect class="rt-chip" x="566" y="124" width="178" height="38" rx="19"></rect>
+    <text class="rt-chip-text" x="655" y="148">Backward program <tspan class="rt-sym-chip">Q</tspan></text>
+
+    <!-- Nodes -->
+    <rect class="rt-node" x="20" y="28" width="170" height="76" rx="10"></rect>
+    <text class="rt-label" x="105" y="54">Original input</text>
+    <text class="rt-sym" x="105" y="88">x</text>
+
+    <rect class="rt-node" x="570" y="28" width="170" height="76" rx="10"></rect>
+    <text class="rt-label" x="655" y="54">Output</text>
+    <text class="rt-sym" x="655" y="88">y</text>
+
+    <rect class="rt-node" x="570" y="184" width="170" height="76" rx="10"></rect>
+    <text class="rt-label" x="655" y="210">Transformed input</text>
+    <text class="rt-sym" x="655" y="244">x′</text>
+
+    <rect class="rt-node rt-node-check" x="20" y="184" width="170" height="76" rx="10"></rect>
+    <text class="rt-label rt-label-check" x="105" y="210">Check the relation</text>
+    <text class="rt-sym" x="105" y="244">x <tspan class="rt-rel">≟</tspan> x′</text>
+
+    <!-- Notes -->
+    <text class="rt-note" x="380" y="130">One of P and Q is the program under test;</text>
+    <text class="rt-note" x="380" y="150">the other is an auxiliary program.</text>
+    <text class="rt-note rt-note-check" x="380" y="246">back in the input domain</text>
+    <text class="rt-note rt-note-keep" x="116" y="148">keep x</text>
+  </svg>
+
+  <svg
+    class="rt-svg rt-svg-tall"
+    viewBox="0 0 340 520"
+    role="img"
+    aria-labelledby="rt-tall-title"
+  >
+    <title id="rt-tall-title">
+      The original input x goes through a forward program P to an output y, then through a
+      backward program Q to a transformed input x prime. The test checks the expected relation
+      between x and x prime; a mismatch reveals a bug.
+    </title>
+    <defs>
+      <marker id="rt-arrow-tall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="rt-arrowhead" d="M0 0 L10 5 L0 10 z"></path>
+      </marker>
+      <marker id="rt-arrow-tall-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="rt-arrowhead-check" d="M0 0 L10 5 L0 10 z"></path>
+      </marker>
+    </defs>
+
+    <line class="rt-flow" x1="180" y1="80" x2="180" y2="146" marker-end="url(#rt-arrow-tall)"></line>
+    <line class="rt-flow" x1="180" y1="214" x2="180" y2="280" marker-end="url(#rt-arrow-tall)"></line>
+    <line class="rt-flow rt-flow-check" x1="180" y1="348" x2="180" y2="418" marker-end="url(#rt-arrow-tall-check)"></line>
+    <path class="rt-keep" d="M60 46 H22 V452 H56" marker-end="url(#rt-arrow-tall-check)"></path>
+
+    <rect class="rt-chip" x="91" y="94" width="178" height="38" rx="19"></rect>
+    <text class="rt-chip-text" x="180" y="118">Forward program <tspan class="rt-sym-chip">P</tspan></text>
+    <rect class="rt-chip" x="91" y="228" width="178" height="38" rx="19"></rect>
+    <text class="rt-chip-text" x="180" y="252">Backward program <tspan class="rt-sym-chip">Q</tspan></text>
+
+    <rect class="rt-node" x="60" y="10" width="240" height="70" rx="10"></rect>
+    <text class="rt-label" x="180" y="34">Original input</text>
+    <text class="rt-sym" x="180" y="66">x</text>
+
+    <rect class="rt-node" x="60" y="146" width="240" height="68" rx="10"></rect>
+    <text class="rt-label" x="180" y="170">Output</text>
+    <text class="rt-sym" x="180" y="202">y</text>
+
+    <rect class="rt-node" x="60" y="282" width="240" height="66" rx="10"></rect>
+    <text class="rt-label" x="180" y="306">Transformed input</text>
+    <text class="rt-sym" x="180" y="338">x′</text>
+
+    <rect class="rt-node rt-node-check" x="60" y="420" width="240" height="66" rx="10"></rect>
+    <text class="rt-label rt-label-check" x="180" y="444">Check the relation</text>
+    <text class="rt-sym" x="180" y="476">x <tspan class="rt-rel">≟</tspan> x′</text>
+
+    <text class="rt-note" x="180" y="510">One of P and Q is the program under test.</text>
+  </svg>
+
+  <div class="rt-example">
+    <p class="rt-example-title">
+      Example from the paper: test <code>sin</code> with its inverse <code>arcsin</code>
+    </p>
+    <ol class="rt-example-steps">
+      <li><span class="rt-step-sym">x</span><code>0.5</code></li>
+      <li>
+        <span class="rt-step-role">P · auxiliary</span><code>arcsin(x) + 2kπ</code>
+      </li>
+      <li><span class="rt-step-sym">y</span><code>π/6 + 2kπ</code></li>
+      <li class="rt-step-test">
+        <span class="rt-step-role">Q · under test</span><code>sin(y)</code>
+      </li>
+      <li class="rt-step-check"><span class="rt-step-sym">x′</span><code>0.5 = x ✓</code></li>
+    </ol>
+    <p class="rt-example-note">
+      If the sine implementation returns anything other than 0.5 for some k, the relation
+      x = sin(arcsin(x) + 2kπ) fails and exposes the bug.
+    </p>
+  </div>
+
+  <figcaption id="rt-caption">
+    A conceptual view of Retromorphic Testing. The auxiliary program can play either role, which
+    gives the paper's three testing modes.
+  </figcaption>
+</figure>

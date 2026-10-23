@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ResearchMap from '../components/ResearchMap.astro';
 import ResearchList from '../components/ResearchList.astro';
+import PaperWall from '../components/PaperWall.astro';
 import CourseShowcase from '../components/CourseShowcase.astro';
 import { site } from '../data/site';
 import { oneaiOlympiadSchools, oneaiSchoolCount, oneaiSubjects } from '../data/oneai';
@@ -64,6 +65,8 @@ const latest = [
       </figure>
     </section>
 
+    <PaperWall />
+
     <section class="home-section wrapper" aria-labelledby="research-heading">
       <div class="home-section-head">
         <h2 id="research-heading">Research</h2>
@@ -71,10 +74,16 @@ const latest = [
       </div>
       <ResearchMap />
       <h3 class="home-subhead" id="selected-heading">Representative work</h3>
-      <ResearchList selected={['swe-abs', 'utboost', 'retromorphic-testing', 'cxbench', 'lightad']} />
+      <ResearchList
+        selected={['swe-abs', 'utboost', 'retromorphic-testing', 'cxbench', 'lightad']}
+      />
     </section>
 
-    <section class="home-section wrapper courses-section" id="courses" aria-labelledby="courses-heading">
+    <section
+      class="home-section wrapper courses-section"
+      id="courses"
+      aria-labelledby="courses-heading"
+    >
       <div class="home-section-head">
         <div>
           <p class="eyebrow">Teaching · interactive lecture notes</p>
@@ -85,7 +94,8 @@ const latest = [
       <p class="home-intro">
         For six courses, I build one interactive page per lecture: from AI literacy for everyone,
         through a first Python program, data structures, linear algebra and machine learning, to
-        building software with coding agents. Every program and interactive check has been run, and every output shown is the real one.
+        building software with coding agents. Every program and interactive check has been run, and
+        every output shown is the real one.
       </p>
       <CourseShowcase />
     </section>
@@ -259,7 +269,8 @@ const latest = [
             the language they think in. I would like to build this with scholars and teachers who
             speak other languages: adapting lessons and videos to your language and curriculum,
             checking that the subject reads naturally to your students, and making new lessons with
-            the open animind tools. Everything stays free: Boxi Math under CC BY 4.0, Boxi Learn under CC BY-SA 4.0.
+            the open animind tools. Everything stays free: Boxi Math under CC BY 4.0, Boxi Learn
+            under CC BY-SA 4.0.
           </p>
           <div class="equity-invite-links">
             <a href={`mailto:${site.email}?subject=Education%20equity`}>Write to me</a>

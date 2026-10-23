@@ -3,6 +3,7 @@ import sharp from 'sharp';
 
 await mkdir('public/assets/img', { recursive: true });
 await cp('assets/pdf', 'public/assets/pdf', { recursive: true });
+await cp('assets/img/papers', 'public/assets/img/papers', { recursive: true });
 for (const image of ['prof_pic.jpg', 'parrot.png']) {
   await cp(`assets/img/${image}`, `public/assets/img/${image}`);
 }

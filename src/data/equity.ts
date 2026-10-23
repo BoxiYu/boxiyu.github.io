@@ -3,10 +3,14 @@
  * section. Boxi Math is the public K-12 maths site; Boxi Learn extends the
  * same stage-based approach to other school subjects; animind is the open
  * toolchain the maths videos are made with.
+ *
+ * `media` leads each card from assets/video/clips/: 'clip' is <id>.mp4 (an
+ * 8-second muted loop) with <id>-poster.jpg; 'still' is the poster alone.
  */
 export const equityProjects = [
   {
     id: 'boxi-math',
+    media: 'clip',
     name: 'Boxi Math',
     verb: 'Learn',
     status: '39 videos published',
@@ -18,6 +22,7 @@ export const equityProjects = [
   },
   {
     id: 'boxi-learn',
+    media: 'still',
     name: 'Boxi Learn',
     verb: 'Try',
     status: '109 lessons in 9 subjects',
@@ -29,6 +34,7 @@ export const equityProjects = [
   },
   {
     id: 'animind',
+    media: 'clip',
     name: 'animind',
     verb: 'Make',
     status: 'Open source',

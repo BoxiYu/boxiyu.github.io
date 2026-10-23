@@ -1,5 +1,5 @@
 ---
-import { projects } from '../data/site';
+import { paperVideos, projects } from '../data/site';
 import { publications } from '../lib/publications';
 interface Props {
   selected?: string[];
@@ -13,8 +13,35 @@ const { selected = ['swe-abs', 'utboost', 'retromorphic-testing', 'lightad'] } =
       .filter((project) => selected.includes(project.id))
       .map((project) => {
         const paper = publications.find((paper) => paper.id === project.paper)!;
+        const video = paperVideos[project.id];
         return (
-          <article class="research-item selected-paper" id={project.id}>
+          <article
+            class:list={['research-item', 'selected-paper', { 'selected-paper-clip': video }]}
+            id={project.id}
+          >
+            {video ? (
+              <a
+                class="selected-clip"
+                href={`/research/#${project.id}`}
+                aria-label={`Watch the ${video.duration} ${project.name} explainer`}
+              >
+                <video
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  poster={`/assets/video/clips/${project.id}-poster.jpg`}
+                  data-autoplay
+                  aria-hidden="true"
+                  tabindex="-1"
+                >
+                  <source src={`/assets/video/clips/${project.id}.mp4`} type="video/mp4" />
+                </video>
+                <span class="selected-clip-chip" aria-hidden="true">
+                  ▶ {video.duration} explainer
+                </span>
+              </a>
+            ) : null}
             <div class="venue">
               <b>
                 {project.venue} {project.year}
@@ -22,7 +49,7 @@ const { selected = ['swe-abs', 'utboost', 'retromorphic-testing', 'lightad'] } =
               {project.name}
               {project.venue === 'arXiv' && <span class="preprint-note">Preprint</span>}
             </div>
-            <div>
+            <div class="selected-body">
               <h4>
                 <a href={`/publications/#${project.paper}`}>{paper.title}</a>
               </h4>

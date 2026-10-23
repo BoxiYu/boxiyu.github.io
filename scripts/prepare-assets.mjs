@@ -20,6 +20,8 @@ await cp('assets/video/oneai-math-education.mp4', 'public/assets/video/oneai-mat
 await cp('assets/img/frontiercs2-poster.jpg', 'public/assets/img/frontiercs2-poster.jpg');
 await cp('assets/video/frontiercs2.mp4', 'public/assets/video/frontiercs2.mp4');
 await cp('assets/video/courses', 'public/assets/video/courses', { recursive: true });
+// 8-second homepage loops for representative work, OneAI, and Education equity.
+await cp('assets/video/clips', 'public/assets/video/clips', { recursive: true });
 // One-minute paper videos on /research/ (src/data/site.ts: paperVideos), each with a poster.
 for (const file of await readdir('assets/video')) {
   const id = file.match(/^paper-(.+)\.mp4$/)?.[1];

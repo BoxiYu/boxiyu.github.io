@@ -257,6 +257,22 @@ slides={MetaIC_slides.pdf}
   abstract={Tool-using language agents increasingly perform regulated customer-service workflows, where a correct final state is insufficient: agents must also provide disclosures, obtain consent, and follow required procedures. Existing tool-agent benchmarks largely score final business states, accepting trajectories that reach correct outcomes through non-compliant processes. We introduce CXBench, a benchmark that evaluates outcome and process compliance separately across six regulated domains. Each task combines a customer request, a tool-based environment, and explicit process requirements. Rule cards link cited regulatory obligations to observable trace evidence. A hybrid grader combines deterministic checks for ordering and authority with an LLM judge for semantic requirements. We define a false-pass as an outcome-pass run that fails process checks. Across seven models and 120 tasks, 55.5\% of the 840 retained executions are false-passes, representing 80.1\% of outcome-passing runs; only 13.8\% pass both checks. Process-inclusive evaluation changes the observed model ordering and exposes differences hidden by outcome-only scoring. CXBench makes these failures inspectable through trace-linked criteria.}
 }
 
+@article{mang2026frontiercs2,
+  abbr={arXiv},
+  title={FrontierCS 2: A Benchmark for Computer Science R\&D},
+  author={Qiuyang Mang and Wenhao Chai and Runyuan He and Dongruixuan Li and Zihan Zheng and Yujun He and Xuanyi Zhou and Hao Wang and Siddhant Ray and Bo Peng and Ruyi Ji and Shuo Yang and Haocheng Xi and Boru Chen and Xinyang David Han and Melissa Pan and Mayank Mishra and Boxi Yu and Sijia Liu and Kerem Akillioglu and Yi Pan and Zirui Wang and Mert Cemri and Diogo Antunes and Yichuan Wang and Aiwei Ivy Zhang and Zhenyang Chen and Qizheng Zhang and Kaiyuan Liu and Wenyuan Huang and Sherry Ruan and Shu Liu and Dacheng Li and Zerui Cheng and Zeyu Shen and Shang Zhou and Hanfei Chen and Yuzhong Zhang and Bohan Lyu and Qu Ao and Han Zheng and Chonghe Jiang and Jingzhuo Hu and Xiaokun Chen and Kunjun Li and Zhiqing Zhong and Haoye Tian and Tong Zhao and Yunzhong He and Hanchen Li and Ofir Press and Jiantao Jiao and Kunle Olukotun and Karthik R. Narasimhan and Jingbo Shang and Koushik Sen and Matei Zaharia and Alex Dimakis and Ion Stoica and Joseph E. Gonzalez and Alvin Cheung},
+  journal={arXiv preprint arXiv:2610.29932},
+  year={2026},
+  selected={false},
+  topic={CodeAgents},
+  arxiv={2610.29932},
+  url={https://arxiv.org/abs/2610.29932},
+  pdf={https://arxiv.org/pdf/2610.29932},
+  website={https://frontier-cs.org/},
+  code={https://github.com/FrontierCS/FrontierCS-2},
+  abstract={Can LLM agents make contributions to frontier computer science R\&D? We introduce FrontierCS 2, a benchmark of 48 open-ended tasks. We take a paper and the code its authors released and delete the paper's contribution. The deleted code becomes the human reference that sets the bar. Earlier open-ended benchmarks give each agent a problem statement and grade one program after the run. FrontierCS 2 places the agent inside a research environment. The agent inherits a working repository and may submit a patch at any point. For each patch, a judge returns a development-suite score but keeps the evaluator, the held-out final suite and the reference private, and grades the final submission on that suite against the reference. The tasks span 13 domains, from machine-learning systems and high-performance computing to databases, security and robotics. Beyond these 48 tasks, FrontierCS 2 keeps a private set of more than 100 tasks, to be announced in the future. We evaluate 12 agents. The best one is Claude Opus 5.5, passing 58\% of its runs. No run passes on 16 tasks. A higher score is not the same as a pass: most runs that beat the reference on the combined final score still fall short on some metric or workload. On a shared capability scale for agents and tasks, the median task is roughly as difficult as what the strongest agent can handle.}
+}
+
 @article{xu2026bespec,
   abbr={ICSE},
   title={BeSpec: Behavior-Level Specification Alignment for Code Generation},

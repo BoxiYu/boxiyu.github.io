@@ -7,7 +7,7 @@ const source = readFileSync(resolve(process.cwd(), '_bibliography/papers.bib'), 
   '',
 );
 const clean = (value = '') =>
-  value.replace(/\\%/g, '%').replace(/[{}]/g, '').replace(/\s+/g, ' ').trim();
+  value.replace(/\\([%&_#$])/g, '$1').replace(/[{}]/g, '').replace(/\s+/g, ' ').trim();
 const topics: Record<string, string> = {
   CodeAgents: 'Code agents',
   AutomatedTesting: 'Automated testing',

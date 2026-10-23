@@ -8,6 +8,11 @@ export const researchGroups = [
     related: [
       { name: 'BeSpec', venue: 'ICSE 2027', href: '/publications/#xu2026bespec' },
       {
+        name: 'FrontierCS 2',
+        venue: 'arXiv 2026 · Preprint',
+        href: '/publications/#mang2026frontiercs2',
+      },
+      {
         name: 'Code RLVR synthesis',
         venue: 'arXiv 2026 · Preprint',
         href: '/publications/#zheng2026adr',

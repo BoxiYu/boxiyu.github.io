@@ -10,13 +10,13 @@ draft: false
 
 [OneAI](/products/#oneai), which I co-founded, now supports olympiad training in mathematics, physics, chemistry, biology, and informatics at [The Affiliated High School of South China Normal University](https://www.hsfz.net.cn/) and [Guangzhou University Affiliated Middle School](https://www.gdfz.edu.cn/). Olympiad training is a demanding setting for AI: the problems are hard, the students are strong, and a confident wrong answer does real damage.
 
-Working in that setting has made one thing clear to me. AI is most useful in education when it gives time back to teachers and gives students help at the moment they need it, while the judgement about what to teach and what counts as correct stays with people.
+Working in that setting has made one thing clear to me. AI is most useful in education when it gives time back to teachers and gives students help at the moment they need it, while the judgment about what to teach and what counts as correct stays with people.
 
 ## For teachers: better preparation and better problem selection
 
-Much of a coach's week goes into work that students never see. Finding problems at the right level, checking that a set covers the ideas the group actually needs, writing solutions and marking schemes, then grading the work that comes back.
+Much of a coach's week goes into work that students never see: finding problems at the right level, checking that a set covers the ideas the group actually needs, writing solutions and marking schemes, then grading the work that comes back.
 
-OneAI takes the first pass on that work. A coach can start from a learning objective and get a draft problem set with solutions and a rubric, then keep, replace, or edit each problem. The coach still decides what goes in front of students; the difference is that the decision starts from a reviewed draft rather than a blank page.
+OneAI takes the first pass on that work. A coach can start from a learning objective and get a draft problem set with solutions and a rubric, then keep, replace, or edit each problem. The coach still decides what goes in front of students; the difference is that the decision starts from a draft to review rather than a blank page.
 
 Selection also gets better after the session. Rubric-based scoring and per-student error reports show which ideas were missed and by whom. The next set can target those gaps directly instead of repeating what the group already knows.
 
@@ -38,6 +38,6 @@ The aim is to raise both at once. Teachers spend less time searching and grading
 
 AI can be wrong, and at olympiad level it can be wrong in convincing ways. A solution can look complete while skipping the one step that matters. My research on [evaluating coding agents](/research/#coding-agents) is about exactly this gap between output that looks correct and output that is correct, and the same discipline applies here.
 
-So the design keeps people in the loop where it counts. Teachers review problems and solutions before students see them. Hints are built to guide rather than give answers away. Scoring follows a rubric that the teacher can inspect and override. The final judgement on what a student has learned is a human one.
+So the design keeps people in the loop where it counts. Teachers review problems and solutions before students see them. Hints are built to guide rather than give answers away. Scoring follows a rubric that the teacher can inspect and override. The final judgment on what a student has learned is a human one.
 
 That is what I mean by human-centric AI: not AI that does the teaching, but AI that lets teachers teach more and lets students keep learning when no one else is in the room.

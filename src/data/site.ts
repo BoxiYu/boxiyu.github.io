@@ -24,7 +24,7 @@ export const projects = [
     method:
       'RT4CHART decomposes an answer into independently verifiable claims, checks them against the retrieved context, and assigns each claim an entailed, contradicted, or baseless label. Hierarchical verification maps these decisions back to answer spans with explicit supporting evidence.',
     finding:
-      'On RAGTruth++ (408 samples), RT4CHART reports precision of 0.845, recall of 0.718, and F1 of 0.776. It also reports span-level F1 of 47.5% on the re-annotated RAGTruth-Enhance dataset (2,675 samples). These results measure faithfulness to retrieved context, rather than open-domain factual correctness.',
+      'On RAGTruth++ (408 samples), RT4CHART reports precision of 0.845, recall of 0.718, and F1 of 0.776. It also reports a span-level F1 of 0.475 on the re-annotated RAGTruth-Enhance dataset (2,675 samples). These results measure faithfulness to retrieved context, rather than open-domain factual correctness.',
     topic: 'Trustworthy AI',
     links: [{ label: 'Preprint', href: 'https://arxiv.org/abs/2603.27752' }],
   },
@@ -80,7 +80,7 @@ export const projects = [
     summary:
       'A dual-program approach to constructing test oracles: transform an input, map the output back to the input domain, and check the resulting relation.',
     method:
-      'Inspired by inverse functions, a forward program and a backward program connect inputs and outputs. An auxiliary program can serve either role, allowing a relation between the original and transformed inputs to reveal inconsistencies.',
+      'Inspired by inverse functions, the approach connects inputs and outputs through a forward program and a backward program. An auxiliary program can serve either role, allowing a relation between the original and transformed inputs to reveal inconsistencies.',
     finding:
       'The paper develops three testing modes and illustrates applications to algorithms, traditional software, and AI systems. The relation depends on the programs and task; it does not require every pair of programs to be exact inverses.',
     links: [
@@ -101,7 +101,7 @@ export const projects = [
     method:
       'CXBench pairs each customer request with a tool-based environment and explicit process requirements across six regulated domains. Rule cards link cited regulatory obligations to observable trace evidence, and a hybrid grader combines deterministic checks for ordering and authority with an LLM judge for semantic requirements.',
     finding:
-      'Across seven models and 120 tasks, 55.5% of the 840 retained executions were false-passes: they reached the correct business outcome but failed a process check. These account for 80.1% of outcome-passing runs, and only 13.8% of executions passed both. Process-inclusive scoring also changed the observed model ordering.',
+      'Across seven models and 120 tasks, 55.5% of the 840 retained executions were false passes: they reached the correct business outcome but failed a process check. These account for 80.1% of outcome-passing runs, and only 13.8% of executions passed both. Process-inclusive scoring also changed the observed model ordering.',
     topic: 'Trustworthy AI',
     links: [
       { label: 'Project page', href: 'https://cxbench.github.io/' },
@@ -121,7 +121,7 @@ export const projects = [
     method:
       'ROME recursively removes and inpaints objects in an image, then compares the objects mentioned in captions before and after the transformation. This turns expected changes in image content into a metamorphic test oracle.',
     finding:
-      'Across one commercial captioning API and four algorithms, the study reported 9,121 erroneous issues from 226 seed images, with precision ranging from 86.47% to 92.17%.',
+      'Across one commercial captioning API and four algorithms, the study reported 9,121 captioning errors from 226 seed images, with precision ranging from 86.47% to 92.17%.',
     topic: 'Trustworthy AI',
     links: [
       { label: 'Paper', href: 'https://arxiv.org/abs/2306.02228' },
@@ -159,11 +159,12 @@ export const projects = [
     method:
       'MetaIC builds an object corpus from existing images, inserts an object into a seed image with resizing and location tuning, and reports image pairs whose captions do not change as expected.',
     finding:
-      'Testing one widely used captioning API and five captioning models with 1,000 seed images, MetaIC reported 16,825 erroneous issues with precision from 84.9% to 98.4%. The same idea found 151 incorrect labels in the MS COCO Caption dataset.',
+      'Testing one widely used captioning API and five captioning models with 1,000 seed images, MetaIC reported 16,825 captioning errors with precision from 84.9% to 98.4%. The same idea found 151 incorrect labels in the MS COCO Caption dataset.',
     topic: 'Trustworthy AI',
     links: [
       { label: 'Paper', href: 'https://arxiv.org/abs/2206.06550' },
       { label: 'Code', href: 'https://github.com/RobustNLP/TestIC' },
+      { label: 'Slides', href: '/assets/pdf/MetaIC_slides.pdf' },
     ],
   },
   {
@@ -174,7 +175,7 @@ export const projects = [
     venue: 'ICSE',
     question: 'When is a simpler model enough for log anomaly detection?',
     summary:
-      'An empirical comparison of classical and deep learning approaches examines accuracy and computational cost across five log datasets.',
+      'An empirical study that compares classical and deep learning approaches on accuracy and computational cost across five log datasets.',
     method:
       'The study compares methods on HDFS, BGL, Spirit, Liberty, and Thunderbird. The accompanying LightAD toolkit combines preprocessing, deduplication, and automated model selection.',
     finding:

@@ -51,7 +51,7 @@ export const featuredCourses: Course[] = [
     people: [{ name: 'Boxi Yu' }],
     links: [{ label: '中文版', href: 'https://boxi-ai.github.io/ai-for-all/' }],
     summary:
-      'Eight shared modules on using AI, checking what it says, and knowing when not to use it, with tracks for K12, university, working adults, seniors, and teachers. The core module, C4, teaches how to check AI: it makes mistakes, so learn to catch them.',
+      'Eight shared modules on using AI, checking what it says, and knowing when not to use it, with tracks for K–12, university, working adults, seniors, and teachers. The core module, C4, teaches learners to catch AI’s mistakes.',
     detail: 'Notes, 3–5 minute videos, and interactive pages per module',
     href: 'https://boxi-ai.github.io/ai-for-all/en/',
     unit: 'modules',
@@ -77,7 +77,7 @@ export const featuredCourses: Course[] = [
     level: 'Introductory · Python',
     context: 'CUHK–Shenzhen',
     role: 'Instructor',
-    people: [{ name: 'Prof. Pinjia He', href: 'https://pinjiahe.github.io/' }],
+    people: [{ name: 'Pinjia He', href: 'https://pinjiahe.github.io/' }],
     summary:
       'From number systems to recursion, classes, and data structures, ending with how large language models work. Step through what Python does in memory, predict each output before it appears, and finish every lecture with a self-check.',
     detail: 'Notes and 3–4 short videos per lecture',
@@ -112,7 +112,7 @@ export const featuredCourses: Course[] = [
       { name: 'Boxi Yu' },
     ],
     summary:
-      'The language of proof and the objects of computer science: definitions and theorems, sets and counting, quantifiers, relations, contradiction and induction, functions, probability, number theory and graphs. Every number is computed by running code, every key idea has a demo you can step through, and every exercise has a hint and a full solution.',
+      'The language of proof and the objects of computer science: definitions and theorems, sets and counting, quantifiers, relations, contradiction and induction, functions, probability, number theory, and graphs. Key ideas come with demos you can step through, and every exercise has a hint and a full solution.',
     detail: 'Notes and two narrated videos per lecture; textbook: Scheinerman',
     href: 'https://boxi-math.github.io/dm101/',
     unit: 'lectures',
@@ -205,9 +205,9 @@ export const featuredCourses: Course[] = [
     level: 'Core · Neural networks',
     context: 'CUHK–Shenzhen · Lectures 9–11',
     role: 'Instructor',
-    people: [{ name: 'Prof. Jicong Fan' }],
+    people: [{ name: 'Jicong Fan' }],
     summary:
-      'From a single neuron to attention: backpropagation on computational graphs, convolution and pooling, recurrent networks with LSTM and GRU, and the Transformer. Move the numbers, predict each result, and run the NumPy labs.',
+      'From a single neuron to attention: backpropagation on computational graphs, convolution and pooling, recurrent networks with LSTM and GRU, and the Transformer. Adjust the inputs, predict each result, and run the NumPy labs.',
     detail: 'Notes, nine videos with English and Chinese subtitles, and NumPy labs',
     href: 'https://boxi-math.github.io/dda3020/',
     unit: 'lectures',

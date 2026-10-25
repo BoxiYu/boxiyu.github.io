@@ -123,7 +123,7 @@ const themes = [
               <aside class="related-research">
                 <h3>Benchmark design beyond individual test suites</h3>
                 <p>
-                  Our position paper,{' '}
+                  A position paper I co-authored,{' '}
                   <a href="/publications/#cao2025">
                     Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility
                   </a>
@@ -142,10 +142,10 @@ const themes = [
                 <h3>From coding tasks to research tasks</h3>
                 <p>
                   <a href="/publications/#mang2026frontiercs2">FrontierCS 2</a>, a 2026 preprint I
-                  contributed to, asks whether agents can do computer science R&amp;D. Each of its 48
+                  co-authored, asks whether agents can do computer science R&amp;D. Each of its 48
                   tasks removes a paper's key contribution from the code released with it; an agent
-                  passes only if its implementation beats the original on every metric of hidden
-                  workloads. The best of 12 agents passes 58% of its runs, and no run passes 16 tasks.
+                  passes only if its implementation beats the original on every metric on the hidden
+                  workloads. The best of 12 agents passes 58% of its runs, and 16 tasks are not passed by any run.
                 </p>
                 <figure class="research-video">
                   <video
@@ -179,21 +179,6 @@ const themes = [
                   across simulated harmful fine-tuning trajectories to recover alignment while
                   preserving task utility. It is a 2026 preprint.
                 </p>
-              </aside>
-            )}
-            {theme.id === 'ai-systems' && (
-              <aside class="related-research">
-                <h3>Earlier work: MetaIC</h3>
-                <p>
-                  <a href="/publications/#yu2022automated">MetaIC (ISSTA 2022)</a> tests image
-                  captioning by inserting objects into images and checking expected changes in the
-                  generated captions. It uses object extraction, resizing, and placement controls to
-                  produce test inputs.
-                </p>
-                <div class="resource-links">
-                  <a href="https://arxiv.org/abs/2206.06550">Paper</a>
-                  <a href="/assets/pdf/MetaIC_slides.pdf">Slides</a>
-                </div>
               </aside>
             )}
             {theme.id === 'aiops' && (

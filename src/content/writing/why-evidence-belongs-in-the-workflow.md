@@ -23,6 +23,6 @@ The interface matters because evidence that is difficult to find is evidence tha
 
 Automation is most useful when it shortens the path to a well-informed decision. It should generate a candidate, surface the uncertainty, and make the next check easy. The final decision still needs a person who understands the goal and can explain why the result is acceptable.
 
-That is the idea behind [OneAI](/products/#oneai), an AI maths education workspace that connects student guidance, assessment generation, rubric review, and student-level error reports. The same idea appears in [UTBoost](/research/#utboost), where stronger tests make benchmark conclusions harder to satisfy with an incorrect patch.
+That is the idea behind [OneAI](/products/#oneai), an AI education workspace that connects student guidance, assessment generation, rubric review, and student-level error reports. The same idea appears in [UTBoost](/research/#utboost), where stronger tests make it harder for an incorrect patch to count as a fix.
 
 Evidence does not make a system infallible. It makes its claims easier to question, improve, and use responsibly.

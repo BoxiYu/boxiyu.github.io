@@ -5,4 +5,4 @@ inline: true
 related_posts: true
 ---
 
-Our ICML and ICML Position papers were accepted: "SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark" and "Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility".
+Two papers accepted at ICML 2026, one in the main track and one in the position-paper track: "SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark" and "Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility".

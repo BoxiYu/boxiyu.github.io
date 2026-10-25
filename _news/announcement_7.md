@@ -5,5 +5,4 @@ inline: true
 related_posts: true
 ---
 
-Our paper "UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench" was accepted by ACL'2025.
-
+Our paper "UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench" was accepted at ACL 2025.

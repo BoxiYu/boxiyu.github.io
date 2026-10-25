@@ -17,7 +17,7 @@ export const researchGroups = [
         venue: 'arXiv 2026 · Preprint',
         href: '/publications/#zheng2026adr',
       },
-      { name: 'Benchmark design', venue: 'ICML 2026 · Position', href: '/publications/#cao2025' },
+      { name: 'Rigorous code benchmarks', venue: 'ICML 2026 · Position', href: '/publications/#cao2025' },
     ],
   },
   {
@@ -32,7 +32,7 @@ export const researchGroups = [
     id: 'ai-systems',
     title: 'Testing AI systems',
     question: 'Which changes should an AI system respond to?',
-    description: 'Controlled transformations reveal errors in vision and language systems.',
+    description: 'Metamorphic transformations and benchmarks reveal errors in vision, language, and agent systems.',
     projects: ['cxbench', 'rome', 'tin'],
     related: [
       { name: 'TRACE', venue: 'arXiv 2026 · Preprint', href: '/publications/#li2026trace' },

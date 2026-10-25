@@ -38,7 +38,8 @@ const papers = publications
     theme: themeOf[p.id] ?? '',
   }));
 
-const columnCount = 10;
+// Wide enough that the tilted, receding plane still covers the right edge of a 1920px screen.
+const columnCount = 18;
 const perColumn = 5;
 // Too few thumbnails (e.g. a test build without assets) would repeat badly; skip the wall.
 const columns =
@@ -47,7 +48,7 @@ const columns =
     : Array.from({ length: columnCount }, (_, c) =>
         Array.from({ length: perColumn }, (_, i) => papers[(c * 3 + i * 2) % papers.length]),
       );
-const durations = [74, 92, 68, 86, 78, 96, 70, 88, 72, 84];
+const durations = [74, 92, 68, 86, 78, 96, 70, 88, 72, 84, 90, 66, 82, 94, 76, 98, 80, 86];
 ---
 
 {

@@ -9,7 +9,7 @@ const source = readFileSync(resolve(process.cwd(), '_bibliography/papers.bib'), 
 const clean = (value = '') =>
   value.replace(/\\([%&_#$])/g, '$1').replace(/[{}]/g, '').replace(/\s+/g, ' ').trim();
 const topics: Record<string, string> = {
-  CodeAgents: 'Code agents',
+  CodeAgents: 'Coding agents',
   AutomatedTesting: 'Automated testing',
   TrustworthyAI: 'Trustworthy AI',
   AIOps: 'AIOps',

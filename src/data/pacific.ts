@@ -21,7 +21,7 @@ export const pacificProducts = [
     verb: 'Prove',
     status: 'Released',
     description:
-      'AI-assisted formal verification that turns plain code into machine-checked proof goals, with an offline workflow for C, Java, Dafny, and Rust.',
+      'AI-assisted formal verification that generates proof obligations from source code and checks the proofs by machine, with an offline workflow for C, Java, Dafny, and Rust.',
     detail: 'Formal methods · no egress',
     href: 'https://veriformal.pacificstudio.ai/',
     cta: 'Start verifying',

@@ -40,3 +40,5 @@ const numberWords = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven'
 export const oneaiSchoolCount = numberWords[oneaiSchools.length] ?? String(oneaiSchools.length);
 
 export const oneaiOlympiadSchools = oneaiSchools.filter((school) => school.olympiad);
+export const oneaiOlympiadCount =
+  numberWords[oneaiOlympiadSchools.length] ?? String(oneaiOlympiadSchools.length);

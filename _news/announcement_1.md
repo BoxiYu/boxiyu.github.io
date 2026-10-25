@@ -5,5 +5,4 @@ inline: true
 related_posts: true
 ---
 
-Our paper "ROME: Testing Image Captioning Systems via Recursive Object Melting" was accepted by ISSTA'2023.
-
+Our paper "ROME: Testing Image Captioning Systems via Recursive Object Melting" was accepted at ISSTA 2023.

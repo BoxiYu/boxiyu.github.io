@@ -3,6 +3,12 @@ import { resolve } from 'node:path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
+/** Shortens text for a meta description, breaking at a word. */
+export function excerpt(text: string, max = 160) {
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).replace(/\s+\S*$/, '')}…`;
+}
+
 export function legacyCollection(directory: string) {
   const root = resolve(process.cwd(), directory);
   return readdirSync(root)
@@ -25,6 +31,15 @@ export function legacyCollection(directory: string) {
         html: marked.parse(content) as string,
         content: content.trim(),
         place: data.place as string | undefined,
+        title: data.title as string | undefined,
+        publication: data.publication as { href: string; label: string } | undefined,
+        /** Plain-text summary for meta descriptions. */
+        summary: content
+          .trim()
+          .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+          .replace(/[*_`#>]/g, '')
+          .replace(/\s+/g, ' ')
+          .trim(),
       };
     })
     .sort((a, b) => b.date.getTime() - a.date.getTime());

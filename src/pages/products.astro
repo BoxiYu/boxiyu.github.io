@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { pacificProducts } from '../data/pacific';
-import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
+import { oneaiOlympiadCount, oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
 ---
 
 <Base
@@ -12,7 +12,7 @@ import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
     <header class="products-hero">
       <div class="products-hero-copy">
         <p class="products-kicker">Research → product</p>
-        <h1>Useful systems for the moments that matter.</h1>
+        <h1>Research tools in use.</h1>
         <p class="products-lede">
           I turn work on software testing and trustworthy AI into tools that help people build,
           teach, and learn with better evidence.
@@ -21,9 +21,7 @@ import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
           <a class="products-button products-button-primary" href="#oneai"
             >See the education product</a
           >
-          <a class="products-text-link" href="/about/#contact"
-            >Talk about a pilot <span aria-hidden="true">↗</span></a
-          >
+          <a class="products-text-link" href="/about/#contact">Get in touch</a>
         </div>
       </div>
       <aside class="products-signal" aria-label="Product principles">
@@ -48,8 +46,8 @@ import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
         <div class="oneai-in-use">
           <p class="products-kicker">In use</p>
           <p>
-            At {oneaiSchoolCount} schools in Guangzhou and Shenzhen. Olympiad training covers
-            {' ' + oneaiSubjects}.
+            In use at {oneaiSchoolCount} schools in Guangzhou and Shenzhen, including Olympiad
+            training in {oneaiSubjects} at {oneaiOlympiadCount} of them.
           </p>
           <ul>
             {
@@ -75,7 +73,7 @@ import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
         </article>
         <article>
           <span class="capability-index">02</span>
-          <h3>Build a complete paper</h3>
+          <h3>Build a complete exam</h3>
           <p>
             Generate a structured test from a prompt, then export it in the format your class uses.
           </p>
@@ -83,11 +81,11 @@ import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
         <article>
           <span class="capability-index">03</span>
           <h3>Keep teachers in control</h3>
-          <p>Rubrics make scoring consistent; teacher review keeps the final judgement human.</p>
+          <p>Rubrics make scoring consistent; teacher review keeps the final judgment human.</p>
         </article>
         <article>
           <span class="capability-index">04</span>
-          <h3>Explain every gap</h3>
+          <h3>Show where each student went wrong</h3>
           <p>Per-student error reports show the missed idea and a concrete route to practice it.</p>
         </article>
       </div>
@@ -114,7 +112,7 @@ import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
           >.
         </video>
         <figcaption>
-          OneAI combines guided student chat, paper building, rubric-based scoring, and
+          OneAI combines guided student chat, exam building, rubric-based scoring, and
           student-level error reports in one workspace.
         </figcaption>
       </figure>
@@ -164,25 +162,25 @@ import { oneaiSchoolCount, oneaiSchools, oneaiSubjects } from '../data/oneai';
       </div>
       <div>
         <p>
-          My research on UTBoost and SWE-Bench reliability becomes practical test augmentation for
-          teams shipping coding agents. Stronger tests expose semantic regressions before a green
-          check reaches production.
+          UTBoost, from my research on SWE-Bench reliability, is open source. Teams evaluating coding
+          agents can use its test augmentation to catch patches that pass only because the tests are
+          weak.
         </p>
         <div class="product-secondary-links">
           <a href="https://github.com/CUHK-Shenzhen-SE/UTBoost"
             >Explore UTBoost <span aria-hidden="true">↗</span></a
           >
-          <a href="/research/#coding-agents">Read the research <span aria-hidden="true">↗</span></a>
+          <a href="/research/#coding-agents">Read the research</a>
         </div>
       </div>
     </section>
 
     <section class="products-contact" aria-labelledby="contact-title">
       <p class="products-kicker">Work together</p>
-      <h2 id="contact-title">Have a hard-to-measure workflow?</h2>
+      <h2 id="contact-title">Have a quality question that is hard to measure?</h2>
       <p>
-        I work with research teams, product groups, and educators to turn a fuzzy quality question
-        into a testable workflow.
+        I collaborate with research groups, product teams, and educators to turn loosely defined
+        quality questions into measurable evaluations.
       </p>
       <a class="products-button products-button-primary" href="/about/#contact"
         >Start a conversation</a

@@ -5,6 +5,4 @@ inline: true
 related_posts: true
 ---
 
-
- Our paper "Testing Graph Database Systems via Equivalent Query Rewriting" was accepted by ICSE'2024. 
-
+Our paper "Testing Graph Database Systems via Equivalent Query Rewriting" was accepted at ICSE 2024.

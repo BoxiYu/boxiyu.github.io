@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { talks } from '../../lib/legacy';
+import { excerpt, talks } from '../../lib/legacy';
 import { formatDate } from '../../lib/writing';
 export function getStaticPaths() {
   return talks.map((talk) => ({ params: { id: talk.id }, props: { talk } }));
@@ -8,16 +8,20 @@ export function getStaticPaths() {
 const { talk } = Astro.props;
 ---
 
-<Base title="AI Insight Talk: Code Bench"
+<Base title={talk.title ?? 'Talk'} description={excerpt(talk.summary)}
   ><div class="wrapper">
     <header class="page-header">
-      <a class="back-link" href="/talks/">All talks</a><h1>AI Insight Talk:<br />Code Bench</h1><p>
+      <a class="back-link" href="/talks/">All talks</a><h1>{talk.title}</h1><p>
         {formatDate(talk.date)} / {talk.place}
       </p>
     </header><div class="page-body prose">
-      <div set:html={talk.html} /><p>
-        <a href="/publications/#yu2025utboost">Related publication: UTBoost</a>
-      </p>
+      <div set:html={talk.html} />{
+        talk.publication && (
+          <p>
+            <a href={talk.publication.href}>Related publication: {talk.publication.label}</a>
+          </p>
+        )
+      }
     </div>
   </div></Base
 >

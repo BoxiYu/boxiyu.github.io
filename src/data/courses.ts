@@ -1,10 +1,10 @@
 /**
  * Interactive lecture notes, shown on the homepage "Courses" section and the
  * Courses page, ordered from AI literacy for everyone, through a first
- * program, data structures, linear algebra and machine learning, to coding
+ * program, discrete mathematics, data structures, linear algebra and machine learning, to coding
  * agents. Boxi Yu
  * designed AI for All (AI 通识课) and LA101, and teaches Data Structures with
- * Yintong Huo; AIE1001, DDA3020 and CSC4801 are
+ * Yintong Huo, and DM101 with Mingtao Xia; AIE1001, DDA3020 and CSC4801 are
  * CUHK–Shenzhen courses taught by their own instructors, with notes and
  * videos co-designed by Boxi Yu. Lecture titles follow the published sites
  * under https://boxi-cs.github.io/, https://boxi-ai.github.io/ and
@@ -98,6 +98,39 @@ export const featuredCourses: Course[] = [
       'Large Language Models',
     ],
     tone: 'blueberry',
+  },
+  {
+    id: 'dm101',
+    badge: 'DM101',
+    name: 'Discrete Mathematics',
+    level: 'Core · Proof and counting',
+    context: 'Open course in English',
+    role: 'Instructors',
+    people: [
+      { name: 'Mingtao Xia', href: 'https://www.birmingham.ac.uk/staff/profiles/maths/xia-mingtao' },
+      { name: 'Boxi Yu' },
+    ],
+    summary:
+      'The language of proof and the objects of computer science: definitions and theorems, sets and counting, quantifiers, relations, contradiction and induction, functions, probability, number theory and graphs. Every number is computed by running code, every key idea has a demo you can step through, and every exercise has a hint and a full solution.',
+    detail: 'Notes and two narrated videos per lecture; textbook: Scheinerman',
+    href: 'https://boxi-math.github.io/dm101/',
+    unit: 'lectures',
+    firstLecture: 1,
+    lectures: [
+      'Definitions',
+      'Theorems and proofs',
+      'Lists, sets and counting',
+      'Quantifiers',
+      'Relations',
+      'Contradiction and the smallest counterexample',
+      'Mathematical induction',
+      'Functions',
+      'Sample spaces and events',
+      'Random variables',
+      'Division and the gcd',
+      'Graphs',
+    ],
+    tone: 'strawberry',
   },
   {
     id: 'data-structures',

@@ -101,6 +101,7 @@ export const featuredCourses: Course[] = [
   },
   {
     id: 'dm101',
+    clip: true,
     badge: 'DM101',
     name: 'Discrete Mathematics',
     level: 'Core · Proof and counting',

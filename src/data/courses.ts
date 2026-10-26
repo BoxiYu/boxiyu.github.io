@@ -79,8 +79,8 @@ export const featuredCourses: Course[] = [
     role: 'Instructors',
     people: [
       { name: 'Pinjia He', href: 'https://pinjiahe.github.io/' },
-      { name: 'Junjie Hu' },
-      { name: 'Wenjing Ma' },
+      { name: 'Junjie Hu', href: 'https://junjh.github.io/' },
+      { name: 'Wenjing Ma', href: 'https://marvinquiet.github.io/' },
     ],
     summary:
       'From number systems to recursion, classes, and data structures, ending with how large language models work. Step through what Python does in memory, predict each output before it appears, and finish every lecture with a self-check.',

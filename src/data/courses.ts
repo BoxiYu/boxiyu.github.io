@@ -48,7 +48,7 @@ export const featuredCourses: Course[] = [
     level: 'Open course · No coding',
     context: 'Open course in Chinese and English',
     role: 'Designer',
-    people: [{ name: 'Boxi Yu' }],
+    people: [{ name: 'Boxi Yu', href: '/about/' }],
     links: [{ label: '中文版', href: 'https://boxi-ai.github.io/ai-for-all/' }],
     summary:
       'Eight shared modules on using AI, checking what it says, and knowing when not to use it, with tracks for K–12, university, working adults, seniors, and teachers. The core module, C4, teaches learners to catch AI’s mistakes.',
@@ -113,7 +113,7 @@ export const featuredCourses: Course[] = [
     role: 'Instructors',
     people: [
       { name: 'Mingtao Xia', href: 'https://www.birmingham.ac.uk/staff/profiles/maths/xia-mingtao' },
-      { name: 'Boxi Yu' },
+      { name: 'Boxi Yu', href: '/about/' },
     ],
     summary:
       'The language of proof and the objects of computer science: definitions and theorems, sets and counting, quantifiers, relations, contradiction and induction, functions, probability, number theory, and graphs. Key ideas come with demos you can step through, and every exercise has a hint and a full solution.',
@@ -145,7 +145,7 @@ export const featuredCourses: Course[] = [
     level: 'Core · Python & Java',
     context: 'Python and Java versions',
     role: 'Instructors',
-    people: [{ name: 'Boxi Yu' }, { name: 'Yintong Huo', href: 'https://yintonghuo.github.io/' }],
+    people: [{ name: 'Boxi Yu', href: '/about/' }, { name: 'Yintong Huo', href: 'https://yintonghuo.github.io/' }],
     summary:
       'The structures behind every program, from arrays and linked lists to search trees, hash tables, heaps, and graphs, with complexity and proof methods as the common language. Pick Python or Java: the concepts are shared, the code is in your language.',
     detail: 'Notes and four 8–10 minute videos in every chapter',
@@ -173,7 +173,7 @@ export const featuredCourses: Course[] = [
     level: 'Core · Math with code',
     context: 'Open course in English',
     role: 'Designer',
-    people: [{ name: 'Boxi Yu' }],
+    people: [{ name: 'Boxi Yu', href: '/about/' }],
     links: [
       {
         label: "Inspired by MIT 18.06",
@@ -209,7 +209,7 @@ export const featuredCourses: Course[] = [
     level: 'Core · Neural networks',
     context: 'CUHK–Shenzhen · Lectures 9–11',
     role: 'Instructor',
-    people: [{ name: 'Jicong Fan' }],
+    people: [{ name: 'Jicong Fan', href: 'https://jicongfan.github.io/' }],
     summary:
       'From a single neuron to attention: backpropagation on computational graphs, convolution and pooling, recurrent networks with LSTM and GRU, and the Transformer. Adjust the inputs, predict each result, and run the NumPy labs.',
     detail: 'Notes, nine videos with English and Chinese subtitles, and NumPy labs',
@@ -227,7 +227,7 @@ export const featuredCourses: Course[] = [
     level: 'Advanced · Coding agents',
     context: 'CUHK–Shenzhen · Fall 2026',
     role: 'Instructor',
-    people: [{ name: 'Jinsheng Ba' }],
+    people: [{ name: 'Jinsheng Ba', href: 'https://bajinsheng.github.io/' }],
     links: [{ label: 'Official course site', href: 'https://sra-research.github.io/CSC4801/' }],
     summary:
       'How LLMs and agents work, then how to use them across the software lifecycle: prompts, MCP and skills, requirements, coding, and team collaboration. Step through the agent loop, prompts, and tool calls, then try each step with a coding agent of your own.',

@@ -74,7 +74,12 @@ const number = (n: number) => String(n).padStart(2, '0');
               {course.context} · {course.role}:{' '}
               {course.people.map((person, index) => (
                 <>
-                  {index > 0 && ' and '}
+                  {index > 0 &&
+                    (index < course.people.length - 1
+                      ? ', '
+                      : course.people.length > 2
+                        ? ', and '
+                        : ' and ')}
                   {person.href ? <a href={person.href}>{person.name}</a> : person.name}
                 </>
               ))}

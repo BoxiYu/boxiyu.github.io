@@ -76,8 +76,12 @@ export const featuredCourses: Course[] = [
     name: 'Introduction to AI Programming',
     level: 'Introductory · Python',
     context: 'CUHK–Shenzhen',
-    role: 'Instructor',
-    people: [{ name: 'Pinjia He', href: 'https://pinjiahe.github.io/' }],
+    role: 'Instructors',
+    people: [
+      { name: 'Pinjia He', href: 'https://pinjiahe.github.io/' },
+      { name: 'Junjie Hu' },
+      { name: 'Wenjing Ma' },
+    ],
     summary:
       'From number systems to recursion, classes, and data structures, ending with how large language models work. Step through what Python does in memory, predict each output before it appears, and finish every lecture with a self-check.',
     detail: 'Notes and 3–4 short videos per lecture',

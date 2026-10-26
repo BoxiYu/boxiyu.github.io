@@ -32,6 +32,11 @@ export interface Course {
   lectureIds?: string[];
   /** Labels shown before each item; default: lectureIds, else the lecture number. */
   lectureLabels?: string[];
+  /**
+   * How many lectures (from the first) are online. Later ones show without a
+   * link until the course site publishes them. Default: all.
+   */
+  published?: number;
   /** Overrides the "N lectures" count on the card band. */
   count?: string;
   /** A short muted loop in assets/video/courses/<id>.mp4 (with <id>-poster.jpg) leads the card. */
@@ -86,6 +91,8 @@ export const featuredCourses: Course[] = [
       'From number systems to recursion, classes, and data structures, ending with how large language models work. Step through what Python does in memory, predict each output before it appears, and finish every lecture with a self-check.',
     detail: 'Notes and 3–4 short videos per lecture',
     href: 'https://boxi-cs.github.io/aie1001/',
+    // L07–L11 are held back at the instructor's request (boxi-cs/aie1001 PUBLISHED).
+    published: 6,
     unit: 'lectures',
     firstLecture: 1,
     lectures: [

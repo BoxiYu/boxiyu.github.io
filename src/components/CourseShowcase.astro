@@ -97,13 +97,22 @@ const number = (n: number) => String(n).padStart(2, '0');
                 const label =
                   course.lectureLabels?.[index] ?? course.lectureIds?.[index] ?? number(n);
                 const path = course.lectureIds?.[index] ?? `L${number(n)}`;
+                const online = index < (course.published ?? course.lectures.length);
                 return (
                   <>
                     <span class="course-card-path-word">{position === 0 ? 'From' : 'to'}</span>
-                    <a href={`${course.href}${path}/`}>
-                      <span class="course-card-lecture-number">{label}</span>
-                      {course.lectures[index]}
-                    </a>
+                    {online ? (
+                      <a href={`${course.href}${path}/`}>
+                        <span class="course-card-lecture-number">{label}</span>
+                        {course.lectures[index]}
+                      </a>
+                    ) : (
+                      <span>
+                        <span class="course-card-lecture-number">{label}</span>
+                        {course.lectures[index]}
+                        <span class="course-card-later">opens later</span>
+                      </span>
+                    )}
                   </>
                 );
               })}
@@ -296,6 +305,11 @@ const number = (n: number) => String(n).padStart(2, '0');
   }
   .course-card-path a:hover {
     color: var(--strawberry);
+  }
+  .course-card-later {
+    margin-left: 8px;
+    color: var(--muted);
+    font-size: 12px;
   }
   .course-card-lecture-number {
     margin-right: 6px;

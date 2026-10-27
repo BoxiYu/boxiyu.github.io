@@ -4,7 +4,7 @@
  * program, discrete mathematics, data structures, linear algebra and machine learning, to coding
  * agents. Boxi Yu
  * designed AI for All (AI 通识课) and LA101, and teaches Data Structures with
- * Yintong Huo, and DM101 with Mingtao Xia; AIE1001, DDA3020 and CSC4801 are
+ * Yintong Huo, and DM101 with Mingtao Xia; AIE1001, CSC3100, DDA3020 and CSC4801 are
  * CUHK–Shenzhen courses taught by their own instructors, with notes and
  * videos co-designed by Boxi Yu. Lecture titles follow the published sites
  * under https://boxi-cs.github.io/, https://boxi-ai.github.io/ and
@@ -171,6 +171,52 @@ export const featuredCourses: Course[] = [
       'Graphs and Graph Algorithms',
     ],
     tone: 'teal',
+  },
+  {
+    id: 'csc3100',
+    clip: true,
+    badge: 'CSC3100',
+    name: 'Data Structures',
+    level: 'Core · Java',
+    context: 'CUHK–Shenzhen',
+    role: 'Instructors',
+    people: [{ name: 'Tianshu Yu' }, { name: 'Mengmeng Liu' }, { name: 'Li Jiang' }],
+    summary:
+      'From abstract data types and Java basics through sorting, lists, stacks and queues, to binary search trees, AVL and red-black trees, heaps, hashing, and graph algorithms. Step through each structure as it changes, predict what the code prints, and run every Java example yourself.',
+    detail: 'Notes and four 8–12 minute videos per lecture, with English and Chinese subtitles',
+    href: 'https://boxi-cs.github.io/csc3100/',
+    // Lectures 16–24 open after the instructors' feedback (boxi-cs/csc3100 PUBLISHED).
+    published: 16,
+    unit: 'lectures',
+    firstLecture: 0,
+    lectures: [
+      'Course Introduction',
+      'Introduction and ADTs',
+      'Java Basics',
+      'Arrays',
+      'Insertion Sort and Merge Sort',
+      'Asymptotic Notations',
+      'Divide and Conquer, Recursion',
+      'Lists',
+      'List Applications',
+      'Stacks',
+      'Queues',
+      'Quicksort',
+      'More Sorting Algorithms',
+      'Trees and Binary Trees',
+      'Binary Search Trees',
+      'AVL Trees',
+      'Red-Black Trees',
+      'Heaps',
+      'Hashing',
+      'Graphs, BFS and DFS',
+      'Minimum Spanning Trees',
+      'Shortest Paths: Dijkstra',
+      'Shortest Paths: Floyd',
+      'Shortest Paths: Bellman-Ford',
+      'Java Data Structures',
+    ],
+    tone: 'moss',
   },
   {
     id: 'la101',

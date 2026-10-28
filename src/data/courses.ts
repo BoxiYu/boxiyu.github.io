@@ -3,7 +3,7 @@
  * Courses page, ordered from AI literacy for everyone, through a first
  * program, discrete mathematics, data structures, linear algebra and machine learning, to coding
  * agents. Boxi Yu
- * designed AI for All (AI 通识课) and LA101, and teaches Data Structures with
+ * designed AI for All (AI 通识课), LA101 and the FrontierCS 2 course, and teaches Data Structures with
  * Yintong Huo, and DM101 with Mingtao Xia; AIE1001, CSC3100, DDA3020 and CSC4801 are
  * CUHK–Shenzhen courses taught by their own instructors, with notes and
  * videos co-designed by Boxi Yu. Lecture titles follow the published sites
@@ -302,6 +302,40 @@ export const featuredCourses: Course[] = [
       'Team Collaboration',
     ],
     tone: 'strawberry',
+  },
+  {
+    id: 'frontiercs2',
+    clip: true,
+    badge: 'FrontierCS 2',
+    name: 'Can AI Agents Do CS Research?',
+    level: 'Advanced · Research benchmark',
+    context: 'Open course in English',
+    role: 'Designer',
+    people: [{ name: 'Boxi Yu', href: '/about/' }],
+    links: [{ label: 'The benchmark', href: 'https://frontier-cs.org/' }],
+    summary:
+      'A tour of FrontierCS 2, a benchmark that removes the key contribution from a research paper and asks an agent to write it back. Each lecture takes one field, from systems and databases to cryptography and robotics: the paper’s idea, how a run is judged, and what the agents wrote. Every idea comes with a small model you can run.',
+    detail: 'Notes, three or four short videos per lecture, results as of October 26, 2026',
+    href: 'https://boxi-cs.github.io/frontiercs2/',
+    unit: 'lectures',
+    firstLecture: 0,
+    lectures: [
+      'Introduction',
+      'MLSys',
+      'HPC',
+      'Architecture',
+      'Network',
+      'Theory',
+      'Bioinformatics',
+      'Machine Learning',
+      'Database',
+      'Programming Languages',
+      'Software Engineering',
+      'Cryptography',
+      'Security',
+      'Robotics',
+    ],
+    tone: 'teal',
   },
 ];
 

@@ -1,10 +1,10 @@
 /**
  * Interactive lecture notes, shown on the homepage "Courses" section and the
  * Courses page, ordered from AI literacy for everyone, through a first
- * program, discrete mathematics, data structures, linear algebra and machine learning, to coding
+ * program, discrete mathematics, data structures, algorithms, linear algebra and machine learning, to coding
  * agents. Boxi Yu
  * designed AI for All (AI 通识课), LA101 and the FrontierCS 2 course, and teaches Data Structures with
- * Yintong Huo, and DM101 with Mingtao Xia; AIE1001, CSC3100, DDA3020 and CSC4801 are
+ * Yintong Huo, and DM101 with Mingtao Xia; AIE1001, CSC3100, CSC5001, DDA3020 and CSC4801 are
  * CUHK–Shenzhen courses taught by their own instructors, with notes and
  * videos co-designed by Boxi Yu. Lecture titles follow the published sites
  * under https://boxi-cs.github.io/, https://boxi-ai.github.io/ and
@@ -217,6 +217,46 @@ export const featuredCourses: Course[] = [
       'Java Data Structures',
     ],
     tone: 'moss',
+  },
+  {
+    id: 'csc5001',
+    clip: true,
+    badge: 'CSC5001',
+    name: 'Design and Analysis of Computer Algorithms',
+    level: 'Graduate · Python',
+    context: 'CUHK–Shenzhen',
+    role: 'Instructor',
+    people: [{ name: 'Mengmeng Liu' }],
+    summary:
+      'From proofs and asymptotic analysis through divide and conquer, the FFT and linear-time selection, to dynamic programming, union-find, Fenwick and segment trees, and graph algorithms from BFS and DFS to 2-SAT and minimum spanning trees. Step through each algorithm on your own inputs, predict before it shows you, and run every Python program yourself.',
+    detail: 'Notes and three or four 8–12 minute videos per lecture, with English and Chinese subtitles',
+    href: 'https://boxi-cs.github.io/csc5001/',
+    // Lectures 15–18 open later in the term (boxi-cs/csc5001 LATER).
+    published: 15,
+    unit: 'lectures',
+    firstLecture: 0,
+    lectures: [
+      'Course Introduction',
+      'Algorithms, Proofs and Asymptotic Analysis',
+      'Divide and Conquer',
+      'The Fast Fourier Transform',
+      'Linear-Time Median',
+      'Dynamic Programming: Fibonacci, LIS, LCS',
+      'Knapsack and Chain Matrix Multiplication',
+      'Shortest Paths, TSP and Independent Sets',
+      'Union-Find',
+      'Fenwick Tree',
+      'Segment Trees',
+      'Graph Search: BFS and DFS',
+      'Strongly Connected Components',
+      '2-SAT',
+      'Minimum Spanning Trees',
+      'Network Flows',
+      'NP-Completeness',
+      'Polynomial Reductions',
+      'Approximation Algorithms',
+    ],
+    tone: 'blueberry',
   },
   {
     id: 'la101',
